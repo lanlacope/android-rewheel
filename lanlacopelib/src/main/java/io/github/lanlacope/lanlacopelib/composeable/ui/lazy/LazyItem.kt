@@ -62,5 +62,7 @@ inline fun <T> LazyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    itemContent(it, items[it])
+    androidx.compose.foundation.layout.Box(modifier = Modifier.animateItem()) {
+        itemContent(it, items[it])
+    }
 }
