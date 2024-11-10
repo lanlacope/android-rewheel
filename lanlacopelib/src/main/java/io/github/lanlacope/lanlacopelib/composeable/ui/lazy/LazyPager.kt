@@ -1,4 +1,4 @@
-package io.github.lanlacope.widgit.composeable.ui.lazy
+package io.github.lanlacope.lanlacopelib.composeable.ui.lazy
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.DecayAnimationSpec
@@ -12,7 +12,7 @@ import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.gestures.snapping.snapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.lazy.LazyItemScope
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -26,31 +26,51 @@ import androidx.compose.ui.unit.dp
 
 @Suppress("unused")
 @Composable
-fun LazyHorizontalPager(
-    modifier: Modifier = Modifier,
-    state: LazyListState = rememberLazyListState(),
-    contentPadding: PaddingValues = PaddingValues(all = 0.dp),
+internal fun LazyPager(
+    modifier: Modifier,
+    state: LazyListState,
+    contentPadding: PaddingValues,
     reverseLayout: Boolean = false,
+    isVertical: Boolean,
+    userScrollEnabled: Boolean,
+    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
+    verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     content: LazyListScope.() -> Unit
 ) {
     val flingBehavior = rememberLazyPagerFlingBehavior(state = state)
 
-    androidx.compose.foundation.lazy.LazyRow(
-        modifier = modifier,
-        state = state,
-        contentPadding = contentPadding,
-        reverseLayout = reverseLayout,
-        verticalAlignment = verticalAlignment,
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-        flingBehavior = flingBehavior,
-        userScrollEnabled = true,
-        content = content
-    )
+    if (isVertical) {
+        androidx.compose.foundation.lazy.LazyColumn(
+            modifier = modifier.fillMaxSize(),
+            state = state,
+            contentPadding = contentPadding,
+            reverseLayout = reverseLayout,
+            horizontalAlignment = horizontalAlignment,
+            verticalArrangement = verticalArrangement,
+            flingBehavior = flingBehavior,
+            userScrollEnabled = userScrollEnabled,
+            content = content
+        )
+    }
+    else {
+        androidx.compose.foundation.lazy.LazyRow(
+            modifier = modifier.fillMaxSize(),
+            state = state,
+            contentPadding = contentPadding,
+            reverseLayout = reverseLayout,
+            verticalAlignment = verticalAlignment,
+            horizontalArrangement = horizontalArrangement,
+            flingBehavior = flingBehavior,
+            userScrollEnabled = userScrollEnabled,
+            content = content
+        )
+    }
 }
 
 @Composable
-fun rememberLazyPagerFlingBehavior(
+internal fun rememberLazyPagerFlingBehavior(
     state: LazyListState,
     decayAnimationSpec: DecayAnimationSpec<Float> = remember {
         exponentialDecay(frictionMultiplier = 20.0f)
@@ -74,44 +94,5 @@ fun rememberLazyPagerFlingBehavior(
             decayAnimationSpec = decayAnimationSpec,
             snapAnimationSpec = snapAnimationSpec
         )
-    }
-}
-
-@Suppress("unused")
-inline fun <T> LazyListScope.pagerItems(
-    items: List<T>,
-    noinline key: ((item: T) -> Any)? = null,
-    noinline contentType: (item: T) -> Any? = { null },
-    crossinline itemContent: @Composable LazyItemScope.(item: T) -> Unit
-) = items(
-    count = items.size,
-    key = if (key != null) { index: Int -> key(items[index]) } else null,
-    contentType = { index: Int -> contentType(items[index]) }
-) { index ->
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .fillParentMaxSize()
-    ) {
-        itemContent(items[index])
-    }
-}
-
-@Suppress("unused")
-inline fun <T> LazyListScope.animatedPagerItems(
-    items: List<T>,
-    noinline key: ((item: T) -> Any)? = null,
-    noinline contentType: (item: T) -> Any? = { null },
-    crossinline itemContent: @Composable LazyItemScope.(item: T) -> Unit
-) = items(
-    count = items.size,
-    key = if (key != null) { index: Int -> key(items[index]) } else null,
-    contentType = { index: Int -> contentType(items[index]) }
-) { index ->
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .fillParentMaxSize()
-    ) {
-        itemContent(items[index])
     }
 }
