@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
-@Suppress("unused")
 @Composable
 inline fun Column(
     noinline onClick: () -> Unit,
@@ -30,7 +29,6 @@ inline fun Column(
     )
 }
 
-@Suppress("unused")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 inline fun Column(

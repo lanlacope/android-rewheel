@@ -46,7 +46,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-@Suppress("unused")
 @Composable
 fun Button(
     modifier: Modifier = Modifier,
@@ -97,7 +96,6 @@ fun Button(
     }
 }
 
-@Suppress("unused")
 @Composable
 fun FloatingActionButton(
     modifier: Modifier = Modifier,

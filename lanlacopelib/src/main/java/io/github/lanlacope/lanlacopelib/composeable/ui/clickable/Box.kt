@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
-@Suppress("unused")
 @Composable
 inline fun Box(
     noinline onClick: () -> Unit,
@@ -28,7 +27,6 @@ inline fun Box(
     )
 }
 
-@Suppress("unused")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 inline fun Box(
@@ -52,7 +50,6 @@ inline fun Box(
     )
 }
 
-@Suppress("unused")
 @Composable
 fun Box(
     onClick: () -> Unit,
@@ -66,7 +63,6 @@ fun Box(
     )
 }
 
-@Suppress("unused")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Box(

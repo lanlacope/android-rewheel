@@ -10,9 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-@Suppress("unused")
 @Composable
-fun LazyVericalPager(
+fun LazyVerticalPager(
     modifier: Modifier = Modifier,
     state: LazyListState = rememberLazyListState(),
     contentPadding: PaddingValues = PaddingValues(all = 0.dp),

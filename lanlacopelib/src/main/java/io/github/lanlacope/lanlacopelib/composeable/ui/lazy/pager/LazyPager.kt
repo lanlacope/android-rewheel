@@ -22,7 +22,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 
-@Suppress("unused")
 @Composable
 internal fun LazyPager(
     modifier: Modifier,

@@ -28,9 +28,8 @@ data class PermissionGrantResultLauncher(
     }
 }
 
-@Suppress("unused")
 @Composable
-fun rememberParmissionGrantResult(
+fun rememberPermissionGrantResult(
     permission: String,
     onGrant: () -> Unit
 ): PermissionGrantResultLauncher {

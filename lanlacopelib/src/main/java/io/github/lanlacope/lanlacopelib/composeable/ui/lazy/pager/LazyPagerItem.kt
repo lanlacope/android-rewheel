@@ -5,7 +5,6 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
-@Suppress("unused")
 inline fun <T> LazyListScope.pagerItems(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
@@ -24,7 +23,6 @@ inline fun <T> LazyListScope.pagerItems(
     }
 }
 
-@Suppress("unused")
 inline fun <T> LazyListScope.pagerItemsIndexed(
     items: List<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
@@ -80,7 +78,6 @@ inline fun <T> LazyListScope.pagerItemsIndexed(
 }
 
 
-@Suppress("unused")
 inline fun <T> LazyListScope.animatedPagerItems(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
@@ -100,7 +97,6 @@ inline fun <T> LazyListScope.animatedPagerItems(
     }
 }
 
-@Suppress("unused")
 inline fun <T> LazyListScope.animatedPagerItemsIndexed(
     items: List<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,

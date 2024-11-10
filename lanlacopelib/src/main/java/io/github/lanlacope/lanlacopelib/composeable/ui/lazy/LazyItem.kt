@@ -5,7 +5,6 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
-@Suppress("unused")
 inline fun <T> LazyListScope.animatedItems(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
@@ -21,7 +20,6 @@ inline fun <T> LazyListScope.animatedItems(
     }
 }
 
-@Suppress("unused")
 inline fun <T> LazyListScope.animatedItemsIndexed(
     items: List<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
