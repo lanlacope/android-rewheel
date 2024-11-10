@@ -49,7 +49,7 @@ publishing {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
             groupId = "io.github.lanlacope"
-            artifactId = "my-library"
+            artifactId = "android-widgit"
             version = "1.0.0"
         }
     }
