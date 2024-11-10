@@ -99,8 +99,8 @@ interface BusyListScope {
 }
 
 @Stable
-private class BusyListScopeImpl : BusyListScope {
-    // アイテムのリストを保持
+internal class BusyListScopeImpl : BusyListScope {
+
     override val items = mutableListOf<@Composable BusyItemScope.() -> Unit>()
 
     override fun item(
@@ -129,51 +129,5 @@ private class BusyListScopeImpl : BusyListScope {
         content: @Composable BusyItemScope.() -> Unit
     ) {
         items.add(content)
-    }
-}
-
-
-@Stable
-@LazyScopeMarker
-interface BusyItemScope {
-
-    fun Modifier.fillParentMaxSize(
-        @FloatRange(from = 0.0, to = 1.0)
-        fraction: Float = 1f
-    ): Modifier
-
-    fun Modifier.fillParentMaxWidth(
-        @FloatRange(from = 0.0, to = 1.0)
-        fraction: Float = 1f
-    ): Modifier
-
-    fun Modifier.fillParentMaxHeight(
-        @FloatRange(from = 0.0, to = 1.0)
-        fraction: Float = 1f
-    ): Modifier
-
-    fun Modifier.animateItem(
-        fadeInSpec: FiniteAnimationSpec<Float>? = spring(stiffness = Spring.StiffnessMediumLow),
-        placementSpec: FiniteAnimationSpec<IntOffset>? = spring(
-            stiffness = Spring.StiffnessMediumLow,
-            visibilityThreshold = IntOffset.VisibilityThreshold
-        ),
-        fadeOutSpec: FiniteAnimationSpec<Float>? =
-            spring(stiffness = Spring.StiffnessMediumLow),
-    ): Modifier = this
-}
-
-
-private class BusyItemScopeImpl : BusyItemScope {
-    override fun Modifier.fillParentMaxSize(fraction: Float): Modifier {
-        return this.fillMaxSize(fraction)
-    }
-
-    override fun Modifier.fillParentMaxWidth(fraction: Float): Modifier {
-        return this.fillMaxWidth(fraction)
-    }
-
-    override fun Modifier.fillParentMaxHeight(fraction: Float): Modifier {
-        return this.fillMaxHeight(fraction)
     }
 }
