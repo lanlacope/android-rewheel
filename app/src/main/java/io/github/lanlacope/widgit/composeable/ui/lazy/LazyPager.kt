@@ -1,4 +1,4 @@
-package io.github.lanlacope.widgit.composeable.ui.custom
+package io.github.lanlacope.widgit.composeable.ui.lazy
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.DecayAnimationSpec
@@ -78,7 +78,7 @@ fun rememberLazyPagerFlingBehavior(
 }
 
 @Suppress("unused")
-inline fun <T> LazyListScope.animatedItems(
+inline fun <T> LazyListScope.pagerItems(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
@@ -88,7 +88,10 @@ inline fun <T> LazyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) { index ->
-    androidx.compose.foundation.layout.Box(modifier = Modifier.animateItem()) {
+    androidx.compose.foundation.layout.Box(
+        modifier = Modifier
+            .fillParentMaxSize()
+    ) {
         itemContent(items[index])
     }
 }
