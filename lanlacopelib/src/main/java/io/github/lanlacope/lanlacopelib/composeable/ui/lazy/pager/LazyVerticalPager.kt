@@ -1,4 +1,4 @@
-package io.github.lanlacope.widgit.composeable.ui.lazy
+package io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,31 +9,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.LazyPager
 
 @Suppress("unused")
 @Composable
-fun LazyHorizontalPager(
+fun LazyVericalPager(
     modifier: Modifier = Modifier,
     state: LazyListState = rememberLazyListState(),
     contentPadding: PaddingValues = PaddingValues(all = 0.dp),
     userScrollEnabled: Boolean = true,
     loadSidePage: Boolean = true,
     reverseLayout: Boolean = false,
-    horizontalArrangement: Arrangement.Horizontal =
+    verticalArrangement: Arrangement.Vertical =
         if (loadSidePage) Arrangement.spacedBy(10.dp) else Arrangement.Center,
-    verticalAlignment: Alignment.Vertical = Alignment.Top,
+    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
     content: LazyListScope.() -> Unit
 ) {
     LazyPager(
         modifier = modifier,
         state = state,
         contentPadding = contentPadding,
-        isVertical = false,
+        isVertical = true,
         userScrollEnabled = userScrollEnabled,
         reverseLayout = reverseLayout,
-        verticalAlignment = verticalAlignment,
-        horizontalArrangement = horizontalArrangement,
+        horizontalAlignment = horizontalAlignment,
+        verticalArrangement = verticalArrangement,
         content = content
     )
 }

@@ -1,4 +1,4 @@
-package io.github.lanlacope.lanlacopelib.composeable.ui.lazy
+package io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.DecayAnimationSpec

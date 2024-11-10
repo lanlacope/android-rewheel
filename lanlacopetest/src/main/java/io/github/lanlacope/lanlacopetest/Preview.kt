@@ -7,8 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pagerItems
-import io.github.lanlacope.widgit.composeable.ui.lazy.LazyHorizontalPager
+import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager.pagerItems
+import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager.LazyHorizontalPager
 
 @Composable
 private fun View() {
