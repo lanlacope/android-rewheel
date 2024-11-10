@@ -44,10 +44,17 @@ android {
     }
 }
 
+tasks.register("listComponents") {
+    doLast {
+        println(components.names)
+    }
+}
+
+/*
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
-            from(components["java"])
+        create<MavenPublication>("release") {
+            from(components["androidRelease"])
             groupId = "io.github.lanlacope"
             artifactId = "android-widgit"
             version = "1.0.0"
@@ -64,6 +71,8 @@ publishing {
         }
     }
 }
+
+ */
 
 dependencies {
 
