@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "widgit"
+rootProject.name = "android-widgit"
 include(":lanlacopelib")
 include(":lanlacopetest")

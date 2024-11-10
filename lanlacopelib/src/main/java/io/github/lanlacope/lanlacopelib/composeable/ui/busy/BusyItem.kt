@@ -1,16 +1,6 @@
 package io.github.lanlacope.widgit.composeable.ui.busy
 
-import androidx.annotation.FloatRange
-import androidx.compose.animation.core.FiniteAnimationSpec
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.VisibilityThreshold
-import androidx.compose.animation.core.spring
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.lazy.LazyScopeMarker
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Stable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.IntOffset
 
 inline fun <T> BusyListScope.items(
     items: List<T>,
