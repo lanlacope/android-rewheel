@@ -20,5 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "widgit"
-include(":app")
- 
+include(":lanlacopelib")
+include(":lanlacopetest")
