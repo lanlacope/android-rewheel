@@ -34,7 +34,7 @@ internal fun LazyPager(
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
-    content: LazyListScope.() -> Unit
+    content: LazyPagerScope.() -> Unit
 ) {
     val flingBehavior = rememberLazyPagerFlingBehavior(state = state)
 
@@ -48,7 +48,7 @@ internal fun LazyPager(
             verticalArrangement = verticalArrangement,
             flingBehavior = flingBehavior,
             userScrollEnabled = userScrollEnabled,
-            content = content
+            content = lazyPagerScopeAsLazyListScope(content)
         )
     }
     else {
@@ -61,10 +61,12 @@ internal fun LazyPager(
             horizontalArrangement = horizontalArrangement,
             flingBehavior = flingBehavior,
             userScrollEnabled = userScrollEnabled,
-            content = content
+            content =  lazyPagerScopeAsLazyListScope(content)
         )
     }
 }
+
+interface LazyPagerScope : LazyListScope
 
 @Composable
 internal fun rememberLazyPagerFlingBehavior(
@@ -91,5 +93,21 @@ internal fun rememberLazyPagerFlingBehavior(
             decayAnimationSpec = decayAnimationSpec,
             snapAnimationSpec = snapAnimationSpec
         )
+    }
+}
+
+// LazyPagerScopeをLazyListScopeとして変換する関数
+fun lazyPagerScopeAsLazyListScope(
+    pagerContent: LazyPagerScope.() -> Unit
+): LazyListScope.() -> Unit {
+    return {
+        object : LazyPagerScope, LazyListScope by this {
+
+            fun pagerItem(content: @Composable () -> Unit) {
+                item {
+                    content()
+                }
+            }
+        }.pagerContent()
     }
 }

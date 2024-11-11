@@ -6,9 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 /*
- * pagerItems
+ * items
  */
-inline fun <T> LazyListScope.pagerItems(
+inline fun <T> LazyPagerScope.pagerItems(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
@@ -26,7 +26,7 @@ inline fun <T> LazyListScope.pagerItems(
     }
 }
 
-inline fun <T> LazyListScope.pagerItemsIndexed(
+inline fun <T> LazyPagerScope.pagerItemsIndexed(
     items: List<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
@@ -44,7 +44,7 @@ inline fun <T> LazyListScope.pagerItemsIndexed(
     }
 }
 
-inline fun <T> LazyListScope.pagerItems(
+inline fun <T> LazyPagerScope.pagerItems(
     items: Array<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
@@ -62,7 +62,7 @@ inline fun <T> LazyListScope.pagerItems(
     }
 }
 
-inline fun <T> LazyListScope.pagerItemsIndexed(
+inline fun <T> LazyPagerScope.pagerItemsIndexed(
     items: Array<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
@@ -82,9 +82,9 @@ inline fun <T> LazyListScope.pagerItemsIndexed(
 
 
 /*
- * animatedPagerItems
+ * animatedItems
  */
-inline fun <T> LazyListScope.animatedPagerItems(
+inline fun <T> LazyPagerScope.animatedpagerItems(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
@@ -103,7 +103,7 @@ inline fun <T> LazyListScope.animatedPagerItems(
     }
 }
 
-inline fun <T> LazyListScope.animatedPagerItemsIndexed(
+inline fun <T> LazyPagerScope.animatedpagerItemsIndexed(
     items: List<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
@@ -122,7 +122,7 @@ inline fun <T> LazyListScope.animatedPagerItemsIndexed(
     }
 }
 
-inline fun <T> LazyListScope.animatedPagerItems(
+inline fun <T> LazyPagerScope.animatedpagerItems(
     items: Array<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
@@ -141,7 +141,7 @@ inline fun <T> LazyListScope.animatedPagerItems(
     }
 }
 
-inline fun <T> LazyListScope.animatedPagerItemsIndexed(
+inline fun <T> LazyPagerScope.animatedpagerItemsIndexed(
     items: Array<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
