@@ -9,7 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager.LazyHorizontalPager
 import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager.pagerItems
-import io.github.lanlacope.widgit.composeable.ui.lazy.items
 
 @Composable
 private fun View() {

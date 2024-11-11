@@ -1,7 +1,6 @@
 package io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager
 
 import androidx.compose.foundation.lazy.LazyItemScope
-import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
