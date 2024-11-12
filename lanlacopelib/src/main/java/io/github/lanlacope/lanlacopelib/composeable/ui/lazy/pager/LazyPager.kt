@@ -13,6 +13,7 @@ import androidx.compose.foundation.gestures.snapping.snapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
@@ -66,7 +67,47 @@ internal fun LazyPager(
     }
 }
 
-interface LazyPagerScope : LazyListScope
+interface LazyPagerScope {
+    fun item(
+        key: Any? = null,
+        contentType: Any? = null,
+        content: @Composable LazyItemScope.() -> Unit
+    ) {
+        error("The method is not implemented")
+    }
+
+    fun items(
+        count: Int,
+        key: ((index: Int) -> Any)? = null,
+        contentType: (index: Int) -> Any? = { null },
+        itemContent: @Composable LazyItemScope.(index: Int) -> Unit
+    ) {
+        error("The method is not implemented")
+    }
+}
+
+
+internal class LazyPagerScopeImpl(
+    private val lazyListScope: LazyListScope
+) : LazyPagerScope {
+
+    override fun item(
+        key: Any?,
+        contentType: Any?,
+        content: @Composable LazyItemScope.() -> Unit
+    ) {
+        lazyListScope.item(key, contentType, content)
+    }
+
+    override fun items(
+        count: Int,
+        key: ((index: Int) -> Any)?,
+        contentType: (index: Int) -> Any?,
+        itemContent: @Composable LazyItemScope.(index: Int) -> Unit
+    ) {
+        lazyListScope.items(count, key, contentType, itemContent)
+    }
+}
 
 @Composable
 internal fun rememberLazyPagerFlingBehavior(
@@ -101,13 +142,6 @@ fun lazyPagerScopeAsLazyListScope(
     pagerContent: LazyPagerScope.() -> Unit
 ): LazyListScope.() -> Unit {
     return {
-        object : LazyPagerScope, LazyListScope by this {
-
-            fun pagerItem(content: @Composable () -> Unit) {
-                item {
-                    content()
-                }
-            }
-        }.pagerContent()
+        LazyPagerScopeImpl(this).apply(pagerContent)
     }
 }

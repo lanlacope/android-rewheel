@@ -8,16 +8,14 @@ import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager.LazyHorizontalPager
-import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager.pagerItems
+import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager.items
 
 @Composable
 private fun View() {
     val list = listOf("asdfg", "ertyu", "zxcvb").toMutableStateList()
 
-    LazyHorizontalPager(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        pagerItems(
+    LazyHorizontalPager {
+        items(
             items = list,
             key = {it}
         ) {

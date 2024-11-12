@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 /*
  * items
  */
-inline fun <T> LazyPagerScope.pagerItems(
+inline fun <T> LazyPagerScope.items(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
@@ -25,7 +25,7 @@ inline fun <T> LazyPagerScope.pagerItems(
     }
 }
 
-inline fun <T> LazyPagerScope.pagerItemsIndexed(
+inline fun <T> LazyPagerScope.itemsIndexed(
     items: List<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
@@ -43,7 +43,7 @@ inline fun <T> LazyPagerScope.pagerItemsIndexed(
     }
 }
 
-inline fun <T> LazyPagerScope.pagerItems(
+inline fun <T> LazyPagerScope.items(
     items: Array<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
@@ -61,7 +61,7 @@ inline fun <T> LazyPagerScope.pagerItems(
     }
 }
 
-inline fun <T> LazyPagerScope.pagerItemsIndexed(
+inline fun <T> LazyPagerScope.itemsIndexed(
     items: Array<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
@@ -83,7 +83,7 @@ inline fun <T> LazyPagerScope.pagerItemsIndexed(
 /*
  * animatedItems
  */
-inline fun <T> LazyPagerScope.animatedpagerItems(
+inline fun <T> LazyPagerScope.animateditems(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
@@ -102,7 +102,7 @@ inline fun <T> LazyPagerScope.animatedpagerItems(
     }
 }
 
-inline fun <T> LazyPagerScope.animatedpagerItemsIndexed(
+inline fun <T> LazyPagerScope.animateditemsIndexed(
     items: List<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
@@ -121,7 +121,7 @@ inline fun <T> LazyPagerScope.animatedpagerItemsIndexed(
     }
 }
 
-inline fun <T> LazyPagerScope.animatedpagerItems(
+inline fun <T> LazyPagerScope.animatedItems(
     items: Array<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
@@ -140,7 +140,7 @@ inline fun <T> LazyPagerScope.animatedpagerItems(
     }
 }
 
-inline fun <T> LazyPagerScope.animatedpagerItemsIndexed(
+inline fun <T> LazyPagerScope.animatedItemsIndexed(
     items: Array<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
