@@ -28,6 +28,7 @@ internal fun BusyList(
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     content: BusyListScope.() -> Unit,
 ) {
+    // TODO: reverseLayoutに対応させる
     val scope = remember { BusyListScopeImpl() }
     scope.content()
 
