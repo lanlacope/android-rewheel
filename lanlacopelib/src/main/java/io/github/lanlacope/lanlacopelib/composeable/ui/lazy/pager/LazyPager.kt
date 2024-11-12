@@ -6,6 +6,7 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VisibilityThreshold
 import androidx.compose.animation.core.exponentialDecay
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider
 import androidx.compose.foundation.gestures.snapping.SnapPosition
@@ -28,7 +29,7 @@ internal fun LazyPager(
     modifier: Modifier,
     state: LazyListState,
     contentPadding: PaddingValues,
-    reverseLayout: Boolean = false,
+    reverseLayout: Boolean,
     isVertical: Boolean,
     userScrollEnabled: Boolean,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
@@ -37,6 +38,7 @@ internal fun LazyPager(
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     content: LazyPagerScope.() -> Unit
 ) {
+    val cContent: LazyListScope.() -> Unit = { LazyPagerScopeImpl(this).content() }
     val flingBehavior = rememberLazyPagerFlingBehavior(state = state)
 
     if (isVertical) {
@@ -49,7 +51,7 @@ internal fun LazyPager(
             verticalArrangement = verticalArrangement,
             flingBehavior = flingBehavior,
             userScrollEnabled = userScrollEnabled,
-            content = lazyPagerScopeAsLazyListScope(content)
+            content = cContent
         )
     }
     else {
@@ -62,30 +64,12 @@ internal fun LazyPager(
             horizontalArrangement = horizontalArrangement,
             flingBehavior = flingBehavior,
             userScrollEnabled = userScrollEnabled,
-            content =  lazyPagerScopeAsLazyListScope(content)
+            content = cContent
         )
     }
 }
 
-interface LazyPagerScope {
-    fun item(
-        key: Any? = null,
-        contentType: Any? = null,
-        content: @Composable LazyItemScope.() -> Unit
-    ) {
-        error("The method is not implemented")
-    }
-
-    fun items(
-        count: Int,
-        key: ((index: Int) -> Any)? = null,
-        contentType: (index: Int) -> Any? = { null },
-        itemContent: @Composable LazyItemScope.(index: Int) -> Unit
-    ) {
-        error("The method is not implemented")
-    }
-}
-
+interface LazyPagerScope : LazyListScope
 
 internal class LazyPagerScopeImpl(
     private val lazyListScope: LazyListScope
@@ -106,6 +90,15 @@ internal class LazyPagerScopeImpl(
         itemContent: @Composable LazyItemScope.(index: Int) -> Unit
     ) {
         lazyListScope.items(count, key, contentType, itemContent)
+    }
+
+    @ExperimentalFoundationApi
+    override fun stickyHeader(
+        key: Any?,
+        contentType: Any?,
+        content: @Composable() (LazyItemScope.() -> Unit),
+    ) {
+        error("The method is not implemented")
     }
 }
 
@@ -134,14 +127,5 @@ internal fun rememberLazyPagerFlingBehavior(
             decayAnimationSpec = decayAnimationSpec,
             snapAnimationSpec = snapAnimationSpec
         )
-    }
-}
-
-// LazyPagerScopeをLazyListScopeとして変換する関数
-fun lazyPagerScopeAsLazyListScope(
-    pagerContent: LazyPagerScope.() -> Unit
-): LazyListScope.() -> Unit {
-    return {
-        LazyPagerScopeImpl(this).apply(pagerContent)
     }
 }

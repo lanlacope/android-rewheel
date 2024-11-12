@@ -5,6 +5,7 @@ import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.LazyScopeMarker
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
@@ -116,8 +117,9 @@ internal class BusyListScopeImpl : BusyListScope {
     override fun stickyHeader(
         key: Any?,
         contentType: Any?,
-        content: @Composable BusyItemScope.() -> Unit
+        content: @Composable() (BusyItemScope.() -> Unit),
     ) {
-        items.add(content)
+        TODO("Not yet implemented")
     }
+
 }
