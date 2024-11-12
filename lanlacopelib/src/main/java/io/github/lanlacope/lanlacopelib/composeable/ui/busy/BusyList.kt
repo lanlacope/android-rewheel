@@ -67,7 +67,7 @@ interface BusyListScope {
         contentType: Any? = null,
         content: @Composable BusyItemScope.() -> Unit
     ) {
-        items.add(content)
+        error("The method is not implemented")
     }
 
     fun items(
@@ -76,9 +76,7 @@ interface BusyListScope {
         contentType: (index: Int) -> Any? = { null },
         itemContent: @Composable BusyItemScope.(index: Int) -> Unit
     ) {
-        for (i in 0 until count) {
-            items.add { itemContent(i) }
-        }
+        error("The method is not implemented")
     }
 
     @ExperimentalFoundationApi

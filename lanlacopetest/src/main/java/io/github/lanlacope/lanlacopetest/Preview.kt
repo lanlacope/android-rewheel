@@ -9,12 +9,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager.LazyHorizontalPager
 import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager.items
+import io.github.lanlacope.widgit.composeable.ui.busy.BusyColumn
+import io.github.lanlacope.widgit.composeable.ui.busy.items
 
 @Composable
 private fun View() {
     val list = listOf("asdfg", "ertyu", "zxcvb").toMutableStateList()
 
-    LazyHorizontalPager {
+    BusyColumn {
         items(
             items = list,
             key = {it}
