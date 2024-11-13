@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "android-widgit"
+rootProject.name = "android-rewheel"
 include(":lanlacopelib")
 include(":lanlacopetest")

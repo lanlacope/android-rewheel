@@ -1,4 +1,4 @@
-package io.github.lanlacope.widgit.composeable.ui.animation
+package io.github.lanlacope.rewheel.composeable.ui.animation
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.AnimatedVisibilityScope

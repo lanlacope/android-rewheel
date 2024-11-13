@@ -1,4 +1,4 @@
-package io.github.lanlacope.widgit.composeable.ui.lazy
+package io.github.lanlacope.rewheel.composeable.ui.lazy
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ScrollState

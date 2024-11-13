@@ -1,7 +1,6 @@
-package io.github.lanlacope.widgit.composeable.ui.lazy
+package io.github.lanlacope.rewheel.composeable.ui.lazy
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.runtime.Composable

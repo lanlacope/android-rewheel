@@ -1,4 +1,4 @@
-package io.github.lanlacope.widgit.composeable.ui.click
+package io.github.lanlacope.rewheel.composeable.ui.click
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable

@@ -1,4 +1,4 @@
-package io.github.lanlacope.widgit.composeable.effect
+package io.github.lanlacope.rewheel.composeable.effect
 
 import android.content.Context
 import android.content.pm.PackageManager

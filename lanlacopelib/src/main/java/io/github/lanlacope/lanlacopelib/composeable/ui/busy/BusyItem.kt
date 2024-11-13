@@ -1,4 +1,4 @@
-package io.github.lanlacope.widgit.composeable.ui.busy
+package io.github.lanlacope.rewheel.composeable.ui.busy
 
 import androidx.annotation.FloatRange
 import androidx.compose.animation.core.FiniteAnimationSpec

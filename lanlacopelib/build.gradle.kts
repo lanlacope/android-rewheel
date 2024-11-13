@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "io.github.lanlacope.widgit"
+    namespace = "io.github.lanlacope.rewheel"
     compileSdk = 35
 
     defaultConfig {
@@ -56,7 +56,7 @@ publishing {
         create<MavenPublication>("release") {
             from(components["androidRelease"])
             groupId = "io.github.lanlacope"
-            artifactId = "android-widgit"
+            artifactId = "android-rewheel"
             version = "1.0.0"
         }
     }
