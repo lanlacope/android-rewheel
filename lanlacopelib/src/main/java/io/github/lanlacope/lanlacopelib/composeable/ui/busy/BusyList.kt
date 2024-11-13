@@ -28,7 +28,6 @@ internal fun BusyList(
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     content: BusyListScope.() -> Unit,
 ) {
-    // TODO: reverseLayoutに対応させる
     val scope = remember { BusyListScopeImpl() }
     scope.content()
 
@@ -39,8 +38,15 @@ internal fun BusyList(
                 verticalArrangement = verticalArrangement,
                 horizontalAlignment = horizontalAlignment
             ) {
-                for (itemContent in scope.items) {
-                    itemContent(BusyItemScopeImpl())
+                if (!reverseLayout) {
+                    for (itemContent in scope.items) {
+                        itemContent(BusyItemScopeImpl())
+                    }
+                }
+                else {
+                    for (itemContent in scope.items.reversed()) {
+                        itemContent(BusyItemScopeImpl())
+                    }
                 }
             }
         } else {
@@ -49,8 +55,15 @@ internal fun BusyList(
                 horizontalArrangement = horizontalArrangement,
                 verticalAlignment = verticalAlignment
             ) {
-                for (itemContent in scope.items) {
-                    itemContent(BusyItemScopeImpl())
+                if (!reverseLayout) {
+                    for (itemContent in scope.items) {
+                        itemContent(BusyItemScopeImpl())
+                    }
+                }
+                else {
+                    for (itemContent in scope.items.reversed()) {
+                        itemContent(BusyItemScopeImpl())
+                    }
                 }
             }
         }
@@ -80,6 +93,7 @@ interface BusyListScope {
         error("The method is not implemented")
     }
 
+    @Deprecated("This feature is not implemented yet", level = DeprecationLevel.ERROR)
     @ExperimentalFoundationApi
     fun stickyHeader(
         key: Any? = null,
@@ -112,12 +126,13 @@ internal class BusyListScopeImpl : BusyListScope {
         }
     }
 
+    @Deprecated("This feature is not implemented yet", level = DeprecationLevel.ERROR)
     @ExperimentalFoundationApi
     override fun stickyHeader(
         key: Any?,
         contentType: Any?,
         content: @Composable() (BusyItemScope.() -> Unit),
     ) {
-        TODO("Not yet implemented")
+        error("The method is not implemented")
     }
 }

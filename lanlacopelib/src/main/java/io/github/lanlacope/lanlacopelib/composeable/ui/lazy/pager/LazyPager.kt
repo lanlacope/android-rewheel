@@ -69,10 +69,37 @@ internal fun LazyPager(
     }
 }
 
-interface LazyPagerScope : LazyListScope
+interface LazyPagerScope : LazyListScope {
+
+    override fun item(
+        key: Any?,
+        contentType: Any?,
+        content: @Composable() (LazyItemScope.() -> Unit)
+    ) {
+        error("The method is not implemented")
+    }
+
+    override fun items(
+        count: Int,
+        key: ((index: Int) -> Any)?,
+        contentType: (index: Int) -> Any?,
+        itemContent: @Composable() (LazyItemScope.(index: Int) -> Unit)
+    ) {
+        error("The method is not implemented")
+    }
+
+    @Deprecated("This feature is not implemented yet", level = DeprecationLevel.ERROR)
+    @ExperimentalFoundationApi
+    override fun stickyHeader(
+        key: Any?,
+        contentType: Any?,
+        content: @Composable() (LazyItemScope.() -> Unit),
+    )
+}
+
 
 internal class LazyPagerScopeImpl(
-    private val lazyListScope: LazyListScope
+    private val lazyListScope: LazyListScope,
 ) : LazyPagerScope {
 
     override fun item(
@@ -87,11 +114,12 @@ internal class LazyPagerScopeImpl(
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,
-        itemContent: @Composable LazyItemScope.(index: Int) -> Unit
+        itemContent: @Composable() (LazyItemScope.(index: Int) -> Unit)
     ) {
         lazyListScope.items(count, key, contentType, itemContent)
     }
 
+    @Deprecated("This feature is not implemented yet", level = DeprecationLevel.ERROR)
     @ExperimentalFoundationApi
     override fun stickyHeader(
         key: Any?,
