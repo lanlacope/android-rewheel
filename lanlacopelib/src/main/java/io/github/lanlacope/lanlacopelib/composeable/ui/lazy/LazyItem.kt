@@ -1,6 +1,5 @@
 package io.github.lanlacope.rewheel.composeable.ui.lazy
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.LazyListScope
