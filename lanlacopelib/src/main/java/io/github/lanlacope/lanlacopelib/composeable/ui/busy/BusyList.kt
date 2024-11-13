@@ -3,6 +3,7 @@ package io.github.lanlacope.rewheel.composeable.ui.busy
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyScopeMarker
@@ -11,6 +12,9 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+
+// TODO: stateの対応
+// TODO: スクロールの対応
 
 @Composable
 internal fun BusyList(
@@ -31,7 +35,7 @@ internal fun BusyList(
     val scope = remember { BusyListScopeImpl() }
     scope.content()
 
-    androidx.compose.foundation.layout.Box(modifier = modifier) {
+    Box(modifier = modifier) {
         if (isVertical) {
             androidx.compose.foundation.layout.Column(
                 modifier = Modifier.padding(contentPadding),

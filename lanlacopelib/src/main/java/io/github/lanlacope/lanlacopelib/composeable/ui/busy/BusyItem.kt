@@ -5,7 +5,7 @@ import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VisibilityThreshold
 import androidx.compose.animation.core.spring
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.IntOffset
+import io.github.lanlacope.rewheel.composeable.ui.click.Box
 
 /*
  * items
@@ -85,14 +86,7 @@ inline fun <T> BusyListScope.items(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .clickable(
-                onClick = {
-                    onClick(items[it])
-                }
-            )
-    ) {
+    Box(onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -108,14 +102,7 @@ inline fun <T> BusyListScope.itemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .clickable(
-                onClick = {
-                    onClick(it, items[it])
-                }
-            )
-    ) {
+    Box(onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }
@@ -131,14 +118,7 @@ inline fun <T> BusyListScope.items(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .clickable(
-                onClick = {
-                    onClick(items[it])
-                }
-            )
-    ) {
+    Box(onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -154,14 +134,7 @@ inline fun <T> BusyListScope.itemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .clickable(
-                onClick = {
-                    onClick(it, items[it])
-                }
-            )
-    ) {
+    Box(onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }
@@ -179,7 +152,7 @@ inline fun <T> BusyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(modifier = Modifier.animateItem()) {
+    Box(modifier = Modifier.animateItem()) {
         itemContent(items[it])
     }
 }
@@ -194,7 +167,7 @@ inline fun <T> BusyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(modifier = Modifier.animateItem()) {
+    Box(modifier = Modifier.animateItem()) {
         itemContent(it, items[it])
     }
 }
@@ -209,7 +182,7 @@ inline fun <T> BusyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(modifier = Modifier.animateItem()) {
+    Box(modifier = Modifier.animateItem()) {
         itemContent(items[it])
     }
 }
@@ -224,7 +197,7 @@ inline fun <T> BusyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(modifier = Modifier.animateItem()) {
+    Box(modifier = Modifier.animateItem()) {
         itemContent(it, items[it])
     }
 }
@@ -243,15 +216,8 @@ inline fun <T> BusyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .clickable(
-                onClick = {
-                    onClick(items[it])
-                }
-            )
-    ) {
+    Box(modifier = Modifier.animateItem(),
+        onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -267,15 +233,8 @@ inline fun <T> BusyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .clickable(
-                onClick = {
-                    onClick(it, items[it])
-                }
-            )
-    ) {
+    Box(modifier = Modifier.animateItem(),
+        onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }
@@ -291,15 +250,8 @@ inline fun <T> BusyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .clickable(
-                onClick = {
-                    onClick(items[it])
-                }
-            )
-    ) {
+    Box(modifier = Modifier.animateItem(),
+        onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -315,15 +267,8 @@ inline fun <T> BusyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .clickable(
-                onClick = {
-                    onClick(it, items[it])
-                }
-            )
-    ) {
+    Box(modifier = Modifier.animateItem(),
+        onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }

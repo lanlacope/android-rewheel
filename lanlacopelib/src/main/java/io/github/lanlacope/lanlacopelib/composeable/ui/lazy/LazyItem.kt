@@ -1,10 +1,12 @@
 package io.github.lanlacope.rewheel.composeable.ui.lazy
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import io.github.lanlacope.rewheel.composeable.ui.click.Box
 
 /*
  * clickableItems
@@ -20,14 +22,7 @@ inline fun <T> LazyListScope.items(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .clickable(
-                onClick = {
-                    onClick(items[it])
-                }
-            )
-    ) {
+    Box(onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -43,14 +38,7 @@ inline fun <T> LazyListScope.itemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .clickable(
-                onClick = {
-                    onClick(it, items[it])
-                }
-            )
-    ) {
+    Box(onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }
@@ -66,14 +54,7 @@ inline fun <T> LazyListScope.items(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .clickable(
-                onClick = {
-                    onClick(items[it])
-                }
-            )
-    ) {
+    Box(onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -89,14 +70,7 @@ inline fun <T> LazyListScope.itemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .clickable(
-                onClick = {
-                    onClick(it, items[it])
-                }
-            )
-    ) {
+    Box(onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }
@@ -115,7 +89,7 @@ inline fun <T> LazyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(modifier = Modifier.animateItem()) {
+    Box(modifier = Modifier.animateItem()) {
         itemContent(items[it])
     }
 }
@@ -130,7 +104,7 @@ inline fun <T> LazyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(modifier = Modifier.animateItem()) {
+    Box(modifier = Modifier.animateItem()) {
         itemContent(it, items[it])
     }
 }
@@ -145,7 +119,7 @@ inline fun <T> LazyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(modifier = Modifier.animateItem()) {
+    Box(modifier = Modifier.animateItem()) {
         itemContent(items[it])
     }
 }
@@ -160,7 +134,7 @@ inline fun <T> LazyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(modifier = Modifier.animateItem()) {
+    Box(modifier = Modifier.animateItem()) {
         itemContent(it, items[it])
     }
 }
@@ -179,15 +153,8 @@ inline fun <T> LazyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .clickable(
-                onClick = {
-                    onClick(items[it])
-                }
-            )
-    ) {
+    Box(modifier = Modifier.animateItem(),
+        onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -203,15 +170,8 @@ inline fun <T> LazyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .clickable(
-                onClick = {
-                    onClick(it, items[it])
-                }
-            )
-    ) {
+    Box(modifier = Modifier.animateItem(),
+        onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }
@@ -227,15 +187,8 @@ inline fun <T> LazyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .clickable(
-                onClick = {
-                    onClick(items[it])
-                }
-            )
-    ) {
+    Box(modifier = Modifier.animateItem(),
+        onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -251,15 +204,8 @@ inline fun <T> LazyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .clickable(
-                onClick = {
-                    onClick(it, items[it])
-                }
-            )
-    ) {
+    Box(modifier = Modifier.animateItem(),
+        onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }

@@ -1,39 +1,40 @@
-package io.github.lanlacope.rewheel.composeable.ui.busy
+package io.github.lanlacope.lanlacopelib.composeable.ui.lazy.action
 
 import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.gestures.ScrollableDefaults
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-
-// TODO: stateの対応
-// TODO: スクロールの対応
+import io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager.LazyPagerScope
 
 @Composable
-fun BusyColumn(
+fun LazyTextList(
     modifier: Modifier = Modifier,
-    // state: LazyListState = rememberLazyListState(),
+    state: LazyListState = rememberLazyListState(),
     contentPadding: PaddingValues = PaddingValues(0.dp),
     reverseLayout: Boolean = false,
-    verticalArrangement: Arrangement.Vertical =
-        if (!reverseLayout) Arrangement.Top else Arrangement.Bottom,
-    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    flingBehavior: FlingBehavior = ScrollableDefaults.flingBehavior(),
     userScrollEnabled: Boolean = true,
-    content: BusyListScope.() -> Unit
+    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
+    verticalArrangement: Arrangement.Vertical = Arrangement.Top,
+    flingBehavior: FlingBehavior = ScrollableDefaults.flingBehavior(),
+    content: LazyListScope.() -> Unit,
 ) {
-    BusyList(
+    androidx.compose.foundation.lazy.LazyColumn(
         modifier = modifier,
+        state = state,
         contentPadding = contentPadding,
         reverseLayout = reverseLayout,
-        isVertical = true,
-        flingBehavior = flingBehavior,
-        userScrollEnabled = userScrollEnabled,
         horizontalAlignment = horizontalAlignment,
         verticalArrangement = verticalArrangement,
+        flingBehavior = flingBehavior,
+        userScrollEnabled = userScrollEnabled,
         content = content
     )
 }

@@ -1,6 +1,7 @@
 package io.github.lanlacope.rewheel.composeable.ui.click
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,7 +18,7 @@ inline fun Row(
     verticalAlignment: Alignment.Vertical = Alignment.Top,
     content: @Composable RowScope.() -> Unit
 ) {
-    androidx.compose.foundation.layout.Row(
+    Row(
         modifier = modifier
             .clickable(
                 onClick = onClick
@@ -39,7 +40,7 @@ inline fun Row(
     verticalAlignment: Alignment.Vertical = Alignment.Top,
     content: @Composable RowScope.() -> Unit
 ) {
-    androidx.compose.foundation.layout.Row(
+    Row(
         modifier = modifier
             .combinedClickable(
                 onClick = onClick?: { },

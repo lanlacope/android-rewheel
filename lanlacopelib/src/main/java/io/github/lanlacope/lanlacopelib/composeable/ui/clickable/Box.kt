@@ -1,6 +1,7 @@
 package io.github.lanlacope.rewheel.composeable.ui.click
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.runtime.Composable
@@ -16,7 +17,7 @@ inline fun Box(
     propagateMinConstraints: Boolean = false,
     content: @Composable BoxScope.() -> Unit
 ) {
-    androidx.compose.foundation.layout.Box(
+    Box(
         modifier = modifier
             .clickable(
                 onClick = onClick
@@ -37,7 +38,7 @@ inline fun Box(
     propagateMinConstraints: Boolean = false,
     content: @Composable BoxScope.() -> Unit
 ) {
-    androidx.compose.foundation.layout.Box(
+    Box(
         modifier = modifier
             .combinedClickable(
                 onClick = onClick?: { },
@@ -55,7 +56,7 @@ fun Box(
     onClick: () -> Unit,
     modifier: Modifier
 ) {
-    androidx.compose.foundation.layout.Box(
+    Box(
         modifier = modifier
             .clickable (
                 onClick = onClick
@@ -70,7 +71,7 @@ fun Box(
     onLongClick: () -> Unit,
     modifier: Modifier
 ) {
-    androidx.compose.foundation.layout.Box(
+    Box(
         modifier = modifier
             .combinedClickable(
                 onClick = onClick?: { },

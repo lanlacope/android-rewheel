@@ -1,5 +1,6 @@
 package io.github.lanlacope.lanlacopelib.composeable.ui.lazy.pager
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,10 +18,7 @@ inline fun <T> LazyPagerScope.items(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .fillParentMaxSize()
-    ) {
+    Box(modifier = Modifier.fillParentMaxSize()) {
         itemContent(items[it])
     }
 }
@@ -35,10 +33,7 @@ inline fun <T> LazyPagerScope.itemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .fillParentMaxSize()
-    ) {
+    Box(modifier = Modifier.fillParentMaxSize()) {
         itemContent(it, items[it])
     }
 }
@@ -53,10 +48,7 @@ inline fun <T> LazyPagerScope.items(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .fillParentMaxSize()
-    ) {
+    Box(modifier = Modifier.fillParentMaxSize()) {
         itemContent(items[it])
     }
 }
@@ -71,10 +63,7 @@ inline fun <T> LazyPagerScope.itemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .fillParentMaxSize()
-    ) {
+    Box(modifier = Modifier.fillParentMaxSize()) {
         itemContent(it, items[it])
     }
 }
@@ -93,10 +82,9 @@ inline fun <T> LazyPagerScope.animateditems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .fillParentMaxSize()
+    Box(modifier = Modifier
+        .animateItem()
+        .fillParentMaxSize()
     ) {
         itemContent(items[it])
     }
@@ -112,10 +100,9 @@ inline fun <T> LazyPagerScope.animateditemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .fillParentMaxSize()
+    Box(modifier = Modifier
+        .animateItem()
+        .fillParentMaxSize()
     ) {
         itemContent(it, items[it])
     }
@@ -131,10 +118,9 @@ inline fun <T> LazyPagerScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .fillParentMaxSize()
+    Box(modifier = Modifier
+        .animateItem()
+        .fillParentMaxSize()
     ) {
         itemContent(items[it])
     }
@@ -150,10 +136,9 @@ inline fun <T> LazyPagerScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    androidx.compose.foundation.layout.Box(
-        modifier = Modifier
-            .animateItem()
-            .fillParentMaxSize()
+    Box(modifier = Modifier
+        .animateItem()
+        .fillParentMaxSize()
     ) {
         itemContent(it, items[it])
     }

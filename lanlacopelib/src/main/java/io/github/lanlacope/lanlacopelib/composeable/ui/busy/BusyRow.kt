@@ -9,6 +9,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+// TODO: stateの対応
+// TODO: スクロールの対応
+
 @Composable
 fun BusyRow(
     modifier: Modifier = Modifier,
