@@ -166,24 +166,23 @@ private fun Surface(
         LocalAbsoluteTonalElevation provides absoluteElevation
     ) {
         @Suppress("DEPRECATION_ERROR")
-        (androidx.compose.foundation.layout.Box(
-            modifier = modifier
-                .minimumInteractiveComponentSize()
-                .surface(
-                    shape = shape,
-                    backgroundColor = surfaceColorAtElevation(
-                        color = color,
-                        elevation = absoluteElevation
-                    ),
-                    border = border,
-                    shadowElevation = with(LocalDensity.current) { shadowElevation.toPx() }
-                )
-                .combinedClickable(
-                    enabled = enabled,
-                    onClick = onClick?: { },
-                    onLongClick = onLongClick,
-                    indication = indication,
-                    interactionSource = interactionSource,
+        (Box(modifier = modifier
+            .minimumInteractiveComponentSize()
+            .surface(
+                shape = shape,
+                backgroundColor = surfaceColorAtElevation(
+                    color = color,
+                    elevation = absoluteElevation
+                ),
+                border = border,
+                shadowElevation = with(LocalDensity.current) { shadowElevation.toPx() }
+            )
+            .combinedClickable(
+                enabled = enabled,
+                onClick = onClick?: { },
+                onLongClick = onLongClick,
+                indication = indication,
+                interactionSource = interactionSource
                 ),
             propagateMinConstraints = true
         ) {
