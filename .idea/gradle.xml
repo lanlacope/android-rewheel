@@ -9,8 +9,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/lanlacopelib" />
             <option value="$PROJECT_DIR$/lanlacopetest" />
+            <option value="$PROJECT_DIR$/rewheel" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

@@ -51,8 +51,7 @@ android {
 
 dependencies {
 
-    implementation(project(":lanlacopelib"))
-
+    implementation(project(":rewheel"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
