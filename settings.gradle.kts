@@ -20,5 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "android-rewheel"
-include(":lanlacopelib")
+include(":rewheel")
 include(":lanlacopetest")
