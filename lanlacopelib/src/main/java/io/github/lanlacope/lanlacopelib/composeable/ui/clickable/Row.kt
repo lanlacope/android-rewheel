@@ -23,10 +23,10 @@ inline fun Row(
 ) {
     Row(
         modifier = modifier
-            .padding(paddingValues = innerPadding)
             .clickable(
                 onClick = onClick
-            ),
+            )
+            .padding(paddingValues = innerPadding),
 
         horizontalArrangement = horizontalArrangement,
         verticalAlignment = verticalAlignment,
@@ -47,11 +47,11 @@ inline fun Row(
 ) {
     Row(
         modifier = modifier
-            .padding(paddingValues = innerPadding)
             .combinedClickable(
                 onClick = onClick?: { },
                 onLongClick = onLongClick
-            ),
+            )
+            .padding(paddingValues = innerPadding),
         horizontalArrangement = horizontalArrangement,
         verticalAlignment = verticalAlignment,
         content = content

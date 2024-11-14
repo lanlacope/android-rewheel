@@ -23,10 +23,10 @@ inline fun Column(
 ) {
     Column(
         modifier = modifier
-            .padding(paddingValues = innerPadding)
             .clickable(
                 onClick = onClick
-            ),
+            )
+            .padding(paddingValues = innerPadding),
 
         verticalArrangement = verticalArrangement,
         horizontalAlignment = horizontalAlignment,
@@ -47,11 +47,11 @@ inline fun Column(
 ) {
     Column(
         modifier = modifier
-            .padding(paddingValues = innerPadding)
             .combinedClickable(
                 onClick = onClick?: { },
                 onLongClick = onLongClick
-            ),
+            )
+            .padding(paddingValues = innerPadding),
 
         verticalArrangement = verticalArrangement,
         horizontalAlignment = horizontalAlignment,

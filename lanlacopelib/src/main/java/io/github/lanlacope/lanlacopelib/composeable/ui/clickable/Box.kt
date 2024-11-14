@@ -22,10 +22,11 @@ inline fun Box(
 ) {
     Box(
         modifier = modifier
-            .padding(paddingValues = innerPadding)
             .clickable(
                 onClick = onClick
-            ),
+            )
+            .padding(paddingValues = innerPadding),
+
         contentAlignment = contentAlignment,
         propagateMinConstraints = propagateMinConstraints,
         content = content
@@ -45,11 +46,11 @@ inline fun Box(
 ) {
     Box(
         modifier = modifier
-            .padding(paddingValues = innerPadding)
             .combinedClickable(
                 onClick = onClick?: { },
                 onLongClick = onLongClick
-            ),
+            )
+            .padding(paddingValues = innerPadding),
 
         contentAlignment = contentAlignment,
         propagateMinConstraints = propagateMinConstraints,
