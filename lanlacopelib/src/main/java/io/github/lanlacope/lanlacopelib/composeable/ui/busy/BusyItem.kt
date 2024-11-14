@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.IntOffset
-import io.github.lanlacope.rewheel.composeable.ui.click.Box
+import io.github.lanlacope.rewheel.composeable.ui.click.BoxButton
 
 /*
  * items
@@ -86,7 +86,7 @@ inline fun <T> BusyListScope.items(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    Box(onClick = { onClick(items[it]) }) {
+    BoxButton(onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -102,7 +102,7 @@ inline fun <T> BusyListScope.itemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    Box(onClick = { onClick(it, items[it]) }) {
+    BoxButton(onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }
@@ -118,7 +118,7 @@ inline fun <T> BusyListScope.items(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    Box(onClick = { onClick(items[it]) }) {
+    BoxButton(onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -134,7 +134,7 @@ inline fun <T> BusyListScope.itemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    Box(onClick = { onClick(it, items[it]) }) {
+    BoxButton(onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }
@@ -216,7 +216,7 @@ inline fun <T> BusyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    Box(modifier = Modifier.animateItem(),
+    BoxButton(modifier = Modifier.animateItem(),
         onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
@@ -233,7 +233,7 @@ inline fun <T> BusyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    Box(modifier = Modifier.animateItem(),
+    BoxButton(modifier = Modifier.animateItem(),
         onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
@@ -250,7 +250,7 @@ inline fun <T> BusyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    Box(modifier = Modifier.animateItem(),
+    BoxButton(modifier = Modifier.animateItem(),
         onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
@@ -267,7 +267,7 @@ inline fun <T> BusyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    Box(modifier = Modifier.animateItem(),
+    BoxButton(modifier = Modifier.animateItem(),
         onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }

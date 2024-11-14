@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-inline fun Column(
+inline fun ColumnButton(
     noinline onClick: () -> Unit,
     modifier: Modifier = Modifier,
     innerPadding: PaddingValues = PaddingValues(),
@@ -36,7 +36,7 @@ inline fun Column(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-inline fun Column(
+inline fun ColumnButton(
     modifier: Modifier = Modifier,
     noinline onClick: (() -> Unit)? = null,
     noinline onLongClick: () -> Unit,

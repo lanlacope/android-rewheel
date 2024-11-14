@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-inline fun Row(
+inline fun RowButton(
     noinline onClick: () -> Unit,
     modifier: Modifier = Modifier,
     innerPadding: PaddingValues = PaddingValues(),
@@ -36,7 +36,7 @@ inline fun Row(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-inline fun Row(
+inline fun RowButton(
     modifier: Modifier = Modifier,
     noinline onClick: (() -> Unit)? = null,
     noinline onLongClick: () -> Unit,

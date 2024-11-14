@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-inline fun Box(
+inline fun BoxButton(
     noinline onClick: () -> Unit,
     modifier: Modifier = Modifier,
     innerPadding: PaddingValues = PaddingValues(),
@@ -35,7 +35,7 @@ inline fun Box(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-inline fun Box(
+inline fun BoxButton(
     modifier: Modifier = Modifier,
     noinline onClick: (() -> Unit)? = null,
     noinline onLongClick: () -> Unit,
@@ -59,7 +59,7 @@ inline fun Box(
 }
 
 @Composable
-fun Box(
+fun BoxButton(
     onClick: () -> Unit,
     modifier: Modifier
 ) {
@@ -73,7 +73,7 @@ fun Box(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Box(
+fun BoxButton(
     onClick: (() -> Unit)? = null,
     onLongClick: () -> Unit,
     modifier: Modifier

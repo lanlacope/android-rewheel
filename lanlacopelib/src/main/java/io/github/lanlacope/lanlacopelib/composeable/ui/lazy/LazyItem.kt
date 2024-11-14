@@ -5,7 +5,7 @@ import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import io.github.lanlacope.rewheel.composeable.ui.click.Box
+import io.github.lanlacope.rewheel.composeable.ui.click.BoxButton
 
 /*
  * clickableItems
@@ -21,7 +21,7 @@ inline fun <T> LazyListScope.items(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    Box(onClick = { onClick(items[it]) }) {
+    BoxButton(onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -37,7 +37,7 @@ inline fun <T> LazyListScope.itemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    Box(onClick = { onClick(it, items[it]) }) {
+    BoxButton(onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }
@@ -53,7 +53,7 @@ inline fun <T> LazyListScope.items(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    Box(onClick = { onClick(items[it]) }) {
+    BoxButton(onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
 }
@@ -69,7 +69,7 @@ inline fun <T> LazyListScope.itemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    Box(onClick = { onClick(it, items[it]) }) {
+    BoxButton(onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
 }
@@ -152,7 +152,7 @@ inline fun <T> LazyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    Box(modifier = Modifier.animateItem(),
+    BoxButton(modifier = Modifier.animateItem(),
         onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
@@ -169,7 +169,7 @@ inline fun <T> LazyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    Box(modifier = Modifier.animateItem(),
+    BoxButton(modifier = Modifier.animateItem(),
         onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }
@@ -186,7 +186,7 @@ inline fun <T> LazyListScope.animatedItems(
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
 ) {
-    Box(modifier = Modifier.animateItem(),
+    BoxButton(modifier = Modifier.animateItem(),
         onClick = { onClick(items[it]) }) {
         itemContent(items[it])
     }
@@ -203,7 +203,7 @@ inline fun <T> LazyListScope.animatedItemsIndexed(
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
 ) {
-    Box(modifier = Modifier.animateItem(),
+    BoxButton(modifier = Modifier.animateItem(),
         onClick = { onClick(it, items[it]) }) {
         itemContent(it, items[it])
     }

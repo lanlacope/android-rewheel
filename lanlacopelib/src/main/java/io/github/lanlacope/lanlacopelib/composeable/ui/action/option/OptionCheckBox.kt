@@ -9,7 +9,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import io.github.lanlacope.rewheel.composeable.ui.click.Row
+import io.github.lanlacope.rewheel.composeable.ui.click.RowButton
 
 @Composable
 fun OptionCheckBox(
@@ -25,7 +25,7 @@ fun OptionCheckBox(
         onValueChange(value)
     }
 
-    Row(modifier = modifier,
+    RowButton(modifier = modifier,
         onClick = onClick,
         innerPadding = innerPadding
     ) {
