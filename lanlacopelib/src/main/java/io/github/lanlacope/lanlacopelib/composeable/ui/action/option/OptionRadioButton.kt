@@ -9,10 +9,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import io.github.lanlacope.lanlacopelib.composeable.ui.action.SettingText
-import io.github.lanlacope.lanlacopelib.composeable.ui.action.setting.SettingTextStyleDefault
-import io.github.lanlacope.lanlacopelib.composeable.ui.action.setting.SettingPaddingValuesDefault
-import io.github.lanlacope.lanlacopelib.composeable.ui.action.setting.SettingSummaryTextStyleDefault
 import io.github.lanlacope.rewheel.composeable.ui.click.Row
 
 @Composable
