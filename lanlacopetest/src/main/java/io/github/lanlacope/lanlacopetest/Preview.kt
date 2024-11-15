@@ -15,7 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.lanlacope.rewheel.composeable.ui.action.option.OptionRadioButton
 import io.github.lanlacope.rewheel.composeable.ui.action.setting.SettingTextArea
-import io.github.lanlacope.rewheel.composeable.ui.dialog.BoxDialog
+import io.github.lanlacope.rewheel.composeable.ui.dialog.DialogBox
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -30,7 +30,7 @@ private fun View() {
         }
 
         var isShow by remember {
-            mutableStateOf(false)
+            mutableStateOf(true)
         }
 
         SettingTextArea(
@@ -44,10 +44,12 @@ private fun View() {
         )
 
         if (isShow) {
-            BoxDialog(
+            DialogBox(
                 title = "テストっと",
                 onConfirm = { /*TODO*/ },
+                onCancel = { },
                 confirmText = "ok",
+                cancelText = "cancel"
             ) {
                 OptionRadioButton(
                     onClick = {
