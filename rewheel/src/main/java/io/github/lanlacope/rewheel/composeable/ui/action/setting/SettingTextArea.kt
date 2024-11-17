@@ -18,7 +18,6 @@ import io.github.lanlacope.rewheel.composeable.ui.button.RowButton
 fun SettingTextArea(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
-    onValueChange: (String) -> Unit = {  },
     text: String,
     textStyle: TextStyle = SettingTextStyleDefault(),
     summary: String? = null,
@@ -27,10 +26,6 @@ fun SettingTextArea(
     valueStyle: TextStyle = SettingValueTextStyleDefault(),
     innerPadding: PaddingValues = SettingPaddingValuesDefault()
 ) {
-    LaunchedEffect(value) {
-        onValueChange(value)
-    }
-
     RowButton(modifier = modifier,
         onClick = onClick,
         horizontalArrangement = Arrangement.SpaceBetween,

@@ -15,16 +15,11 @@ import io.github.lanlacope.rewheel.composeable.ui.button.RowButton
 fun OptionRadioButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
-    onValueChange: (Boolean) -> Unit = {  },
     text: String,
     textStyle: TextStyle = OptionTextStyleDefault(),
-    value: Boolean = false,
+    selected: Boolean = false,
     innerPadding: PaddingValues = OptionPaddingValuesDefault()
 ) {
-    LaunchedEffect(value) {
-        onValueChange(value)
-    }
-
     RowButton(modifier = modifier,
         onClick = onClick,
         innerPadding = innerPadding
@@ -32,7 +27,7 @@ fun OptionRadioButton(
         RadioButton(
             modifier = Modifier
                 .align(Alignment.CenterVertically),
-            selected = value,
+            selected = selected,
             onClick = onClick
         )
 

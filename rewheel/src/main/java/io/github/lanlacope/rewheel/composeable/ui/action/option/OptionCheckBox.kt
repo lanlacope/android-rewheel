@@ -15,16 +15,11 @@ import io.github.lanlacope.rewheel.composeable.ui.button.RowButton
 fun OptionCheckBox(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
-    onValueChange: (Boolean) -> Unit = {  },
     text: String,
     textStyle: TextStyle = OptionTextStyleDefault(),
-    value: Boolean = false,
+    checked: Boolean = false,
     innerPadding: PaddingValues = OptionPaddingValuesDefault()
 ) {
-    LaunchedEffect(value) {
-        onValueChange(value)
-    }
-
     RowButton(modifier = modifier,
         onClick = onClick,
         innerPadding = innerPadding
@@ -32,7 +27,7 @@ fun OptionCheckBox(
         Checkbox(
             modifier = Modifier
                 .align(Alignment.CenterVertically),
-            checked = value,
+            checked = checked,
             onCheckedChange = { onClick() }
         )
 

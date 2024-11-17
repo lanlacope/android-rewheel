@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Switch
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
@@ -16,18 +15,13 @@ import io.github.lanlacope.rewheel.composeable.ui.button.RowButton
 fun SettingSwitchToggle(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
-    onValueChange: (Boolean) -> Unit = {  },
     text: String,
     textStyle: TextStyle = SettingTextStyleDefault(),
     summary: String? = null,
     summaryStyle: TextStyle = SettingSummaryTextStyleDefault(),
-    value: Boolean = false,
+    checked: Boolean = false,
     innerPadding: PaddingValues = SettingPaddingValuesDefault(),
 ) {
-    LaunchedEffect(value) {
-        onValueChange(value)
-    }
-
     RowButton(modifier = modifier,
         onClick = onClick,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -47,7 +41,7 @@ fun SettingSwitchToggle(
         Switch(
             modifier = Modifier
                 .align(Alignment.CenterVertically),
-            checked = value,
+            checked = checked,
             onCheckedChange = { onClick() }
         )
     }
