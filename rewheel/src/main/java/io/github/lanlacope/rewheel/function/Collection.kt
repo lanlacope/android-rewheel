@@ -11,6 +11,7 @@ fun <T> Collection<T>.toArrayList(): ArrayList<T> {
 }
 
 
+// TODO: mutableStateSet, SnapShotStateSetが安定版になるまでのもの
 fun <T> MutableCollection<T>.toggle(element: T) {
     if (contains(element)) this.remove(element)
     else this.add(element)
