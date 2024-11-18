@@ -40,7 +40,6 @@ internal fun LazyPager(
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     content: LazyPagerScope.() -> Unit
 ) {
-    val cContent: LazyListScope.() -> Unit = { LazyPagerScopeImpl(this).content() }
     val flingBehavior = rememberLazyPagerFlingBehavior(state = state)
 
     if (isVertical) {
@@ -52,9 +51,10 @@ internal fun LazyPager(
             horizontalAlignment = horizontalAlignment,
             verticalArrangement = verticalArrangement,
             flingBehavior = flingBehavior,
-            userScrollEnabled = userScrollEnabled,
-            content = cContent
-        )
+            userScrollEnabled = userScrollEnabled
+        ) {
+            content(LazyPagerScopeImpl(this))
+        }
     }
     else {
         LazyRow(
@@ -65,9 +65,10 @@ internal fun LazyPager(
             verticalAlignment = verticalAlignment,
             horizontalArrangement = horizontalArrangement,
             flingBehavior = flingBehavior,
-            userScrollEnabled = userScrollEnabled,
-            content = cContent
-        )
+            userScrollEnabled = userScrollEnabled
+        ) {
+            content(LazyPagerScopeImpl(this))
+        }
     }
 }
 
