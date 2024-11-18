@@ -7,60 +7,68 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import io.github.lanlacope.rewheel.composeable.ui.action.option.OptionRadioButton
-import io.github.lanlacope.rewheel.composeable.ui.action.setting.SettingTextArea
-import io.github.lanlacope.rewheel.composeable.ui.dialog.DialogBox
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
+import io.github.lanlacope.rewheel.composeable.ui.action.option.OptionCheckBox
+import io.github.lanlacope.rewheel.composeable.ui.lazy.option.LazyOption
+import io.github.lanlacope.rewheel.composeable.ui.lazy.option.checkBox
+import io.github.lanlacope.rewheel.composeable.ui.lazy.option.radioButton
+import io.github.lanlacope.rewheel.function.toggle
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun View() {
     val context = LocalContext.current
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    buildString {
 
-        var isTrue by remember {
+    }
+
+    Column {
+
+        val tezt1 = "TEST1"
+        var checked1 by remember {
             mutableStateOf(false)
         }
 
-        var isShow by remember {
-            mutableStateOf(true)
-        }
-
-        SettingTextArea(
+        OptionCheckBox(
+            checked = checked1,
             onClick = {
-                isShow = !isShow
+                checked1 = !checked1
             },
-            text = "テスト",
-            summary = "テストです",
-            value = "値だよ",
+            text = tezt1,
             modifier = Modifier.fillMaxWidth()
         )
 
-        if (isShow) {
-            DialogBox(
-                title = "テストっと",
-                onConfirm = { /*TODO*/ },
-                onCancel = { },
-                confirmText = "ok",
-                cancelText = "cancel"
-            ) {
-                OptionRadioButton(
-                    onClick = {
-                        isTrue = !isTrue
-                    },
-                    text = "テスト",
-                    value = isTrue,
-                    modifier = Modifier.fillMaxWidth()
-                )
 
-            }
+
+        val listb = mutableListOf("あ", "3", "B")
+        var selected by remember {
+            mutableStateOf("あ")
+        }
+        LazyOption {
+            radioButton(
+                options = listb.associateWith {
+                    when (it) {
+                        "あ" -> "あですaaaabbbb"
+                        "B" -> "Bでｓｔ"
+                        "3" -> "３だよ"
+                        else -> throw Exception()
+                    }
+                },
+                selected = { it == selected},
+                onClick = { option ->
+                    selected = option
+                }
+            )
         }
     }
 }
