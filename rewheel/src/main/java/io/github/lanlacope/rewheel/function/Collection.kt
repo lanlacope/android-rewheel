@@ -10,6 +10,9 @@ fun <T> Collection<T>.toArrayList(): ArrayList<T> {
     return ArrayList(this)
 }
 
+fun <K, V> Map<K, V>.keyList(): List<K> {
+    return this.keys.toList()
+}
 
 // TODO: mutableStateSet, SnapShotStateSetが安定版になるまでのもの
 fun <T> MutableCollection<T>.toggle(element: T) {
