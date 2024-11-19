@@ -1,8 +1,6 @@
 package io.github.lanlacope.rewheel.composeable.ui.dialog.option
 
-import android.util.Log
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.toMutableStateList
@@ -10,7 +8,6 @@ import androidx.compose.ui.window.DialogProperties
 import io.github.lanlacope.rewheel.composeable.ui.dialog.DialogBox
 import io.github.lanlacope.rewheel.composeable.ui.lazy.option.LazyOption
 import io.github.lanlacope.rewheel.composeable.ui.lazy.option.checkBox
-import io.github.lanlacope.rewheel.function.replace
 import io.github.lanlacope.rewheel.function.toggle
 
 @Composable
