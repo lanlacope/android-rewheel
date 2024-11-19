@@ -103,7 +103,7 @@ interface LazyPagerScope : LazyListScope {
 
 internal class LazyPagerScopeImpl(
     private val lazyListScope: LazyListScope,
-) : LazyPagerScope {
+) : LazyPagerScope, LazyListScope by lazyListScope {
 
     override fun item(
         key: Any?,
