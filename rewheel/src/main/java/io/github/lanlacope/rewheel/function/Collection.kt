@@ -10,6 +10,11 @@ fun <T> Collection<T>.toArrayList(): ArrayList<T> {
     return ArrayList(this)
 }
 
+fun <T> MutableCollection<T>.replace(elements: Collection<T>) {
+    this.clear()
+    this.addAll(elements)
+}
+
 fun <K, V> Map<K, V>.keyList(): List<K> {
     return this.keys.toList()
 }
