@@ -4,7 +4,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyScopeMarker
 import androidx.compose.runtime.Composable
@@ -37,36 +39,43 @@ internal fun BusyList(
 
     Box(modifier = modifier) {
         if (isVertical) {
-            androidx.compose.foundation.layout.Column(
-                modifier = Modifier.padding(contentPadding),
+            Column(
                 verticalArrangement = verticalArrangement,
                 horizontalAlignment = horizontalAlignment
             ) {
                 if (!reverseLayout) {
                     for (itemContent in scope.items) {
-                        itemContent(BusyItemScopeImpl())
+                        Box(modifier = Modifier.padding(contentPadding)) {
+                            itemContent(BusyItemScopeImpl())
+                        }
                     }
                 }
                 else {
                     for (itemContent in scope.items.reversed()) {
-                        itemContent(BusyItemScopeImpl())
+                        Box(modifier = Modifier.padding(contentPadding)) {
+                            itemContent(BusyItemScopeImpl())
+                        }
                     }
                 }
             }
         } else {
-            androidx.compose.foundation.layout.Row(
+            Row(
                 modifier = Modifier.padding(contentPadding),
                 horizontalArrangement = horizontalArrangement,
                 verticalAlignment = verticalAlignment
             ) {
                 if (!reverseLayout) {
                     for (itemContent in scope.items) {
-                        itemContent(BusyItemScopeImpl())
+                        Box(modifier = Modifier.padding(contentPadding)) {
+                            itemContent(BusyItemScopeImpl())
+                        }
                     }
                 }
                 else {
                     for (itemContent in scope.items.reversed()) {
-                        itemContent(BusyItemScopeImpl())
+                        Box(modifier = Modifier.padding(contentPadding)) {
+                            itemContent(BusyItemScopeImpl())
+                        }
                     }
                 }
             }
@@ -77,8 +86,6 @@ internal fun BusyList(
 @LazyScopeMarker
 // @JvmDefaultWithCompatibility
 interface BusyListScope {
-
-    val items: MutableList<@Composable BusyItemScope.() -> Unit>
 
     fun item(
         key: Any? = null,
@@ -109,7 +116,7 @@ interface BusyListScope {
 @Stable
 internal class BusyListScopeImpl : BusyListScope {
 
-    override val items = mutableListOf<@Composable BusyItemScope.() -> Unit>()
+    val items = mutableListOf<@Composable BusyItemScope.() -> Unit>()
 
     override fun item(
         key: Any?,
