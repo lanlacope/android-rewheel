@@ -30,32 +30,35 @@ import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 import io.github.lanlacope.rewheel.composeable.ui.busy.BusyColumn
 import io.github.lanlacope.rewheel.composeable.ui.busy.items
 import io.github.lanlacope.rewheel.composeable.ui.busy.manu.BusyManu
+import io.github.lanlacope.rewheel.composeable.ui.busy.option.text
+import io.github.lanlacope.rewheel.composeable.ui.button.layout.ManuButton
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun View() {
 
-
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         var shown by remember { mutableStateOf(false) }
-        val list = listOf(1,2,3,4,5,6,7)
-        
-        Button(
-            onClick = { shown = true }) {
-            Text(text = "ポップアップ")
+        val list = listOf(1, 2, 3, 4, 5, 6, 7)
+        var selected by remember { mutableStateOf(1) }
 
+        ManuButton(
+            text = selected.toString(),
+            onClick = { shown = true }
+        ) {
             BusyManu(
                 expanded = shown,
                 onDismissRequest = { shown = false }
             ) {
-                items(
-                    items = list,
-                    onClick = { }
-                ) {
-                    Text(text = it.toString())
-                }
+                text(
+                    options = list.associateWith { "Option: $it" },
+                    onClick = {
+                        selected = it
+                        shown = false
+                    }
+                )
             }
         }
     }
