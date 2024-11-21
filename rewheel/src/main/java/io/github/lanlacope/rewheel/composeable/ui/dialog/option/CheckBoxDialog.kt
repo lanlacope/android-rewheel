@@ -15,16 +15,19 @@ fun <T> CheckBoxDialog(
     title: String,
     options: Map<T, String>,
     checkedOptions: List<T>,
+    expanded: Boolean,
     onConfirm: (List<T>) -> Unit,
     confirmText: String,
     onCancel: () -> Unit,
     cancelText: String,
     properties: DialogProperties = DialogProperties()
 ) {
-    val dCheckedOptions = remember { checkedOptions.toMutableStateList() }
+
+    val dCheckedOptions = remember(expanded) { checkedOptions.toMutableStateList() }
 
     DialogBox(
         title = title,
+        expanded = expanded,
         onConfirm = { onConfirm(dCheckedOptions) },
         confirmText = confirmText,
         onCancel = onCancel,
@@ -45,16 +48,18 @@ fun <T> CheckBoxDialog(
 fun <T> CheckBoxDialog(
     title: String,
     options: Map<T, String>,
+    expanded: Boolean,
     onConfirm: (List<T>) -> Unit,
     confirmText: String,
     onCancel: () -> Unit,
     cancelText: String,
     properties: DialogProperties = DialogProperties()
 ) {
-    val checkedOptions = remember { mutableStateListOf<T>() }
+    val checkedOptions = remember(expanded) { mutableStateListOf<T>() }
 
     DialogBox(
         title = title,
+        expanded = expanded,
         onConfirm = { onConfirm(checkedOptions) },
         confirmText = confirmText,
         onCancel = onCancel,

@@ -29,23 +29,22 @@ internal fun ExampleCheckBoxDialog() {
         Text(text = "ダイアログを表示")
     }
 
-    val options = remember { mutableStateListOf(1,2,3) }
+    val options = remember { mutableStateListOf(1, 2, 3) }
     val checkedOptions = remember { mutableStateListOf(1) }
 
-    if (shown) {
-        CheckBoxDialog(
-            title = "タイトル",
-            options = options.associateWith { "Option: $it" },
-            checkedOptions = checkedOptions,
-            onConfirm = {
-                checkedOptions.replace(it)
-                shown = false
-            },
-            confirmText = "適用",
-            onCancel = { shown = false },
-            cancelText = "木ヤンセル"
-        )
-    }
+    CheckBoxDialog(
+        title = "タイトル",
+        options = options.associateWith { "Option: $it" },
+        checkedOptions = checkedOptions,
+        expanded = shown,
+        onConfirm = {
+            checkedOptions.replace(it)
+            shown = false
+        },
+        confirmText = "適用",
+        onCancel = { shown = false },
+        cancelText = "木ヤンセル"
+    )
 }
 
 @Preview

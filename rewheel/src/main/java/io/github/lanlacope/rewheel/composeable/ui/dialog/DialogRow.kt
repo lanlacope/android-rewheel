@@ -16,12 +16,14 @@ import androidx.compose.ui.Alignment
 @Composable
 fun DialogRow(
     title: String,
+    expanded: Boolean,
     onConfirm: () -> Unit,
     confirmText: String,
     properties: DialogProperties = DialogProperties(),
     content: @Composable RowScope.() -> Unit
 ) {
     SimpleDialog(
+        expanded = expanded,
         onDismissRequest = onConfirm,
         properties = properties,
     ) {
@@ -52,6 +54,7 @@ fun DialogRow(
 @Composable
 fun DialogRow(
     title: String,
+    expanded: Boolean,
     onConfirm: () -> Unit,
     confirmText: String,
     onCancel: () -> Unit,
@@ -60,6 +63,7 @@ fun DialogRow(
     content: @Composable RowScope.() -> Unit
 ) {
     SimpleDialog(
+        expanded = expanded,
         onDismissRequest = onCancel,
         properties = properties,
     ) {

@@ -16,16 +16,18 @@ fun <T> RadioButtonDialog(
     title: String,
     options: Map<T, String>,
     selectedOption: T,
+    expanded: Boolean,
     onConfirm: (T) -> Unit,
     confirmText: String,
     onCancel: () -> Unit,
     cancelText: String,
     properties: DialogProperties = DialogProperties()
 ) {
-    var dSelectedOption by remember { mutableStateOf(selectedOption) }
+    var dSelectedOption by remember(expanded) { mutableStateOf(selectedOption) }
 
     DialogBox(
         title = title,
+        expanded = expanded,
         onConfirm = { onConfirm(dSelectedOption) },
         confirmText = confirmText,
         onCancel = onCancel,
@@ -46,17 +48,18 @@ fun <T> RadioButtonDialog(
 fun <T> RadioButtonDialog(
     title: String,
     options: Map<T, String>,
+    expanded: Boolean,
     onConfirm: (T) -> Unit,
     confirmText: String,
     onCancel: () -> Unit,
     cancelText: String,
     properties: DialogProperties = DialogProperties()
 ) {
-    val first = options.keyList()[0]
-    var selectedOption by remember { mutableStateOf(first) }
+    var selectedOption by remember(expanded) { mutableStateOf(options.keyList()[0]) }
 
     DialogBox(
         title = title,
+        expanded = expanded,
         onConfirm = { onConfirm(selectedOption) },
         confirmText = confirmText,
         onCancel = onCancel,

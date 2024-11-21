@@ -17,12 +17,14 @@ import androidx.compose.ui.Alignment
 @Composable
 fun DialogBox(
     title: String,
+    expanded: Boolean,
     onConfirm: () -> Unit,
     confirmText: String,
     properties: DialogProperties = DialogProperties(),
     content: @Composable BoxScope.() -> Unit
 ) {
     SimpleDialog(
+        expanded = expanded,
         onDismissRequest = onConfirm,
         properties = properties,
     ) {
@@ -53,6 +55,7 @@ fun DialogBox(
 @Composable
 fun DialogBox(
     title: String,
+    expanded: Boolean,
     onConfirm: () -> Unit,
     confirmText: String,
     onCancel: () -> Unit,
@@ -61,6 +64,7 @@ fun DialogBox(
     content: @Composable BoxScope.() -> Unit
 ) {
     SimpleDialog(
+        expanded = expanded,
         onDismissRequest = onCancel,
         properties = properties,
     ) {
