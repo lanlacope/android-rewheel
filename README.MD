@@ -2,8 +2,7 @@ for my project
 
 ```kotlin
 // settings.gradle.kts
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+pluginManagement {
     repositories {
         maven {
             url = uri("https://maven.pkg.github.com/lanlacope/android-rewheel")
