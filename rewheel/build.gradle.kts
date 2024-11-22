@@ -48,8 +48,8 @@ android {
 publishing {
     publications {
         create<MavenPublication>("release") {
-            groupId = "io.github.lanlacope"
-            artifactId = "android-rewheel"
+            groupId = "io.github.lanlacope.android-rewheel"
+            artifactId = "basic"
             version = "1.0.0"
 
             afterEvaluate {
