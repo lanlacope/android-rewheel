@@ -9,7 +9,6 @@ dependencyResolutionManagement {
             url = uri("https://maven.pkg.github.com/lanlacope/android-rewheel")
             credentials {
                 username = "lanlacope"
-                password = "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"
             }
         }
     }
