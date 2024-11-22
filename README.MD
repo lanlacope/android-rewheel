@@ -2,8 +2,13 @@ for my project
 
 ```kotlin
 // settings.gradle.kts
-pluginManagement {
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        /* other repositories, example
+         * google()
+         * mavenCentral()
+         */
         maven {
             url = uri("https://maven.pkg.github.com/lanlacope/android-rewheel")
             credentials {
