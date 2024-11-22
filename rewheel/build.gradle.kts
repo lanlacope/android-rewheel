@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -6,7 +8,7 @@ plugins {
 
 android {
     namespace = "io.github.lanlacope.rewheel"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 21
@@ -43,36 +45,38 @@ android {
         }
     }
 }
-
-tasks.register("listComponents") {
-    doLast {
-        println(components.names)
-    }
-}
-
-/*
 publishing {
     publications {
         create<MavenPublication>("release") {
-            from(components["androidRelease"])
             groupId = "io.github.lanlacope"
             artifactId = "android-rewheel"
             version = "1.0.0"
+
+            afterEvaluate {
+                from(components["release"])
+            }
         }
     }
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/lanlacope/lanlacope-android-widgit")
+            url = uri("https://maven.pkg.github.com/lanlacope/android-rewheel")
             credentials {
-                username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
-                password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+                val localProperties = Properties()
+                localProperties.load(rootProject.file("local.properties").inputStream())
+                username = localProperties.getProperty("gpr.user")
+                password = localProperties.getProperty("gpr.token")
+
+                if (username.isNullOrEmpty()) {
+                    logger.warn("Warning: GitHub username (gpr.user) not found in local.properties. Please add it to proceed.")
+                }
+                if (password.isNullOrEmpty()) {
+                    logger.warn("Warning: GitHub token (gpr.token) not found in local.properties. Please add it to proceed.")
+                }
             }
         }
     }
 }
-
- */
 
 dependencies {
 
@@ -97,10 +101,4 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    implementation(libs.coroutines.core)
-    implementation(libs.collections.immutable)
-
-
-    implementation(libs.androidx.constraintlayout.compose)
 }

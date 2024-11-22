@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "io.github.lanlacope.lanlacopetest"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "io.github.lanlacope.lanlacopetest"
