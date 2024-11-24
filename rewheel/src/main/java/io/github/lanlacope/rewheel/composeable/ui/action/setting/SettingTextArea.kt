@@ -9,20 +9,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import io.github.lanlacope.rewheel.composeable.ui.action.SettingText
 import io.github.lanlacope.rewheel.composeable.ui.button.RowButton
 
 
 @Composable
 fun SettingTextArea(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit,
     text: String,
     textStyle: TextStyle = SettingTextStyleDefault(),
     summary: String? = null,
     summaryStyle: TextStyle = SettingSummaryTextStyleDefault(),
-    value: String = "",
+    value: String,
     valueStyle: TextStyle = SettingValueTextStyleDefault(),
+    onClick: () -> Unit,
     innerPadding: PaddingValues = SettingPaddingValuesDefault()
 ) {
     RowButton(modifier = modifier,

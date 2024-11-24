@@ -1,4 +1,4 @@
-package io.github.lanlacope.rewheel.composeable.ui.action
+package io.github.lanlacope.rewheel.composeable.ui.action.setting
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.wrapContentSize

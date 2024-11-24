@@ -8,18 +8,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import io.github.lanlacope.rewheel.composeable.ui.action.SettingText
 import io.github.lanlacope.rewheel.composeable.ui.button.RowButton
 
 @Composable
 fun SettingSwitchToggle(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit,
     text: String,
     textStyle: TextStyle = SettingTextStyleDefault(),
     summary: String? = null,
     summaryStyle: TextStyle = SettingSummaryTextStyleDefault(),
-    checked: Boolean = false,
+    checked: Boolean,
+    onClick: () -> Unit,
     innerPadding: PaddingValues = SettingPaddingValuesDefault(),
 ) {
     RowButton(modifier = modifier,

@@ -13,10 +13,10 @@ import io.github.lanlacope.rewheel.composeable.ui.button.RowButton
 @Composable
 fun OptionRadioButton(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit,
     text: String,
     textStyle: TextStyle = OptionTextStyleDefault(),
-    selected: Boolean = false,
+    selected: Boolean,
+    onClick: () -> Unit,
     innerPadding: PaddingValues = OptionPaddingValuesDefault()
 ) {
     RowButton(modifier = modifier,

@@ -12,9 +12,9 @@ import io.github.lanlacope.rewheel.composeable.ui.button.RowButton
 @Composable
 fun OptionText(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit,
     text: String,
     textStyle: TextStyle = OptionTextStyleDefault(),
+    onClick: () -> Unit,
     innerPadding: PaddingValues = OptionPaddingValuesDefault()
 ) {
     RowButton(modifier = modifier,

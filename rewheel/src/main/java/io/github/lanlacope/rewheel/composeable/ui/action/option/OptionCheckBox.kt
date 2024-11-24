@@ -13,10 +13,10 @@ import io.github.lanlacope.rewheel.composeable.ui.button.RowButton
 @Composable
 fun OptionCheckBox(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit,
     text: String,
     textStyle: TextStyle = OptionTextStyleDefault(),
-    checked: Boolean = false,
+    checked: Boolean,
+    onClick: () -> Unit,
     innerPadding: PaddingValues = OptionPaddingValuesDefault()
 ) {
     RowButton(modifier = modifier,
