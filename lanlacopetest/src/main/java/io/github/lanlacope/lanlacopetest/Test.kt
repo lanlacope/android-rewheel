@@ -1,5 +1,6 @@
 package io.github.lanlacope.lanlacopetest
 
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -32,10 +33,27 @@ import io.github.lanlacope.rewheel.composeable.ui.busy.items
 import io.github.lanlacope.rewheel.composeable.ui.busy.manu.BusyManu
 import io.github.lanlacope.rewheel.composeable.ui.busy.option.text
 import io.github.lanlacope.rewheel.composeable.ui.button.layout.ManuButton
+import io.github.lanlacope.rewheel.function.forEach
+import io.github.lanlacope.rewheel.function.map
+import org.json.JSONArray
+import org.json.JSONObject
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun View() {
+
+    val jsonArray = JSONArray().apply {
+        put(1)
+        put("aaa")
+        put(9)
+    }
+
+
+    val jlist = jsonArray.map(-100) {
+        it!! * 2
+    }
+
+    println(jlist)
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally

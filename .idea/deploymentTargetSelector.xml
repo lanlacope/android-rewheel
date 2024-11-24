@@ -8,13 +8,13 @@
       <SelectionState runConfigName="PreviewTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="CheckBoxDialogPreview">
+      <SelectionState runConfigName="useAppContext() (1)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="BusyOptionPreview">
+      <SelectionState runConfigName="test()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="BusyMauPreview">
+      <SelectionState runConfigName="Test">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
