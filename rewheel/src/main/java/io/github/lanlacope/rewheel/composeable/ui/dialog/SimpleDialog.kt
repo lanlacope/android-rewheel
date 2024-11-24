@@ -1,8 +1,11 @@
 package io.github.lanlacope.rewheel.composeable.ui.dialog
 
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.Surface
 import androidx.compose.ui.window.Dialog
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.DialogProperties
 
 @Composable
@@ -17,7 +20,12 @@ fun SimpleDialog(
             onDismissRequest = onDismissRequest,
             properties = properties
         ) {
-            Surface(content = content)
+            Surface(
+                modifier = Modifier
+                    .systemBarsPadding()
+                    .imePadding(),
+                content = content
+            )
         }
     }
 }
