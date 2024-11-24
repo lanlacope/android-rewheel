@@ -6,7 +6,6 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 
-@Suppress("unused")
 suspend fun AssetManager.copyFileEternalStorage(path: String, outputRoot: String): Unit
         = withContext(Dispatchers.IO) {
 
@@ -20,7 +19,6 @@ suspend fun AssetManager.copyFileEternalStorage(path: String, outputRoot: String
     }
 }
 
-@Suppress("unused")
 suspend fun AssetManager.copyFolderEternalStorage(path: String, outputRoot: String) : Unit
         = withContext(Dispatchers.IO){
 
