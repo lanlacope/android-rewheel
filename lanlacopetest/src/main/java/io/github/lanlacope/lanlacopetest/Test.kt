@@ -42,19 +42,6 @@ import org.json.JSONObject
 @Composable
 private fun View() {
 
-    val jsonArray = JSONArray().apply {
-        put(1)
-        put("aaa")
-        put(9)
-    }
-
-
-    val jlist = jsonArray.map(-100) {
-        it!! * 2
-    }
-
-    println(jlist)
-
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
