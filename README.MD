@@ -1,5 +1,11 @@
 for my project
 
+```
+# local.properties
+gpr.user=lanlacope
+gpr.token=ghp_...
+```
+
 ```kotlin
 // settings.gradle.kts
 dependencyResolutionManagement {
@@ -12,7 +18,10 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://maven.pkg.github.com/lanlacope/android-rewheel")
             credentials {
-                username = "lanlacope"
+                val localProperties = Properties()
+                localProperties.load(file("${rootProject.projectDir}/local.properties").inputStream())
+                username = localProperties.getProperty("gpr.user")
+                password = localProperties.getProperty("gpr.token")
             }
         }
     }
