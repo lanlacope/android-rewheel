@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "io.github.lanlacope.lanlacopetest"
+    namespace = "io.github.lanlacope.rewheel"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "io.github.lanlacope.lanlacopetest"
+        applicationId = "io.github.lanlacope.rewheel"
         minSdk = 21
         targetSdk = 35
         versionCode = 1
