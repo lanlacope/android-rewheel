@@ -2,6 +2,7 @@ package io.github.lanlacope.rewheel.ui.busy.option
 
 import androidx.compose.ui.Modifier
 import io.github.lanlacope.collection.collection.keyList
+import io.github.lanlacope.rewheel.ui.action.option.OptionText
 
 inline fun <K> BusyOptionScope.text(
     options: Map<K, String>,

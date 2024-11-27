@@ -2,6 +2,7 @@ package io.github.lanlacope.rewheel.ui.busy.option
 
 import androidx.compose.ui.Modifier
 import io.github.lanlacope.collection.collection.keyList
+import io.github.lanlacope.rewheel.ui.action.option.OptionCheckBox
 
 inline fun <K> BusyOptionScope.checkBox(
     options: Map<K, String>,
