@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 import io.github.lanlacope.collection.collection.replace
-import io.github.lanlacope.rewheel.ui.dialog.option.CheckBoxDialog
+import io.github.lanlacope.compose.ui.dialog.option.CheckBoxDialog
 
 @Composable
 internal fun ExampleCheckBoxDialog() {
