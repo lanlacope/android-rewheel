@@ -20,6 +20,8 @@ fun DialogRow(
     onConfirm: () -> Unit,
     confirmText: String,
     properties: DialogProperties = DialogProperties(),
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
+    verticalAlignment: Alignment.Vertical = Alignment.Top,
     content: @Composable RowScope.() -> Unit
 ) {
     SimpleDialog(
@@ -27,7 +29,6 @@ fun DialogRow(
         onDismissRequest = onConfirm,
         properties = properties,
     ) {
-
         Column(modifier = Modifier.fillMaxWidth()) {
 
             Text(
@@ -38,6 +39,8 @@ fun DialogRow(
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = horizontalArrangement,
+                verticalAlignment = verticalAlignment,
                 content = content
             )
 
@@ -60,6 +63,8 @@ fun DialogRow(
     onCancel: () -> Unit,
     cancelText: String,
     properties: DialogProperties = DialogProperties(),
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
+    verticalAlignment: Alignment.Vertical = Alignment.Top,
     content: @Composable RowScope.() -> Unit
 ) {
     SimpleDialog(
@@ -67,18 +72,24 @@ fun DialogRow(
         onDismissRequest = onCancel,
         properties = properties,
     ) {
-
         Column(modifier = Modifier.fillMaxWidth()) {
 
             Text(modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
                 text = title,
-                style = DialogTitleStyleDefault())
+                style = DialogTitleStyleDefault()
+            )
 
-            Row(modifier = Modifier.fillMaxWidth(),
-                content = content)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = horizontalArrangement,
+                verticalAlignment = verticalAlignment,
+                content = content
+            )
 
-            Row(modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
+            ) {
                 TextButton(
                     onClick = onCancel
                 ) {

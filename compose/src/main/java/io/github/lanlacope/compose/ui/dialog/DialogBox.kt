@@ -21,6 +21,8 @@ fun DialogBox(
     onConfirm: () -> Unit,
     confirmText: String,
     properties: DialogProperties = DialogProperties(),
+    contentAlignment: Alignment = Alignment.TopStart,
+    propagateMinConstraints: Boolean = false,
     content: @Composable BoxScope.() -> Unit
 ) {
     SimpleDialog(
@@ -37,8 +39,9 @@ fun DialogBox(
                 style = DialogTitleStyleDefault()
             )
 
-            Box(
-                modifier = Modifier.fillMaxWidth(),
+            Box(modifier = Modifier.fillMaxWidth(),
+                contentAlignment = contentAlignment,
+                propagateMinConstraints = propagateMinConstraints,
                 content = content
             )
 
@@ -61,6 +64,8 @@ fun DialogBox(
     onCancel: () -> Unit,
     cancelText: String,
     properties: DialogProperties = DialogProperties(),
+    contentAlignment: Alignment = Alignment.TopStart,
+    propagateMinConstraints: Boolean = false,
     content: @Composable BoxScope.() -> Unit
 ) {
     SimpleDialog(
@@ -71,15 +76,23 @@ fun DialogBox(
 
         Column(modifier = Modifier.fillMaxWidth()) {
 
-            Text(modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
+            Text(
+                modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
                 text = title,
-                style = DialogTitleStyleDefault())
+                style = DialogTitleStyleDefault()
+            )
 
-            Box(modifier = Modifier.fillMaxWidth(),
-                content = content)
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = contentAlignment,
+                propagateMinConstraints = propagateMinConstraints,
+                content = content
+            )
 
-            Row(modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
+            ) {
                 TextButton(
                     onClick = onCancel
                 ) {
