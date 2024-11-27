@@ -1,5 +1,5 @@
 [versions]
-myCollection = "1.0.0"
+myCollection = "1.0.1"
 myCompose = "1.0.0"
 
 agp = "8.5.2"
