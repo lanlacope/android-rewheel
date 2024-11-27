@@ -1,8 +1,12 @@
 package io.github.lanlacope.lanlacopetest
 
 import android.util.Log
+import android.widget.ScrollView
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +16,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -54,7 +60,6 @@ import org.json.JSONObject
 @Composable
 private fun View() {
 
-
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -69,7 +74,14 @@ private fun View() {
             onDismissRequest = { shown = false },
             properties = DialogProperties()
         ) {
-            Column {
+            Column(
+                modifier = Modifier
+                    .imePadding()
+                    .systemBarsPadding()
+                    .verticalScroll(rememberScrollState())
+            ) {
+
+                Text(text = "AAA")
 
                 var text by remember { mutableStateOf("") }
 
@@ -93,7 +105,10 @@ private fun View() {
                         .padding(all = 8.dp)
 
                 )
-                TextButton(onClick = { /*TODO*/ }) {
+                TextButton(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.imePadding()
+                ) {
                     Text(text = "AAAAAAAAAAAa")
                 }
             }

@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyScopeMarker
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
@@ -40,6 +42,9 @@ internal fun BusyList(
     Box(modifier = modifier) {
         if (isVertical) {
             Column(
+                modifier = Modifier
+                    .padding(contentPadding)
+                    .verticalScroll(rememberScrollState()), // TODO
                 verticalArrangement = verticalArrangement,
                 horizontalAlignment = horizontalAlignment
             ) {
@@ -60,7 +65,9 @@ internal fun BusyList(
             }
         } else {
             Row(
-                modifier = Modifier.padding(contentPadding),
+                modifier = Modifier
+                    .padding(contentPadding)
+                    .verticalScroll(rememberScrollState()), // TODO,
                 horizontalArrangement = horizontalArrangement,
                 verticalAlignment = verticalAlignment
             ) {
