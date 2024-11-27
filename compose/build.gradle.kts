@@ -52,6 +52,10 @@ publishing {
             artifactId = "compose"
             version = "1.1.0"
 
+            artifact(":collection/build/libs/collection-1.0.0.jar") {
+                classifier = "collection"
+            }
+
             afterEvaluate {
                 from(components["release"])
             }
@@ -90,8 +94,7 @@ dependencies {
     api(libs.androidx.compose.material3)
     api(libs.androidx.compose.foundation)
     api(libs.androidx.compose.constraintlayout)
-    implementation(project(":collection"))
-    project(":collection")
+    api(project(":collection"))
 
     androidTestApi(platform(libs.androidx.compose.bom))
     androidTestApi(libs.androidx.compose.ui.test.junit4)
