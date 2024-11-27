@@ -53,6 +53,8 @@ dependencies {
 
     implementation(project(":compose"))
     implementation(project(":collection"))
+    // implementation(libs.my.compose)
+    // implementation(libs.my.collection)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

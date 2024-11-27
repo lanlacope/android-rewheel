@@ -27,19 +27,3 @@ dependencyResolutionManagement {
     }
 }
 ```
-
-```toml
-# libs.versions.tomp
-[versions]
-lanlacope = "1.0.0"
-
-[libraries]
-lanlacope-rewheel-basic = { group = "io.github.lanlacope.android-rewheel", name = "basic", version.ref = "lanlacope"}
-```
-
-```kotlin
-// build.gradle.kts
-dependencies {
-    releaseImplementation(libs.lanlacope.rewheel.basic)
-}
-```

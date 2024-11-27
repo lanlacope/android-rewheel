@@ -1,5 +1,6 @@
 [versions]
 myCollection = "1.0.0"
+myCompose = "1.0.0"
 
 agp = "8.5.2"
 kotlin = "1.9.0"
@@ -23,6 +24,7 @@ junitJupiter = "5.8.1"
 
 [libraries]
 my-collection = { module = "io.github.lanlacope.android-rewheel:collection", version.ref = "myCollection" }
+my-compose = { module = "io.github.lanlacope.android-rewheel:compose", version.ref = "myCompose" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
