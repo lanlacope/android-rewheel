@@ -8,7 +8,7 @@ inline fun <K> BusyOptionScope.text(
     options: Map<K, String>,
     crossinline onClick: (option: K) -> Unit,
     noinline key: ((item: K) -> Any)? = null,
-    crossinline contentType: (item: K) -> Any? = { null }
+    crossinline contentType: (item: K) -> Any? = { null },
 ) = items(
     count = options.size,
     key = if (key != null) { index: Int -> key(options.keyList()[index]) } else null,
@@ -26,7 +26,7 @@ inline fun <K> BusyOptionScope.textIndexed(
     options: Map<K, String>,
     crossinline onClick: (index: Int, option: K) -> Unit,
     noinline key: ((index: Int, item: K) -> Any)? = null,
-    crossinline contentType: (index: Int, item: K) -> Any? = { _, _ -> null }
+    crossinline contentType: (index: Int, item: K) -> Any? = { _, _ -> null },
 ) = items(
     count = options.size,
     key = if (key != null) { index: Int -> key(index, options.keyList()[index]) } else null,
@@ -44,7 +44,7 @@ inline fun <K> BusyOptionScope.animatedText(
     options: Map<K, String>,
     crossinline onClick: (option: K) -> Unit,
     noinline key: ((item: K) -> Any)? = null,
-    crossinline contentType: (item: K) -> Any? = { null }
+    crossinline contentType: (item: K) -> Any? = { null },
 ) = items(
     count = options.size,
     key = if (key != null) { index: Int -> key(options.keyList()[index]) } else null,
@@ -64,7 +64,7 @@ inline fun <K> BusyOptionScope.animatedTextIndexed(
     options: Map<K, String>,
     crossinline onClick: (index: Int, option: K) -> Unit,
     noinline key: ((index: Int, item: K) -> Any)? = null,
-    crossinline contentType: (index: Int, item: K) -> Any? = { _, _ -> null }
+    crossinline contentType: (index: Int, item: K) -> Any? = { _, _ -> null },
 ) = items(
     count = options.size,
     key = if (key != null) { index: Int -> key(index, options.keyList()[index]) } else null,

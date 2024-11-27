@@ -21,7 +21,7 @@ fun <T> RadioButtonDialog(
     confirmText: String,
     onCancel: () -> Unit,
     cancelText: String,
-    properties: DialogProperties = DialogProperties()
+    properties: DialogProperties = DialogProperties(),
 ) {
     var dSelectedOption by remember(expanded) { mutableStateOf(selectedOption) }
 
@@ -53,7 +53,7 @@ fun <T> RadioButtonDialog(
     confirmText: String,
     onCancel: () -> Unit,
     cancelText: String,
-    properties: DialogProperties = DialogProperties()
+    properties: DialogProperties = DialogProperties(),
 ) {
     var selectedOption by remember(expanded) { mutableStateOf(options.keyList()[0]) }
 

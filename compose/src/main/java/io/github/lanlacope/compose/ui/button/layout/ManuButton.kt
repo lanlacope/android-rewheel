@@ -28,7 +28,7 @@ fun ManuButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colorScheme.onBackground,
-    content: @Composable ColumnScope.() -> Unit
+    content: @Composable ColumnScope.() -> Unit,
 ) {
     BoxButton(
         contentAlignment = Alignment.CenterStart,

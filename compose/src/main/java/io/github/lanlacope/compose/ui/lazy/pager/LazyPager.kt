@@ -38,7 +38,7 @@ internal fun LazyPager(
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
-    content: LazyPagerScope.() -> Unit
+    content: LazyPagerScope.() -> Unit,
 ) {
     val flingBehavior = rememberLazyPagerFlingBehavior(state = state)
 
@@ -55,8 +55,7 @@ internal fun LazyPager(
         ) {
             content(LazyPagerScopeImpl(this))
         }
-    }
-    else {
+    } else {
         LazyRow(
             modifier = modifier.fillMaxSize(),
             state = state,
@@ -77,7 +76,7 @@ interface LazyPagerScope : LazyListScope {
     override fun item(
         key: Any?,
         contentType: Any?,
-        content: @Composable() (LazyItemScope.() -> Unit)
+        content: @Composable() (LazyItemScope.() -> Unit),
     ) {
         error("The method is not implemented")
     }
@@ -86,7 +85,7 @@ interface LazyPagerScope : LazyListScope {
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,
-        itemContent: @Composable() (LazyItemScope.(index: Int) -> Unit)
+        itemContent: @Composable() (LazyItemScope.(index: Int) -> Unit),
     ) {
         error("The method is not implemented")
     }
@@ -108,7 +107,7 @@ internal class LazyPagerScopeImpl(
     override fun item(
         key: Any?,
         contentType: Any?,
-        content: @Composable LazyItemScope.() -> Unit
+        content: @Composable LazyItemScope.() -> Unit,
     ) {
         lazyListScope.item(key, contentType, content)
     }
@@ -117,7 +116,7 @@ internal class LazyPagerScopeImpl(
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,
-        itemContent: @Composable() (LazyItemScope.(index: Int) -> Unit)
+        itemContent: @Composable() (LazyItemScope.(index: Int) -> Unit),
     ) {
         lazyListScope.items(count, key, contentType, itemContent)
     }

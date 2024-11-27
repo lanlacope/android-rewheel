@@ -20,9 +20,8 @@ fun <T> CheckBoxDialog(
     confirmText: String,
     onCancel: () -> Unit,
     cancelText: String,
-    properties: DialogProperties = DialogProperties()
+    properties: DialogProperties = DialogProperties(),
 ) {
-
     val dCheckedOptions = remember(expanded) { checkedOptions.toMutableStateList() }
 
     DialogBox(
@@ -53,7 +52,7 @@ fun <T> CheckBoxDialog(
     confirmText: String,
     onCancel: () -> Unit,
     cancelText: String,
-    properties: DialogProperties = DialogProperties()
+    properties: DialogProperties = DialogProperties(),
 ) {
     val checkedOptions = remember(expanded) { mutableStateListOf<T>() }
 

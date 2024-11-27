@@ -23,7 +23,7 @@ fun BusyOption(
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     flingBehavior: FlingBehavior = ScrollableDefaults.flingBehavior(),
-    content: BusyOptionScope.() -> Unit
+    content: BusyOptionScope.() -> Unit,
 ) {
     BusyColumn(
         modifier = modifier,
@@ -44,7 +44,7 @@ interface BusyOptionScope : BusyListScope {
     override fun item(
         key: Any?,
         contentType: Any?,
-        content: @Composable() (BusyItemScope.() -> Unit)
+        content: @Composable() (BusyItemScope.() -> Unit),
     ) {
         error("The method is not implemented")
     }
@@ -53,7 +53,7 @@ interface BusyOptionScope : BusyListScope {
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,
-        itemContent: @Composable() (BusyItemScope.(index: Int) -> Unit)
+        itemContent: @Composable() (BusyItemScope.(index: Int) -> Unit),
     ) {
         error("The method is not implemented")
     }
@@ -70,12 +70,12 @@ interface BusyOptionScope : BusyListScope {
 
 internal class BusyyOptionScopeImpl(
     private val busyListScope: BusyListScope,
-): BusyOptionScope, BusyListScope by busyListScope {
+) : BusyOptionScope, BusyListScope by busyListScope {
 
     override fun item(
         key: Any?,
         contentType: Any?,
-        content: @Composable BusyItemScope.() -> Unit
+        content: @Composable BusyItemScope.() -> Unit,
     ) {
         busyListScope.item(key, contentType, content)
     }
@@ -84,7 +84,7 @@ internal class BusyyOptionScopeImpl(
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,
-        itemContent: @Composable() (BusyItemScope.(index: Int) -> Unit)
+        itemContent: @Composable() (BusyItemScope.(index: Int) -> Unit),
     ) {
         busyListScope.items(count, key, contentType, itemContent)
     }

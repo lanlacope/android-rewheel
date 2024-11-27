@@ -19,7 +19,7 @@ inline fun RowButton(
     innerPadding: PaddingValues = PaddingValues(),
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
-    content: @Composable RowScope.() -> Unit
+    content: @Composable RowScope.() -> Unit,
 ) {
     Row(
         modifier = modifier
@@ -43,12 +43,12 @@ inline fun RowButton(
     innerPadding: PaddingValues = PaddingValues(),
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
-    content: @Composable RowScope.() -> Unit
+    content: @Composable RowScope.() -> Unit,
 ) {
     Row(
         modifier = modifier
             .combinedClickable(
-                onClick = onClick?: { },
+                onClick = onClick ?: { },
                 onLongClick = onLongClick
             )
             .padding(paddingValues = innerPadding),

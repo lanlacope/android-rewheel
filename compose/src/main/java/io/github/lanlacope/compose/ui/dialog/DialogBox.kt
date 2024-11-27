@@ -23,7 +23,7 @@ fun DialogBox(
     properties: DialogProperties = DialogProperties(),
     contentAlignment: Alignment = Alignment.TopStart,
     propagateMinConstraints: Boolean = false,
-    content: @Composable BoxScope.() -> Unit
+    content: @Composable BoxScope.() -> Unit,
 ) {
     SimpleDialog(
         expanded = expanded,
@@ -39,7 +39,8 @@ fun DialogBox(
                 style = DialogTitleStyleDefault()
             )
 
-            Box(modifier = Modifier.fillMaxWidth(),
+            Box(
+                modifier = Modifier.fillMaxWidth(),
                 contentAlignment = contentAlignment,
                 propagateMinConstraints = propagateMinConstraints,
                 content = content
@@ -66,7 +67,7 @@ fun DialogBox(
     properties: DialogProperties = DialogProperties(),
     contentAlignment: Alignment = Alignment.TopStart,
     propagateMinConstraints: Boolean = false,
-    content: @Composable BoxScope.() -> Unit
+    content: @Composable BoxScope.() -> Unit,
 ) {
     SimpleDialog(
         expanded = expanded,

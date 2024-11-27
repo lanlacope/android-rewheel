@@ -22,9 +22,10 @@ fun SettingTextArea(
     value: String,
     valueStyle: TextStyle = SettingValueTextStyleDefault(),
     onClick: () -> Unit,
-    innerPadding: PaddingValues = SettingPaddingValuesDefault()
+    innerPadding: PaddingValues = SettingPaddingValuesDefault(),
 ) {
-    RowButton(modifier = modifier,
+    RowButton(
+        modifier = modifier,
         onClick = onClick,
         horizontalArrangement = Arrangement.SpaceBetween,
         innerPadding = innerPadding

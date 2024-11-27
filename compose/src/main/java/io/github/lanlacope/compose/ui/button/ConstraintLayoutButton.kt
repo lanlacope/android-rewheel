@@ -20,7 +20,7 @@ inline fun ConstraintLayoutButton(
     optimizationLevel: Int = Optimizer.OPTIMIZATION_STANDARD,
     animateChangesSpec: AnimationSpec<Float>? = null,
     noinline finishedAnimationListener: (() -> Unit)? = null,
-    crossinline content: @Composable ConstraintLayoutScope.() -> Unit
+    crossinline content: @Composable ConstraintLayoutScope.() -> Unit,
 ) {
     ConstraintLayout(
         modifier = modifier
@@ -45,12 +45,12 @@ inline fun ConstraintLayoutButton(
     optimizationLevel: Int = Optimizer.OPTIMIZATION_STANDARD,
     animateChangesSpec: AnimationSpec<Float>? = null,
     noinline finishedAnimationListener: (() -> Unit)? = null,
-    crossinline content: @Composable ConstraintLayoutScope.() -> Unit
+    crossinline content: @Composable ConstraintLayoutScope.() -> Unit,
 ) {
     ConstraintLayout(
         modifier = modifier
             .combinedClickable(
-                onClick = onClick?: { },
+                onClick = onClick ?: { },
                 onLongClick = onLongClick
             )
             .padding(paddingValues = innerPadding),

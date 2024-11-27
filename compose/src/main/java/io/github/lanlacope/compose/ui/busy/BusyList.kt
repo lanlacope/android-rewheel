@@ -54,8 +54,7 @@ internal fun BusyList(
                             itemContent(BusyItemScopeImpl())
                         }
                     }
-                }
-                else {
+                } else {
                     for (itemContent in scope.items.reversed()) {
                         Box(modifier = Modifier.padding(contentPadding)) {
                             itemContent(BusyItemScopeImpl())
@@ -77,8 +76,7 @@ internal fun BusyList(
                             itemContent(BusyItemScopeImpl())
                         }
                     }
-                }
-                else {
+                } else {
                     for (itemContent in scope.items.reversed()) {
                         Box(modifier = Modifier.padding(contentPadding)) {
                             itemContent(BusyItemScopeImpl())
@@ -97,7 +95,7 @@ interface BusyListScope {
     fun item(
         key: Any? = null,
         contentType: Any? = null,
-        content: @Composable BusyItemScope.() -> Unit
+        content: @Composable BusyItemScope.() -> Unit,
     ) {
         error("The method is not implemented")
     }
@@ -106,7 +104,7 @@ interface BusyListScope {
         count: Int,
         key: ((index: Int) -> Any)? = null,
         contentType: (index: Int) -> Any? = { null },
-        itemContent: @Composable BusyItemScope.(index: Int) -> Unit
+        itemContent: @Composable BusyItemScope.(index: Int) -> Unit,
     ) {
         error("The method is not implemented")
     }
@@ -116,7 +114,7 @@ interface BusyListScope {
     fun stickyHeader(
         key: Any? = null,
         contentType: Any? = null,
-        content: @Composable BusyItemScope.() -> Unit
+        content: @Composable BusyItemScope.() -> Unit,
     )
 }
 
@@ -128,7 +126,7 @@ internal class BusyListScopeImpl : BusyListScope {
     override fun item(
         key: Any?,
         contentType: Any?,
-        content: @Composable BusyItemScope.() -> Unit
+        content: @Composable BusyItemScope.() -> Unit,
     ) {
         items.add(content)
     }
@@ -137,7 +135,7 @@ internal class BusyListScopeImpl : BusyListScope {
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,
-        itemContent: @Composable BusyItemScope.(index: Int) -> Unit
+        itemContent: @Composable BusyItemScope.(index: Int) -> Unit,
     ) {
         for (i in 0 until count) {
             items.add { itemContent(i) }

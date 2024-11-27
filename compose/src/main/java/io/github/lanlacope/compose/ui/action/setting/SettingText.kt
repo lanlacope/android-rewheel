@@ -13,7 +13,7 @@ internal fun SettingText(
     text: String,
     textStyle: TextStyle,
     summary: String?,
-    summaryStyle: TextStyle
+    summaryStyle: TextStyle,
 ) {
     Column(modifier = modifier.wrapContentSize()) {
 

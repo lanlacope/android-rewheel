@@ -23,7 +23,7 @@ fun BusyRow(
     verticalAlignment: Alignment.Vertical = Alignment.Top,
     flingBehavior: FlingBehavior = ScrollableDefaults.flingBehavior(),
     userScrollEnabled: Boolean = true,
-    content: BusyListScope.() -> Unit
+    content: BusyListScope.() -> Unit,
 ) {
     BusyList(
         modifier = modifier,

@@ -23,7 +23,7 @@ inline fun <T> BusyListScope.items(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
-    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
@@ -36,7 +36,7 @@ inline fun <T> BusyListScope.itemsIndexed(
     items: List<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
-    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
@@ -49,7 +49,7 @@ inline fun <T> BusyListScope.items(
     items: Array<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
-    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
@@ -62,7 +62,7 @@ inline fun <T> BusyListScope.itemsIndexed(
     items: Array<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
-    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
@@ -80,7 +80,7 @@ inline fun <T> BusyListScope.items(
     crossinline onClick: ((item: T) -> Unit),
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
-    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
@@ -96,7 +96,7 @@ inline fun <T> BusyListScope.itemsIndexed(
     crossinline onClick: ((index: Int, item: T) -> Unit),
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
-    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
@@ -112,7 +112,7 @@ inline fun <T> BusyListScope.items(
     crossinline onClick: ((item: T) -> Unit),
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
-    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
@@ -128,7 +128,7 @@ inline fun <T> BusyListScope.itemsIndexed(
     crossinline onClick: ((index: Int, item: T) -> Unit),
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
-    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
@@ -146,7 +146,7 @@ inline fun <T> BusyListScope.animatedItems(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
-    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
@@ -161,7 +161,7 @@ inline fun <T> BusyListScope.animatedItemsIndexed(
     items: List<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
-    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
@@ -176,7 +176,7 @@ inline fun <T> BusyListScope.animatedItems(
     items: Array<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
-    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
@@ -191,7 +191,7 @@ inline fun <T> BusyListScope.animatedItemsIndexed(
     items: Array<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
-    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
@@ -210,7 +210,7 @@ inline fun <T> BusyListScope.animatedItems(
     crossinline onClick: ((item: T) -> Unit),
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
-    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
@@ -227,7 +227,7 @@ inline fun <T> BusyListScope.animatedItemsIndexed(
     crossinline onClick: ((index: Int, item: T) -> Unit),
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
-    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
@@ -244,7 +244,7 @@ inline fun <T> BusyListScope.animatedItems(
     crossinline onClick: ((item: T) -> Unit),
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
-    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
@@ -261,7 +261,7 @@ inline fun <T> BusyListScope.animatedItemsIndexed(
     crossinline onClick: ((index: Int, item: T) -> Unit),
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
-    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit
+    crossinline itemContent: @Composable BusyItemScope.(index: Int, item: T) -> Unit,
 ) = items(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
@@ -279,17 +279,17 @@ interface BusyItemScope {
 
     fun Modifier.fillParentMaxSize(
         @FloatRange(from = 0.0, to = 1.0)
-        fraction: Float = 1f
+        fraction: Float = 1f,
     ): Modifier
 
     fun Modifier.fillParentMaxWidth(
         @FloatRange(from = 0.0, to = 1.0)
-        fraction: Float = 1f
+        fraction: Float = 1f,
     ): Modifier
 
     fun Modifier.fillParentMaxHeight(
         @FloatRange(from = 0.0, to = 1.0)
-        fraction: Float = 1f
+        fraction: Float = 1f,
     ): Modifier
 
     fun Modifier.animateItem(

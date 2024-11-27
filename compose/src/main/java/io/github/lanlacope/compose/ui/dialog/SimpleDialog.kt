@@ -10,7 +10,7 @@ fun SimpleDialog(
     expanded: Boolean,
     onDismissRequest: () -> Unit,
     properties: DialogProperties,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     if (expanded) {
         Dialog(

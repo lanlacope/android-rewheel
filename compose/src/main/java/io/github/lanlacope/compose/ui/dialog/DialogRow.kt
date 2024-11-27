@@ -22,7 +22,7 @@ fun DialogRow(
     properties: DialogProperties = DialogProperties(),
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
-    content: @Composable RowScope.() -> Unit
+    content: @Composable RowScope.() -> Unit,
 ) {
     SimpleDialog(
         expanded = expanded,
@@ -65,7 +65,7 @@ fun DialogRow(
     properties: DialogProperties = DialogProperties(),
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
-    content: @Composable RowScope.() -> Unit
+    content: @Composable RowScope.() -> Unit,
 ) {
     SimpleDialog(
         expanded = expanded,
@@ -74,7 +74,8 @@ fun DialogRow(
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
 
-            Text(modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
+            Text(
+                modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
                 text = title,
                 style = DialogTitleStyleDefault()
             )

@@ -18,7 +18,7 @@ inline fun BoxButton(
     innerPadding: PaddingValues = PaddingValues(),
     contentAlignment: Alignment = Alignment.TopStart,
     propagateMinConstraints: Boolean = false,
-    content: @Composable BoxScope.() -> Unit
+    content: @Composable BoxScope.() -> Unit,
 ) {
     Box(
         modifier = modifier
@@ -26,7 +26,6 @@ inline fun BoxButton(
                 onClick = onClick
             )
             .padding(paddingValues = innerPadding),
-
         contentAlignment = contentAlignment,
         propagateMinConstraints = propagateMinConstraints,
         content = content
@@ -42,16 +41,15 @@ inline fun BoxButton(
     innerPadding: PaddingValues = PaddingValues(),
     contentAlignment: Alignment = Alignment.TopStart,
     propagateMinConstraints: Boolean = false,
-    content: @Composable BoxScope.() -> Unit
+    content: @Composable BoxScope.() -> Unit,
 ) {
     Box(
         modifier = modifier
             .combinedClickable(
-                onClick = onClick?: { },
+                onClick = onClick ?: { },
                 onLongClick = onLongClick
             )
             .padding(paddingValues = innerPadding),
-
         contentAlignment = contentAlignment,
         propagateMinConstraints = propagateMinConstraints,
         content = content
@@ -61,11 +59,11 @@ inline fun BoxButton(
 @Composable
 fun BoxButton(
     onClick: () -> Unit,
-    modifier: Modifier
+    modifier: Modifier,
 ) {
     Box(
         modifier = modifier
-            .clickable (
+            .clickable(
                 onClick = onClick
             )
     )
@@ -76,14 +74,13 @@ fun BoxButton(
 fun BoxButton(
     onClick: (() -> Unit)? = null,
     onLongClick: () -> Unit,
-    modifier: Modifier
+    modifier: Modifier,
 ) {
     Box(
         modifier = modifier
             .combinedClickable(
-                onClick = onClick?: { },
+                onClick = onClick ?: { },
                 onLongClick = onLongClick
             ),
-
-        )
+    )
 }

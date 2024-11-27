@@ -21,7 +21,8 @@ fun SettingSwitchToggle(
     onClick: () -> Unit,
     innerPadding: PaddingValues = SettingPaddingValuesDefault(),
 ) {
-    RowButton(modifier = modifier,
+    RowButton(
+        modifier = modifier,
         onClick = onClick,
         horizontalArrangement = Arrangement.SpaceBetween,
         innerPadding = innerPadding

@@ -28,7 +28,7 @@ fun DialigConstraintLayout(
     optimizationLevel: Int = Optimizer.OPTIMIZATION_STANDARD,
     animateChangesSpec: AnimationSpec<Float>? = null,
     finishedAnimationListener: (() -> Unit)? = null,
-    content: @Composable ConstraintLayoutScope.() -> Unit
+    content: @Composable ConstraintLayoutScope.() -> Unit,
 ) {
     SimpleDialog(
         expanded = expanded,
@@ -70,9 +70,9 @@ fun DialigConstraintLayout(
     optimizationLevel: Int = Optimizer.OPTIMIZATION_STANDARD,
     animateChangesSpec: AnimationSpec<Float>? = null,
     finishedAnimationListener: (() -> Unit)? = null,
-    content: @Composable ConstraintLayoutScope.() -> Unit
+    content: @Composable ConstraintLayoutScope.() -> Unit,
 
-) {
+    ) {
     SimpleDialog(
         expanded = expanded,
         onDismissRequest = onCancel,
@@ -81,17 +81,21 @@ fun DialigConstraintLayout(
 
         Column(modifier = Modifier.fillMaxWidth()) {
 
-            Text(modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
+            Text(
+                modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
                 text = title,
-                style = DialogTitleStyleDefault())
+                style = DialogTitleStyleDefault()
+            )
 
             ConstraintLayout(
                 modifier = Modifier.fillMaxWidth(),
                 content = content
             )
 
-            Row(modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
+            ) {
                 TextButton(
                     onClick = onCancel
                 ) {

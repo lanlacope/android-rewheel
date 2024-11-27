@@ -22,7 +22,7 @@ fun DialogColumn(
     properties: DialogProperties = DialogProperties(),
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    content: @Composable ColumnScope.() -> Unit
+    content: @Composable ColumnScope.() -> Unit,
 ) {
     SimpleDialog(
         expanded = expanded,
@@ -66,7 +66,7 @@ fun DialogColumn(
     properties: DialogProperties = DialogProperties(),
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    content: @Composable ColumnScope.() -> Unit
+    content: @Composable ColumnScope.() -> Unit,
 ) {
     SimpleDialog(
         expanded = expanded,
@@ -76,9 +76,11 @@ fun DialogColumn(
 
         Column(modifier = Modifier.fillMaxWidth()) {
 
-            Text(modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
+            Text(
+                modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
                 text = title,
-                style = DialogTitleStyleDefault())
+                style = DialogTitleStyleDefault()
+            )
 
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -87,8 +89,10 @@ fun DialogColumn(
                 content = content
             )
 
-            Row(modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
+            ) {
                 TextButton(
                     onClick = onCancel
                 ) {

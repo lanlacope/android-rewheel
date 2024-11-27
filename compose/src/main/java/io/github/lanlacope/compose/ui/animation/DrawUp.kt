@@ -17,7 +17,7 @@ fun DrawUpAnimated(
     visible: Boolean,
     modifier: Modifier = Modifier,
     label: String = "AnimatedVisibility",
-    content: @Composable() (AnimatedVisibilityScope.() -> Unit)
+    content: @Composable() (AnimatedVisibilityScope.() -> Unit),
 ) {
     val enter: EnterTransition = fadeIn() + expandVertically()
     val exit: ExitTransition = shrinkVertically() + fadeOut()

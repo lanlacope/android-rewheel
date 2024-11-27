@@ -9,7 +9,7 @@ inline fun <K> LazyOptionScope.radioButton(
     noinline selected: (option: K) -> Boolean,
     crossinline onClick: (option: K) -> Unit,
     noinline key: ((item: K) -> Any)? = null,
-    crossinline contentType: (item: K) -> Any? = { null }
+    crossinline contentType: (item: K) -> Any? = { null },
 ) = items(
     count = options.size,
     key = if (key != null) { index: Int -> key(options.keyList()[index]) } else null,
@@ -29,7 +29,7 @@ inline fun <K> LazyOptionScope.radioButtonIndexed(
     noinline selected: (index: Int, option: K) -> Boolean,
     crossinline onClick: (index: Int, option: K) -> Unit,
     noinline key: ((index: Int, item: K) -> Any)? = null,
-    crossinline contentType: (index: Int, item: K) -> Any? = { _, _ -> null }
+    crossinline contentType: (index: Int, item: K) -> Any? = { _, _ -> null },
 ) = items(
     count = options.size,
     key = if (key != null) { index: Int -> key(index, options.keyList()[index]) } else null,
@@ -49,7 +49,7 @@ inline fun <K> LazyOptionScope.animatedRadioButton(
     noinline selected: (option: K) -> Boolean,
     crossinline onClick: (option: K) -> Unit,
     noinline key: ((item: K) -> Any)? = null,
-    crossinline contentType: (item: K) -> Any? = { null }
+    crossinline contentType: (item: K) -> Any? = { null },
 ) = items(
     count = options.size,
     key = if (key != null) { index: Int -> key(options.keyList()[index]) } else null,
@@ -71,7 +71,7 @@ inline fun <K> LazyOptionScope.animatedRadioButtonIndexed(
     noinline selected: (index: Int, option: K) -> Boolean,
     crossinline onClick: (index: Int, option: K) -> Unit,
     noinline key: ((index: Int, item: K) -> Any)? = null,
-    crossinline contentType: (index: Int, item: K) -> Any? = { _, _ -> null }
+    crossinline contentType: (index: Int, item: K) -> Any? = { _, _ -> null },
 ) = items(
     count = options.size,
     key = if (key != null) { index: Int -> key(index, options.keyList()[index]) } else null,

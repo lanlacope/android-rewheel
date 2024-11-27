@@ -20,7 +20,7 @@ fun LazyHorizontalPager(
     horizontalArrangement: Arrangement.Horizontal =
         if (loadSidePage) Arrangement.spacedBy(10.dp) else Arrangement.Center,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
-    content: LazyPagerScope.() -> Unit
+    content: LazyPagerScope.() -> Unit,
 ) {
     LazyPager(
         modifier = modifier,

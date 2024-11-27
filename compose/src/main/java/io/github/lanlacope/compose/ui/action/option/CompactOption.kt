@@ -10,7 +10,7 @@ fun CompactOptionCheckBox(
     modifier: Modifier = Modifier,
     text: String,
     checked: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     OptionCheckBox(
         modifier = modifier,
@@ -43,7 +43,7 @@ fun CompactOptionOptionRadioButton(
 fun CompactOptionText(
     modifier: Modifier = Modifier,
     text: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     OptionText(
         modifier = modifier,

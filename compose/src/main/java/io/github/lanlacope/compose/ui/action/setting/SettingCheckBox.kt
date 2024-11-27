@@ -12,7 +12,7 @@ import io.github.lanlacope.compose.ui.button.RowButton
 
 @Composable
 fun SettingCheckBox(
-    modifier: Modifier = Modifier,    text: String,
+    modifier: Modifier = Modifier, text: String,
     textStyle: TextStyle = SettingTextStyleDefault(),
     summary: String? = null,
     summaryStyle: TextStyle = SettingSummaryTextStyleDefault(),
@@ -20,7 +20,8 @@ fun SettingCheckBox(
     onClick: () -> Unit,
     innerPadding: PaddingValues = SettingPaddingValuesDefault(),
 ) {
-    RowButton(modifier = modifier,
+    RowButton(
+        modifier = modifier,
         onClick = onClick,
         horizontalArrangement = Arrangement.SpaceBetween,
         innerPadding = innerPadding

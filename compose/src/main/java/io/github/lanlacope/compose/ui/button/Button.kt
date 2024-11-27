@@ -62,11 +62,12 @@ fun Button(
     border: BorderStroke? = null,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit
+    content: @Composable RowScope.() -> Unit,
 ) {
     val containerColor = if (enabled) colors.containerColor else colors.disabledContainerColor
     val contentColor = if (enabled) colors.contentColor else colors.disabledContentColor
-    val shadowElevation = 0.0.dp // elevation?.shadowElevation(enabled, interactionSource)?.value ?: 0.dp
+    val shadowElevation =
+        0.0.dp // elevation?.shadowElevation(enabled, interactionSource)?.value ?: 0.dp
     val tonalElevation = 0.0.dp //elevation?.tonalElevation(enabled) ?: 0.dp
 
     Surface(
@@ -84,7 +85,8 @@ fun Button(
     ) {
         ProvideContentColorTextStyle(
             contentColor = contentColor,
-            textStyle = MaterialTheme.typography.labelLarge) {
+            textStyle = MaterialTheme.typography.labelLarge
+        ) {
             Row(
                 Modifier
                     .defaultMinSize(
@@ -113,7 +115,8 @@ fun FloatingActionButton(
     content: @Composable () -> Unit,
 ) {
     val tonalElevation = 0.0.dp  // elevation.tonalElevation() ?: 0.dp
-    val shadowElevation = 0.0.dp //elevation.shadowElevation(interactionSource = interactionSource).value 0.dp
+    val shadowElevation =
+        0.0.dp //elevation.shadowElevation(interactionSource = interactionSource).value 0.dp
 
     Surface(
         onClick = onClick,
@@ -134,10 +137,12 @@ fun FloatingActionButton(
                 modifier = Modifier
                     .defaultMinSize(
                         minWidth = 56.0.dp,
-                        minHeight = 56.0.dp,
+                        minHeight = 56.0.dp
                     ),
                 contentAlignment = Alignment.Center,
-            ) { content() }
+            ) {
+                content()
+            }
         }
     }
 }
@@ -158,7 +163,7 @@ private fun Surface(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     indication: Indication? = ripple(),
     border: BorderStroke? = null,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val absoluteElevation = LocalAbsoluteTonalElevation.current + tonalElevation
     CompositionLocalProvider(
@@ -179,11 +184,11 @@ private fun Surface(
             )
             .combinedClickable(
                 enabled = enabled,
-                onClick = onClick?: { },
+                onClick = onClick ?: { },
                 onLongClick = onLongClick,
                 indication = indication,
                 interactionSource = interactionSource
-                ),
+            ),
             propagateMinConstraints = true
         ) {
             content()
@@ -222,7 +227,7 @@ private fun ColorScheme.applyTonalElevation(backgroundColor: Color, elevation: D
 private fun ProvideContentColorTextStyle(
     contentColor: Color,
     textStyle: TextStyle,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val mergedStyle = LocalTextStyle.current.merge(textStyle)
     CompositionLocalProvider(

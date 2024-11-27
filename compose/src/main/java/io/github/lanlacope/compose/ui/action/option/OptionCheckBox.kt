@@ -17,9 +17,10 @@ fun OptionCheckBox(
     textStyle: TextStyle = OptionTextStyleDefault(),
     checked: Boolean,
     onClick: () -> Unit,
-    innerPadding: PaddingValues = OptionPaddingValuesDefault()
+    innerPadding: PaddingValues = OptionPaddingValuesDefault(),
 ) {
-    RowButton(modifier = modifier,
+    RowButton(
+        modifier = modifier,
         onClick = onClick,
         innerPadding = innerPadding
     ) {

@@ -25,7 +25,7 @@ fun LazyOption(
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     flingBehavior: FlingBehavior = ScrollableDefaults.flingBehavior(),
-    content: LazyOptionScope.() -> Unit
+    content: LazyOptionScope.() -> Unit,
 ) {
     LazyColumn(
         modifier = modifier,
@@ -46,7 +46,7 @@ interface LazyOptionScope : LazyListScope {
     override fun item(
         key: Any?,
         contentType: Any?,
-        content: @Composable() (LazyItemScope.() -> Unit)
+        content: @Composable() (LazyItemScope.() -> Unit),
     ) {
         error("The method is not implemented")
     }
@@ -55,7 +55,7 @@ interface LazyOptionScope : LazyListScope {
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,
-        itemContent: @Composable() (LazyItemScope.(index: Int) -> Unit)
+        itemContent: @Composable() (LazyItemScope.(index: Int) -> Unit),
     ) {
         error("The method is not implemented")
     }
@@ -72,12 +72,12 @@ interface LazyOptionScope : LazyListScope {
 
 internal class LazyOptionScopeImpl(
     private val lazyListScope: LazyListScope,
-): LazyOptionScope, LazyListScope by lazyListScope {
+) : LazyOptionScope, LazyListScope by lazyListScope {
 
     override fun item(
         key: Any?,
         contentType: Any?,
-        content: @Composable LazyItemScope.() -> Unit
+        content: @Composable LazyItemScope.() -> Unit,
     ) {
         lazyListScope.item(key, contentType, content)
     }
@@ -86,7 +86,7 @@ internal class LazyOptionScopeImpl(
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,
-        itemContent: @Composable() (LazyItemScope.(index: Int) -> Unit)
+        itemContent: @Composable() (LazyItemScope.(index: Int) -> Unit),
     ) {
         lazyListScope.items(count, key, contentType, itemContent)
     }

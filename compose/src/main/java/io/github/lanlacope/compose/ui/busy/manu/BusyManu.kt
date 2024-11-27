@@ -19,7 +19,7 @@ fun BusyManu(
     offset: DpOffset = DpOffset(0.dp, 0.dp),
     scrollState: ScrollState = rememberScrollState(),
     properties: PopupProperties = PopupProperties(focusable = true),
-    content: BusyOptionScope.() -> Unit
+    content: BusyOptionScope.() -> Unit,
 ) {
     DropdownMenu(
         expanded = expanded,

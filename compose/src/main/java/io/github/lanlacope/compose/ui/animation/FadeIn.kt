@@ -15,7 +15,7 @@ fun FadeInAnimated(
     visible: Boolean,
     modifier: Modifier = Modifier,
     label: String = "AnimatedVisibility",
-    content: @Composable() (AnimatedVisibilityScope.() -> Unit)
+    content: @Composable() (AnimatedVisibilityScope.() -> Unit),
 ) {
     val enter: EnterTransition = fadeIn()
     val exit: ExitTransition = fadeOut()

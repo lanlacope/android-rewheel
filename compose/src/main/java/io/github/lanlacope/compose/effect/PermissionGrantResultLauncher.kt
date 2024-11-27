@@ -14,7 +14,7 @@ data class PermissionGrantResultLauncher(
     private val context: Context,
     private val permission: String,
     private val launcher: ManagedActivityResultLauncher<String, Boolean>,
-    private val onAlreadyGranted: () -> Unit
+    private val onAlreadyGranted: () -> Unit,
 ) {
     fun launch() {
         if (!isGranted()) {
@@ -23,15 +23,19 @@ data class PermissionGrantResultLauncher(
             onAlreadyGranted()
         }
     }
+
     private fun isGranted(): Boolean {
-        return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED
+        return ContextCompat.checkSelfPermission(
+            context,
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
     }
 }
 
 @Composable
 fun rememberPermissionGrantResult(
     permission: String,
-    onGrant: () -> Unit
+    onGrant: () -> Unit,
 ): PermissionGrantResultLauncher {
     val context = LocalContext.current
     val launcher = rememberLauncherForActivityResult(
