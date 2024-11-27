@@ -5,10 +5,10 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.window.DialogProperties
-import io.github.lanlacope.rewheel.composeable.ui.dialog.DialogBox
-import io.github.lanlacope.rewheel.composeable.ui.lazy.option.LazyOption
-import io.github.lanlacope.rewheel.composeable.ui.lazy.option.checkBox
-import io.github.lanlacope.collection.function.toggle
+import io.github.lanlacope.collection.collection.toggle
+import io.github.lanlacope.rewheel.ui.dialog.DialogBox
+import io.github.lanlacope.rewheel.ui.lazy.option.LazyOption
+import io.github.lanlacope.rewheel.ui.lazy.option.checkBox
 
 @Composable
 fun <T> CheckBoxDialog(

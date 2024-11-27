@@ -1,8 +1,7 @@
 package io.github.lanlacope.rewheel.ui.busy.option
 
 import androidx.compose.ui.Modifier
-import io.github.lanlacope.rewheel.composeable.ui.action.option.OptionRadioButton
-import io.github.lanlacope.collection.function.keyList
+import io.github.lanlacope.collection.collection.keyList
 
 inline fun <K> BusyOptionScope.radioButton(
     options: Map<K, String>,

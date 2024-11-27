@@ -11,9 +11,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
-import io.github.lanlacope.rewheel.composeable.ui.busy.manu.BusyManu
-import io.github.lanlacope.rewheel.composeable.ui.busy.option.text
-import io.github.lanlacope.rewheel.composeable.ui.button.layout.ManuButton
+import io.github.lanlacope.rewheel.ui.busy.manu.BusyManu
+import io.github.lanlacope.rewheel.ui.busy.option.text
+import io.github.lanlacope.rewheel.ui.button.layout.ManuButton
 
 @Composable
 internal fun ExampleBusyManu() {

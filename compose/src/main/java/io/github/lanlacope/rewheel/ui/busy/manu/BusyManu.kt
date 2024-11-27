@@ -8,8 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
-import io.github.lanlacope.rewheel.composeable.ui.busy.option.BusyOption
-import io.github.lanlacope.rewheel.composeable.ui.busy.option.BusyOptionScope
+import io.github.lanlacope.rewheel.ui.busy.option.BusyOption
+import io.github.lanlacope.rewheel.ui.busy.option.BusyOptionScope
 
 @Composable
 fun BusyManu(

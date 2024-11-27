@@ -90,6 +90,8 @@ dependencies {
     api(libs.androidx.compose.material3)
     api(libs.androidx.compose.foundation)
     api(libs.androidx.compose.constraintlayout)
+    implementation(project(":collection"))
+    project(":collection")
 
     androidTestApi(platform(libs.androidx.compose.bom))
     androidTestApi(libs.androidx.compose.ui.test.junit4)

@@ -9,9 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.lanlacope.rewheel.composeable.ui.busy.BusyColumn
-import io.github.lanlacope.rewheel.composeable.ui.busy.BusyItemScope
-import io.github.lanlacope.rewheel.composeable.ui.busy.BusyListScope
+import io.github.lanlacope.rewheel.ui.busy.BusyColumn
+import io.github.lanlacope.rewheel.ui.busy.BusyItemScope
+import io.github.lanlacope.rewheel.ui.busy.BusyListScope
 
 @Composable
 fun BusyOption(

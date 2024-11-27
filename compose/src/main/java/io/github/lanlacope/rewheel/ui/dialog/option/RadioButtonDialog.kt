@@ -6,10 +6,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.window.DialogProperties
-import io.github.lanlacope.rewheel.composeable.ui.dialog.DialogBox
-import io.github.lanlacope.rewheel.composeable.ui.lazy.option.LazyOption
-import io.github.lanlacope.rewheel.composeable.ui.lazy.option.radioButton
-import io.github.lanlacope.collection.function.keyList
+import io.github.lanlacope.collection.collection.keyList
+import io.github.lanlacope.rewheel.ui.dialog.DialogBox
+import io.github.lanlacope.rewheel.ui.lazy.option.LazyOption
+import io.github.lanlacope.rewheel.ui.lazy.option.radioButton
 
 @Composable
 fun <T> RadioButtonDialog(

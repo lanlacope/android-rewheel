@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import io.github.lanlacope.rewheel.composeable.ui.button.RowButton
+import io.github.lanlacope.rewheel.ui.button.RowButton
 
 @Composable
 fun OptionText(
