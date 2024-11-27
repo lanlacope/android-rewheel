@@ -20,5 +20,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "android-rewheel"
-include(":rewheel")
-include(":lanlacopetest")
+include(":example")
+include(":compose")
+include(":collection")
