@@ -4,8 +4,6 @@ fun <K, V> Map<K, V>.keyList(): List<K> {
     return this.keys.toList()
 }
 
-// TODO: mutableStateSet, SnapShotStateSetが安定版になるまでのもの
-fun <T> MutableCollection<T>.toggle(element: T) {
-    if (contains(element)) this.remove(element)
-    else this.add(element)
+fun <K, V> Map<K, V>.forEachIndexed(action: (index: Int, Map.Entry<K, V>) -> Unit) {
+    this.entries.forEachIndexed { index, entry ->  action(index, entry) }
 }
