@@ -3,7 +3,7 @@ package io.github.lanlacope.collection.json
 import org.json.JSONArray
 import org.json.JSONObject
 
-inline fun <reified T> JSONArray.autoGet(): (Int) -> T {
+inline fun <reified T> JSONArray.autoGet(): (index: Int) -> T {
     return when (T::class) {
         Boolean::class -> { index -> getBoolean(index) as T }
         Double::class -> { index -> getDouble(index) as T }
@@ -17,7 +17,7 @@ inline fun <reified T> JSONArray.autoGet(): (Int) -> T {
     }
 }
 
-inline fun <reified T> JSONArray.autoOpt(fallback: T?): (Int) -> T? {
+inline fun <reified T> JSONArray.autoOpt(fallback: T?): (index: Int) -> T? {
     return when (T::class) {
         Boolean::class -> { index -> optBoolean(index, fallback as? Boolean ?: false) as? T }
         Double::class -> { index -> optDouble(index, fallback as? Double ?: 0.0) as? T }
