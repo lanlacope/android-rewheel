@@ -1,6 +1,8 @@
 package io.github.lanlacope.compose.ui.dialog
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.ui.window.Dialog
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
@@ -35,7 +38,13 @@ fun BasicDialog(
             val screenHeight = configuration.screenHeightDp.dp
 
             Surface(
-                modifier = Modifier.heightIn(max = screenHeight),
+                modifier = Modifier
+                    .heightIn(max = screenHeight)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null,
+                        onClick = { /* do nothing */ },
+                    ),
                 content = content
             )
         }
@@ -59,7 +68,15 @@ fun BasicDialog(
             val configuration = LocalConfiguration.current
             val screenHeight = configuration.screenHeightDp.dp
 
-            Surface(modifier = Modifier.heightIn(max = screenHeight)) {
+            Surface(
+                modifier = Modifier
+                    .heightIn(max = screenHeight)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null,
+                        onClick = { /* do nothing */ },
+                    )
+            ) {
                 ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
 
                     val (titleRef, contentRef, buttonRef) = createRefs()
@@ -130,7 +147,15 @@ fun BasicDialog(
             val configuration = LocalConfiguration.current
             val screenHeight = configuration.screenHeightDp.dp
 
-            Surface(modifier = Modifier.heightIn(max = screenHeight)) {
+            Surface(
+                modifier = Modifier
+                    .heightIn(max = screenHeight)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null,
+                        onClick = { /* do nothing */ },
+                    )
+            ) {
                 ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
 
                     val (titleRef, contentRef, buttonRef) = createRefs()

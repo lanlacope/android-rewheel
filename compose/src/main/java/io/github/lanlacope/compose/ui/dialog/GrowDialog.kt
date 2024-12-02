@@ -15,8 +15,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.systemBars
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -65,21 +63,24 @@ fun GrowDialog(
             ) {
                 val configuration = LocalConfiguration.current
                 val screenHeight = configuration.screenHeightDp.dp
-                var dynamicHeight by remember { mutableStateOf(screenHeight / 3) }
+                var bottomSpaceHeight by remember { mutableStateOf(screenHeight / 3) }
 
-                val imeHeight = (WindowInsets.ime.asPaddingValues().calculateBottomPadding()
-                        + WindowInsets.systemBars.asPaddingValues().calculateBottomPadding()
-                        + WindowInsets.statusBars.asPaddingValues().calculateBottomPadding()
-                        )
+                val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
 
-                if (imeHeight > dynamicHeight) {
-                    dynamicHeight = imeHeight
+                if (imeHeight > bottomSpaceHeight) {
+                    bottomSpaceHeight = imeHeight
                 }
                 Surface(
-                    modifier = Modifier.heightIn(max = screenHeight - dynamicHeight),
+                    modifier = Modifier
+                        .heightIn(max = screenHeight - bottomSpaceHeight)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null,
+                            onClick = { /* do nothing */ },
+                        ),
                     content = content
                 )
-                Box(modifier = Modifier.height(dynamicHeight))
+                Box(modifier = Modifier.height(bottomSpaceHeight))
             }
         }
     }
@@ -117,17 +118,22 @@ fun GrowDialog(
 
                 val configuration = LocalConfiguration.current
                 val screenHeight = configuration.screenHeightDp.dp
-                var dynamicHeight by remember { mutableStateOf(screenHeight / 3) }
+                var bottomSpaceHeight by remember { mutableStateOf(screenHeight / 3) }
 
-                val imeHeight = (WindowInsets.ime.asPaddingValues().calculateBottomPadding()
-                        + WindowInsets.systemBars.asPaddingValues().calculateBottomPadding()
-                        + WindowInsets.statusBars.asPaddingValues().calculateBottomPadding()
-                        )
+                val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
 
-                if (imeHeight > dynamicHeight) {
-                    dynamicHeight = imeHeight
+                if (imeHeight > bottomSpaceHeight) {
+                    bottomSpaceHeight = imeHeight
                 }
-                Surface(modifier = Modifier.heightIn(max = screenHeight - dynamicHeight)) {
+                Surface(
+                    modifier = Modifier
+                        .heightIn(max = screenHeight - bottomSpaceHeight)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null,
+                            onClick = { /* do nothing */ },
+                        )
+                    ) {
                     ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
 
                         val (titleRef, contentRef, buttonRef) = createRefs()
@@ -139,7 +145,7 @@ fun GrowDialog(
                                     bottom.linkTo(buttonRef.top)
                                     width = Dimension.matchParent
                                 }
-                                .heightIn(max = screenHeight - dynamicHeight),
+                                .heightIn(max = screenHeight - bottomSpaceHeight),
                             content = content
                         )
 
@@ -176,7 +182,7 @@ fun GrowDialog(
                         }
                     }
                 }
-                Box(modifier = Modifier.height(dynamicHeight))
+                Box(modifier = Modifier.height(bottomSpaceHeight))
             }
         }
     }
@@ -216,17 +222,22 @@ fun GrowDialog(
 
                 val configuration = LocalConfiguration.current
                 val screenHeight = configuration.screenHeightDp.dp
-                var dynamicHeight by remember { mutableStateOf(screenHeight / 3) }
+                var bottomSpaceHeight by remember { mutableStateOf(screenHeight / 3) }
 
-                val imeHeight = (WindowInsets.ime.asPaddingValues().calculateBottomPadding()
-                        + WindowInsets.systemBars.asPaddingValues().calculateBottomPadding()
-                        + WindowInsets.statusBars.asPaddingValues().calculateBottomPadding()
-                        )
+                val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
 
-                if (imeHeight > dynamicHeight) {
-                    dynamicHeight = imeHeight
+                if (imeHeight > bottomSpaceHeight) {
+                    bottomSpaceHeight = imeHeight
                 }
-                Surface(modifier = Modifier.heightIn(max = screenHeight - dynamicHeight)) {
+                Surface(
+                    modifier = Modifier
+                        .heightIn(max = screenHeight - bottomSpaceHeight)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null,
+                            onClick = { /* do nothing */ },
+                        )
+                    ) {
                     ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
 
                         val (titleRef, contentRef, buttonRef) = createRefs()
@@ -279,12 +290,11 @@ fun GrowDialog(
                         }
                     }
                 }
-                Box(modifier = Modifier.height(dynamicHeight))
+                Box(modifier = Modifier.height(bottomSpaceHeight))
             }
         }
     }
 }
-
 
 /*
  * DialogProperties by GrowDialogProperties(decorFitsSystemWindows: Boolean = false)
