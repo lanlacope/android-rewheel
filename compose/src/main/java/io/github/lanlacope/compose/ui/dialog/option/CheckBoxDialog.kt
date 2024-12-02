@@ -6,7 +6,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.window.DialogProperties
 import io.github.lanlacope.collection.collection.toggle
-import io.github.lanlacope.compose.ui.dialog.DialogBox
+import io.github.lanlacope.compose.ui.dialog.BasicDialog
 import io.github.lanlacope.compose.ui.lazy.option.LazyOption
 import io.github.lanlacope.compose.ui.lazy.option.checkBox
 
@@ -24,7 +24,7 @@ fun <T> CheckBoxDialog(
 ) {
     val dCheckedOptions = remember(expanded) { checkedOptions.toMutableStateList() }
 
-    DialogBox(
+    BasicDialog(
         title = title,
         expanded = expanded,
         onConfirm = { onConfirm(dCheckedOptions) },
@@ -56,7 +56,7 @@ fun <T> CheckBoxDialog(
 ) {
     val checkedOptions = remember(expanded) { mutableStateListOf<T>() }
 
-    DialogBox(
+    BasicDialog(
         title = title,
         expanded = expanded,
         onConfirm = { onConfirm(checkedOptions) },

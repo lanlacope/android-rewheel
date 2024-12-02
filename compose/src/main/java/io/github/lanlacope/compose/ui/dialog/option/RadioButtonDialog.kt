@@ -7,7 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.window.DialogProperties
 import io.github.lanlacope.collection.collection.keyList
-import io.github.lanlacope.compose.ui.dialog.DialogBox
+import io.github.lanlacope.compose.ui.dialog.BasicDialog
 import io.github.lanlacope.compose.ui.lazy.option.LazyOption
 import io.github.lanlacope.compose.ui.lazy.option.radioButton
 
@@ -25,7 +25,7 @@ fun <T> RadioButtonDialog(
 ) {
     var dSelectedOption by remember(expanded) { mutableStateOf(selectedOption) }
 
-    DialogBox(
+    BasicDialog(
         title = title,
         expanded = expanded,
         onConfirm = { onConfirm(dSelectedOption) },
@@ -57,7 +57,7 @@ fun <T> RadioButtonDialog(
 ) {
     var selectedOption by remember(expanded) { mutableStateOf(options.keyList()[0]) }
 
-    DialogBox(
+    BasicDialog(
         title = title,
         expanded = expanded,
         onConfirm = { onConfirm(selectedOption) },
