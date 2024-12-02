@@ -41,7 +41,7 @@ import androidx.constraintlayout.compose.Dimension
 fun GrowDialog(
     expanded: Boolean,
     onDismissRequest: () -> Unit,
-    properties: GrowDialogProperties,
+    properties: GrowDialogProperties = GrowDialogProperties(),
     content: @Composable () -> Unit,
 ) {
     if (expanded) {
