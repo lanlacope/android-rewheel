@@ -12,8 +12,11 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -60,17 +63,22 @@ fun GrowDialog(
                 verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
                 val configuration = LocalConfiguration.current
                 val screenHeight = configuration.screenHeightDp.dp
                 var dynamicHeight by remember { mutableStateOf(screenHeight / 3) }
 
-                val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
+                val imeHeight = (WindowInsets.ime.asPaddingValues().calculateBottomPadding()
+                        + WindowInsets.systemBars.asPaddingValues().calculateBottomPadding()
+                        + WindowInsets.statusBars.asPaddingValues().calculateBottomPadding()
+                        )
 
                 if (imeHeight > dynamicHeight) {
                     dynamicHeight = imeHeight
                 }
-                Surface(content = content)
+                Surface(
+                    modifier = Modifier.heightIn(max = screenHeight - dynamicHeight),
+                    content = content
+                )
                 Box(modifier = Modifier.height(dynamicHeight))
             }
         }
@@ -111,22 +119,27 @@ fun GrowDialog(
                 val screenHeight = configuration.screenHeightDp.dp
                 var dynamicHeight by remember { mutableStateOf(screenHeight / 3) }
 
-                val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
+                val imeHeight = (WindowInsets.ime.asPaddingValues().calculateBottomPadding()
+                        + WindowInsets.systemBars.asPaddingValues().calculateBottomPadding()
+                        + WindowInsets.statusBars.asPaddingValues().calculateBottomPadding()
+                        )
 
                 if (imeHeight > dynamicHeight) {
                     dynamicHeight = imeHeight
                 }
-                Surface {
+                Surface(modifier = Modifier.heightIn(max = screenHeight - dynamicHeight)) {
                     ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
 
                         val (titleRef, contentRef, buttonRef) = createRefs()
 
                         Surface(
-                            modifier = Modifier.constrainAs(contentRef) {
-                                top.linkTo(titleRef.bottom)
-                                bottom.linkTo(buttonRef.top)
-                                width = Dimension.matchParent
-                            },
+                            modifier = Modifier
+                                .constrainAs(contentRef) {
+                                    top.linkTo(titleRef.bottom)
+                                    bottom.linkTo(buttonRef.top)
+                                    width = Dimension.matchParent
+                                }
+                                .heightIn(max = screenHeight - dynamicHeight),
                             content = content
                         )
 
@@ -205,12 +218,15 @@ fun GrowDialog(
                 val screenHeight = configuration.screenHeightDp.dp
                 var dynamicHeight by remember { mutableStateOf(screenHeight / 3) }
 
-                val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
+                val imeHeight = (WindowInsets.ime.asPaddingValues().calculateBottomPadding()
+                        + WindowInsets.systemBars.asPaddingValues().calculateBottomPadding()
+                        + WindowInsets.statusBars.asPaddingValues().calculateBottomPadding()
+                        )
 
                 if (imeHeight > dynamicHeight) {
                     dynamicHeight = imeHeight
                 }
-                Surface {
+                Surface(modifier = Modifier.heightIn(max = screenHeight - dynamicHeight)) {
                     ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
 
                         val (titleRef, contentRef, buttonRef) = createRefs()
@@ -270,6 +286,9 @@ fun GrowDialog(
 }
 
 
+/*
+ * DialogProperties by GrowDialogProperties(decorFitsSystemWindows: Boolean = false)
+ */
 class GrowDialogProperties(
     dismissOnBackPress: Boolean = true,
     dismissOnClickOutside: Boolean = true,

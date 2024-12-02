@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -12,6 +13,8 @@ import androidx.compose.material3.TextButton
 import androidx.compose.ui.window.Dialog
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
@@ -28,7 +31,13 @@ fun BasicDialog(
             onDismissRequest = onDismissRequest,
             properties = properties
         ) {
-            Surface(content = content)
+            val configuration = LocalConfiguration.current
+            val screenHeight = configuration.screenHeightDp.dp
+
+            Surface(
+                modifier = Modifier.heightIn(max = screenHeight),
+                content = content
+            )
         }
     }
 }
@@ -47,7 +56,10 @@ fun BasicDialog(
             onDismissRequest = onConfirm,
             properties = properties
         ) {
-            Surface {
+            val configuration = LocalConfiguration.current
+            val screenHeight = configuration.screenHeightDp.dp
+
+            Surface(modifier = Modifier.heightIn(max = screenHeight)) {
                 ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
 
                     val (titleRef, contentRef, buttonRef) = createRefs()
@@ -115,7 +127,10 @@ fun BasicDialog(
             onDismissRequest = onCancel,
             properties = properties
         ) {
-            Surface {
+            val configuration = LocalConfiguration.current
+            val screenHeight = configuration.screenHeightDp.dp
+
+            Surface(modifier = Modifier.heightIn(max = screenHeight)) {
                 ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
 
                     val (titleRef, contentRef, buttonRef) = createRefs()
