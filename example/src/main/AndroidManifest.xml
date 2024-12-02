@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Widgit">
         <activity
-            android:name=".MainActivity"
+            android:name="io.github.lanlacope.lanlacopetest.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Widgit">
             <intent-filter>

@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.DialogProperties
 
 @Composable
-fun SimpleDialog(
+fun BasicDialog(
     expanded: Boolean,
     onDismissRequest: () -> Unit,
     properties: DialogProperties,
