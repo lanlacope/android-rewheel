@@ -79,78 +79,79 @@ fun DialogBox(
             )
         }
     }
+}
 
-    @Composable
-    fun DialogBox(
-        title: String,
-        expanded: Boolean,
-        onConfirm: () -> Unit,
-        confirmText: String,
-        onCancel: () -> Unit,
-        cancelText: String,
-        properties: DialogProperties = DialogProperties(),
-        contentAlignment: Alignment = Alignment.TopStart,
-        propagateMinConstraints: Boolean = false,
-        content: @Composable BoxScope.() -> Unit,
+
+@Composable
+fun DialogBox(
+    title: String,
+    expanded: Boolean,
+    onConfirm: () -> Unit,
+    confirmText: String,
+    onCancel: () -> Unit,
+    cancelText: String,
+    properties: DialogProperties = DialogProperties(),
+    contentAlignment: Alignment = Alignment.TopStart,
+    propagateMinConstraints: Boolean = false,
+    content: @Composable BoxScope.() -> Unit
+) {
+    BasicDialog(
+        expanded = expanded,
+        onDismissRequest = onCancel,
+        properties = properties,
     ) {
-        BasicDialog(
-            expanded = expanded,
-            onDismissRequest = onCancel,
-            properties = properties,
-        ) {
-            ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
+        ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
 
-                val (titleRef, contentRef, buttonRef) = createRefs()
+            val (titleRef, contentRef, buttonRef) = createRefs()
 
-                Row(
-                    modifier = Modifier
-                        .constrainAs(titleRef) {
-                            top.linkTo(parent.top)
-                            width = Dimension.matchParent
-                        }
-                        .background(MaterialTheme.colorScheme.background),
-                    horizontalArrangement = Arrangement.Start
-                ) {
-                    Text(
-                        modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
-                        text = title,
-                        style = DialogTitleStyleDefault()
-                    )
-                }
-
-                Row(
-                    modifier = Modifier
-                        .constrainAs(buttonRef) {
-                            bottom.linkTo(parent.bottom)
-                            width = Dimension.matchParent
-                        }
-                        .background(MaterialTheme.colorScheme.background),
-                    horizontalArrangement = Arrangement.End
-                ) {
-                    TextButton(
-                        onClick = onCancel
-                    ) {
-                        Text(text = cancelText)
-                    }
-
-                    TextButton(
-                        onClick = onConfirm
-                    ) {
-                        Text(text = confirmText)
-                    }
-                }
-
-                Box(
-                    modifier = Modifier.constrainAs(contentRef) {
-                        top.linkTo(titleRef.bottom)
-                        bottom.linkTo(buttonRef.top)
+            Row(
+                modifier = Modifier
+                    .constrainAs(titleRef) {
+                        top.linkTo(parent.top)
                         width = Dimension.matchParent
-                    },
-                    contentAlignment = contentAlignment,
-                    propagateMinConstraints = propagateMinConstraints,
-                    content = content
+                    }
+                    .background(MaterialTheme.colorScheme.background),
+                horizontalArrangement = Arrangement.Start
+            ) {
+                Text(
+                    modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
+                    text = title,
+                    style = DialogTitleStyleDefault()
                 )
             }
+
+            Row(
+                modifier = Modifier
+                    .constrainAs(buttonRef) {
+                        bottom.linkTo(parent.bottom)
+                        width = Dimension.matchParent
+                    }
+                    .background(MaterialTheme.colorScheme.background),
+                horizontalArrangement = Arrangement.End
+            ) {
+                TextButton(
+                    onClick = onCancel
+                ) {
+                    Text(text = cancelText)
+                }
+
+                TextButton(
+                    onClick = onConfirm
+                ) {
+                    Text(text = confirmText)
+                }
+            }
+
+            Box(
+                modifier = Modifier.constrainAs(contentRef) {
+                    top.linkTo(titleRef.bottom)
+                    bottom.linkTo(buttonRef.top)
+                    width = Dimension.matchParent
+                },
+                contentAlignment = contentAlignment,
+                propagateMinConstraints = propagateMinConstraints,
+                content = content
+            )
         }
     }
 }
