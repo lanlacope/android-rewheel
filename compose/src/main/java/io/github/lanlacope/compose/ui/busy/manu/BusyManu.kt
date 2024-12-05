@@ -31,6 +31,7 @@ fun BusyManu(
     ) {
         BusyOption(
             contentPadding = BusyManuInnerPaddingValueDefault(),
+            userScrollEnabled = false,
             content = content
         )
     }

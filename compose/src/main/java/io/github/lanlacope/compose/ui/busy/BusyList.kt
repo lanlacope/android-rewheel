@@ -2,6 +2,7 @@ package io.github.lanlacope.compose.ui.busy
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.FlingBehavior
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,7 +45,10 @@ internal fun BusyList(
             Column(
                 modifier = Modifier
                     .padding(contentPadding)
-                    .verticalScroll(rememberScrollState()), // TODO
+                    .then(
+                        if (userScrollEnabled) Modifier.verticalScroll(rememberScrollState()) // TODO
+                        else Modifier
+                    ),
                 verticalArrangement = verticalArrangement,
                 horizontalAlignment = horizontalAlignment
             ) {
@@ -66,7 +70,10 @@ internal fun BusyList(
             Row(
                 modifier = Modifier
                     .padding(contentPadding)
-                    .verticalScroll(rememberScrollState()), // TODO,
+                    .then(
+                        if (userScrollEnabled) Modifier.horizontalScroll(rememberScrollState()) // TODO
+                        else Modifier
+                    ),
                 horizontalArrangement = horizontalArrangement,
                 verticalAlignment = verticalAlignment
             ) {

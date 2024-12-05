@@ -20,10 +20,10 @@
       <SelectionState runConfigName="PreviewTest2">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewTest1">
+      <SelectionState runConfigName="TestGrowDialog">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="TestGrowDialog">
+      <SelectionState runConfigName="BusyMauPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
