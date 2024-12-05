@@ -23,7 +23,7 @@
       <SelectionState runConfigName="PreviewTest1">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewTest3">
+      <SelectionState runConfigName="TestGrowDialog">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

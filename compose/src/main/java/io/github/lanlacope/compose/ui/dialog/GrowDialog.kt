@@ -1,10 +1,10 @@
 package io.github.lanlacope.compose.ui.dialog
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -27,12 +26,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.SecureFlagPolicy
-import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.constraintlayout.compose.Dimension
 
 @Composable
 fun GrowDialog(
@@ -67,9 +66,10 @@ fun GrowDialog(
 
                 val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
 
-                if (imeHeight > bottomSpaceHeight) {
+                if (imeHeight > screenHeight / 3) {
                     bottomSpaceHeight = imeHeight
                 }
+
                 Surface(
                     modifier = Modifier
                         .heightIn(max = screenHeight - bottomSpaceHeight)
@@ -122,9 +122,10 @@ fun GrowDialog(
 
                 val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
 
-                if (imeHeight > bottomSpaceHeight) {
+                if (imeHeight > screenHeight / 3) {
                     bottomSpaceHeight = imeHeight
                 }
+
                 Surface(
                     modifier = Modifier
                         .heightIn(max = screenHeight - bottomSpaceHeight)
@@ -133,52 +134,32 @@ fun GrowDialog(
                             indication = null,
                             onClick = { /* do nothing */ },
                         )
-                    ) {
-                    ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
+                ) {
+                    Column(modifier = Modifier.fillMaxWidth()) {
 
-                        val (titleRef, contentRef, buttonRef) = createRefs()
+                        Text(
+                            modifier = Modifier.padding(
+                                paddingValues = PaddingValues(
+                                    start = 8.dp,
+                                    top = 8.dp
+                                )
+                            ),
+                            text = title,
+                            style = TextStyle(fontSize = 24.sp)
+                        )
 
                         Surface(
                             modifier = Modifier
-                                .constrainAs(contentRef) {
-                                    top.linkTo(titleRef.bottom)
-                                    bottom.linkTo(buttonRef.top)
-                                    width = Dimension.matchParent
-                                }
-                                .heightIn(max = screenHeight - bottomSpaceHeight),
+                                .fillMaxWidth()
+                                .weight(weight = 1f, fill = false),
                             content = content
                         )
 
-                        Row(
-                            modifier = Modifier
-                                .constrainAs(titleRef) {
-                                    top.linkTo(parent.top)
-                                    width = Dimension.matchParent
-                                }
-                                .background(MaterialTheme.colorScheme.background),
-                            horizontalArrangement = Arrangement.Start
+                        TextButton(
+                            modifier = Modifier.align(Alignment.End),
+                            onClick = onConfirm
                         ) {
-                            Text(
-                                modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
-                                text = title,
-                                style = DialogTitleStyleDefault()
-                            )
-                        }
-
-                        Row(
-                            modifier = Modifier
-                                .constrainAs(buttonRef) {
-                                    bottom.linkTo(parent.bottom)
-                                    width = Dimension.matchParent
-                                }
-                                .background(MaterialTheme.colorScheme.background),
-                            horizontalArrangement = Arrangement.End
-                        ) {
-                            TextButton(
-                                onClick = onConfirm
-                            ) {
-                                Text(text = confirmText)
-                            }
+                            Text(text = confirmText)
                         }
                     }
                 }
@@ -226,9 +207,10 @@ fun GrowDialog(
 
                 val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
 
-                if (imeHeight > bottomSpaceHeight) {
+                if (imeHeight > screenHeight / 3) {
                     bottomSpaceHeight = imeHeight
                 }
+
                 Surface(
                     modifier = Modifier
                         .heightIn(max = screenHeight - bottomSpaceHeight)
@@ -238,42 +220,28 @@ fun GrowDialog(
                             onClick = { /* do nothing */ },
                         )
                     ) {
-                    ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
+                    Column(modifier = Modifier.fillMaxWidth()) {
 
-                        val (titleRef, contentRef, buttonRef) = createRefs()
+                        Text(
+                            modifier = Modifier.padding(
+                                paddingValues = PaddingValues(
+                                    start = 8.dp,
+                                    top = 8.dp
+                                )
+                            ),
+                            text = title,
+                            style = TextStyle(fontSize = 24.sp)
+                        )
 
                         Surface(
-                            modifier = Modifier.constrainAs(contentRef) {
-                                top.linkTo(titleRef.bottom)
-                                bottom.linkTo(buttonRef.top)
-                                width = Dimension.matchParent
-                            },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .weight(weight = 1f, fill = false),
                             content = content
                         )
 
                         Row(
-                            modifier = Modifier
-                                .constrainAs(titleRef) {
-                                    top.linkTo(parent.top)
-                                    width = Dimension.matchParent
-                                }
-                                .background(MaterialTheme.colorScheme.background),
-                            horizontalArrangement = Arrangement.Start
-                        ) {
-                            Text(
-                                modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
-                                text = title,
-                                style = DialogTitleStyleDefault()
-                            )
-                        }
-
-                        Row(
-                            modifier = Modifier
-                                .constrainAs(buttonRef) {
-                                    bottom.linkTo(parent.bottom)
-                                    width = Dimension.matchParent
-                                }
-                                .background(MaterialTheme.colorScheme.background),
+                            modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.End
                         ) {
                             TextButton(

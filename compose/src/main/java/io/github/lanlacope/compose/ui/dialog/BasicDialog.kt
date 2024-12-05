@@ -1,26 +1,27 @@
 package io.github.lanlacope.compose.ui.dialog
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.ui.window.Dialog
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.DialogProperties
-import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.constraintlayout.compose.Dimension
 
 @Composable
 fun BasicDialog(
@@ -77,49 +78,31 @@ fun BasicDialog(
                         onClick = { /* do nothing */ },
                     )
             ) {
-                ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
+                Column(modifier = Modifier.fillMaxWidth()) {
 
-                    val (titleRef, contentRef, buttonRef) = createRefs()
+                    Text(
+                        modifier = Modifier.padding(
+                            paddingValues = PaddingValues(
+                                start = 8.dp,
+                                top = 8.dp
+                            )
+                        ),
+                        text = title,
+                        style = TextStyle(fontSize = 24.sp)
+                    )
 
                     Surface(
-                        modifier = Modifier.constrainAs(contentRef) {
-                            top.linkTo(titleRef.bottom)
-                            bottom.linkTo(buttonRef.top)
-                            width = Dimension.matchParent
-                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(weight = 1f, fill = false),
                         content = content
                     )
 
-                    Row(
-                        modifier = Modifier
-                            .constrainAs(titleRef) {
-                                top.linkTo(parent.top)
-                                width = Dimension.matchParent
-                            }
-                            .background(MaterialTheme.colorScheme.background),
-                        horizontalArrangement = Arrangement.Start
+                    TextButton(
+                        onClick = onConfirm,
+                        modifier = Modifier.align(Alignment.End)
                     ) {
-                        Text(
-                            modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
-                            text = title,
-                            style = DialogTitleStyleDefault()
-                        )
-                    }
-
-                    Row(
-                        modifier = Modifier
-                            .constrainAs(buttonRef) {
-                                bottom.linkTo(parent.bottom)
-                                width = Dimension.matchParent
-                            }
-                            .background(MaterialTheme.colorScheme.background),
-                        horizontalArrangement = Arrangement.End
-                    ) {
-                        TextButton(
-                            onClick = onConfirm
-                        ) {
-                            Text(text = confirmText)
-                        }
+                        Text(text = confirmText)
                     }
                 }
             }
@@ -156,42 +139,28 @@ fun BasicDialog(
                         onClick = { /* do nothing */ },
                     )
             ) {
-                ConstraintLayout(modifier = Modifier.fillMaxWidth()) {
+                Column(modifier = Modifier.fillMaxWidth()) {
 
-                    val (titleRef, contentRef, buttonRef) = createRefs()
+                        Text(
+                            modifier = Modifier.padding(
+                                paddingValues = PaddingValues(
+                                    start = 8.dp,
+                                    top = 8.dp
+                                )
+                            ),
+                            text = title,
+                            style = TextStyle(fontSize = 24.sp)
+                        )
 
                     Surface(
-                        modifier = Modifier.constrainAs(contentRef) {
-                            top.linkTo(titleRef.bottom)
-                            bottom.linkTo(buttonRef.top)
-                            width = Dimension.matchParent
-                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(weight = 1f, fill = false),
                         content = content
                     )
 
                     Row(
-                        modifier = Modifier
-                            .constrainAs(titleRef) {
-                                top.linkTo(parent.top)
-                                width = Dimension.matchParent
-                            }
-                            .background(MaterialTheme.colorScheme.background),
-                        horizontalArrangement = Arrangement.Start
-                    ) {
-                        Text(
-                            modifier = Modifier.padding(paddingValues = DialogPaddingValueDefault()),
-                            text = title,
-                            style = DialogTitleStyleDefault()
-                        )
-                    }
-
-                    Row(
-                        modifier = Modifier
-                            .constrainAs(buttonRef) {
-                                bottom.linkTo(parent.bottom)
-                                width = Dimension.matchParent
-                            }
-                            .background(MaterialTheme.colorScheme.background),
+                        modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.End
                     ) {
                         TextButton(
