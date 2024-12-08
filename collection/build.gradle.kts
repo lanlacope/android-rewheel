@@ -44,7 +44,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "io.github.lanlacope.android-rewheel"
             artifactId = "collection"
-            version = "1.1.0"
+            version = "1.2.0"
 
             afterEvaluate {
                 from(components["release"])
@@ -76,8 +76,13 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    api(platform(libs.androidx.compose.bom))
+    api(libs.androidx.compose.foundation)
+
+    api(libs.collections.immutable)
+
 }
