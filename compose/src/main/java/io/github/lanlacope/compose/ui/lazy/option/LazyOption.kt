@@ -41,9 +41,9 @@ fun LazyOption(
     }
 }
 
-interface LazyOptionScope : LazyListScope {
+interface LazyOptionScope {
 
-    override fun item(
+    fun option(
         key: Any?,
         contentType: Any?,
         content: @Composable() (LazyItemScope.() -> Unit),
@@ -51,7 +51,7 @@ interface LazyOptionScope : LazyListScope {
         error("The method is not implemented")
     }
 
-    override fun items(
+    fun options(
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,
@@ -62,7 +62,7 @@ interface LazyOptionScope : LazyListScope {
 
     @Deprecated("This feature is not implemented yet", level = DeprecationLevel.ERROR)
     @ExperimentalFoundationApi
-    override fun stickyHeader(
+    fun stickyHeader(
         key: Any?,
         contentType: Any?,
         content: @Composable() (LazyItemScope.() -> Unit),
@@ -74,7 +74,7 @@ internal class LazyOptionScopeImpl(
     private val lazyListScope: LazyListScope,
 ) : LazyOptionScope, LazyListScope by lazyListScope {
 
-    override fun item(
+    override fun option(
         key: Any?,
         contentType: Any?,
         content: @Composable LazyItemScope.() -> Unit,
@@ -82,7 +82,7 @@ internal class LazyOptionScopeImpl(
         lazyListScope.item(key, contentType, content)
     }
 
-    override fun items(
+    override fun options(
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,

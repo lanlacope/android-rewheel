@@ -35,13 +35,13 @@ fun BusyOption(
         flingBehavior = flingBehavior,
         userScrollEnabled = userScrollEnabled,
     ) {
-        content(BusyyOptionScopeImpl(this))
+        content(BusyOptionScopeImpl(this))
     }
 }
 
-interface BusyOptionScope : BusyListScope {
+interface BusyOptionScope {
 
-    override fun item(
+    fun option(
         key: Any?,
         contentType: Any?,
         content: @Composable() (BusyItemScope.() -> Unit),
@@ -49,7 +49,7 @@ interface BusyOptionScope : BusyListScope {
         error("The method is not implemented")
     }
 
-    override fun items(
+    fun options(
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,
@@ -60,7 +60,7 @@ interface BusyOptionScope : BusyListScope {
 
     @Deprecated("This feature is not implemented yet", level = DeprecationLevel.ERROR)
     @ExperimentalFoundationApi
-    override fun stickyHeader(
+    fun stickyHeader(
         key: Any?,
         contentType: Any?,
         content: @Composable() (BusyItemScope.() -> Unit),
@@ -68,11 +68,11 @@ interface BusyOptionScope : BusyListScope {
 }
 
 
-internal class BusyyOptionScopeImpl(
+internal class BusyOptionScopeImpl(
     private val busyListScope: BusyListScope,
 ) : BusyOptionScope, BusyListScope by busyListScope {
 
-    override fun item(
+    override fun option(
         key: Any?,
         contentType: Any?,
         content: @Composable BusyItemScope.() -> Unit,
@@ -80,7 +80,7 @@ internal class BusyyOptionScopeImpl(
         busyListScope.item(key, contentType, content)
     }
 
-    override fun items(
+    override fun options(
         count: Int,
         key: ((index: Int) -> Any)?,
         contentType: (index: Int) -> Any?,

@@ -8,7 +8,7 @@ import androidx.compose.ui.window.DialogProperties
 import io.github.lanlacope.collection.collection.toggle
 import io.github.lanlacope.compose.ui.dialog.BasicDialog
 import io.github.lanlacope.compose.ui.lazy.option.LazyOption
-import io.github.lanlacope.compose.ui.lazy.option.checkBox
+import io.github.lanlacope.compose.ui.lazy.option.checkBoxes
 
 @Composable
 fun <T> CheckBoxDialog(
@@ -34,7 +34,7 @@ fun <T> CheckBoxDialog(
         properties = properties
     ) {
         LazyOption {
-            checkBox(
+            checkBoxes(
                 options = options,
                 checked = { dCheckedOptions.contains(it) },
                 onClick = { dCheckedOptions.toggle(it) }
@@ -66,7 +66,7 @@ fun <T> CheckBoxDialog(
         properties = properties
     ) {
         LazyOption {
-            checkBox(
+            checkBoxes(
                 options = options,
                 checked = { checkedOptions.contains(it) },
                 onClick = { checkedOptions.toggle(it) }

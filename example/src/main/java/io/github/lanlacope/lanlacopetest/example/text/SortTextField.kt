@@ -11,7 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.lanlacope.compose.ui.busy.manu.BusyManu
-import io.github.lanlacope.compose.ui.busy.option.text
+import io.github.lanlacope.compose.ui.busy.option.texts
 import io.github.lanlacope.compose.ui.text.manu.TextFieldManu
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 
@@ -32,7 +32,7 @@ internal fun ExampleSortTextField() {
             expanded = shown,
             onDismissRequest = { shown = false }
         ) {
-            text(
+            texts(
                 options = options.associateWith { "Option: $it" },
                 onClick = {
                     text = "Option: $it"

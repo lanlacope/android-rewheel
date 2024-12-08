@@ -8,12 +8,12 @@ import androidx.compose.ui.Modifier
 /*
  * items
  */
-inline fun <T> LazyPagerScope.items(
+inline fun <T> LazyPagerScope.pages(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
     crossinline itemContent: @Composable LazyItemScope.(item: T) -> Unit,
-) = items(
+) = pages(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
@@ -23,12 +23,12 @@ inline fun <T> LazyPagerScope.items(
     }
 }
 
-inline fun <T> LazyPagerScope.itemsIndexed(
+inline fun <T> LazyPagerScope.pagesIndexed(
     items: List<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
     crossinline itemContent: @Composable LazyItemScope.(index: Int, item: T) -> Unit,
-) = items(
+) = pages(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
@@ -38,12 +38,12 @@ inline fun <T> LazyPagerScope.itemsIndexed(
     }
 }
 
-inline fun <T> LazyPagerScope.items(
+inline fun <T> LazyPagerScope.pages(
     items: Array<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
     crossinline itemContent: @Composable LazyItemScope.(item: T) -> Unit,
-) = items(
+) = pages(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
@@ -53,12 +53,12 @@ inline fun <T> LazyPagerScope.items(
     }
 }
 
-inline fun <T> LazyPagerScope.itemsIndexed(
+inline fun <T> LazyPagerScope.pagesIndexed(
     items: Array<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
     crossinline itemContent: @Composable LazyItemScope.(index: Int, item: T) -> Unit,
-) = items(
+) = pages(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
@@ -72,12 +72,12 @@ inline fun <T> LazyPagerScope.itemsIndexed(
 /*
  * animatedItems
  */
-inline fun <T> LazyPagerScope.animateditems(
+inline fun <T> LazyPagerScope.animatedPages(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
     crossinline itemContent: @Composable LazyItemScope.(item: T) -> Unit,
-) = items(
+) = pages(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
@@ -91,12 +91,12 @@ inline fun <T> LazyPagerScope.animateditems(
     }
 }
 
-inline fun <T> LazyPagerScope.animateditemsIndexed(
+inline fun <T> LazyPagerScope.animatedPagesIndexed(
     items: List<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
     crossinline itemContent: @Composable LazyItemScope.(index: Int, item: T) -> Unit,
-) = items(
+) = pages(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }
@@ -110,12 +110,12 @@ inline fun <T> LazyPagerScope.animateditemsIndexed(
     }
 }
 
-inline fun <T> LazyPagerScope.animatedItems(
+inline fun <T> LazyPagerScope.animatedPages(
     items: Array<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
     crossinline itemContent: @Composable LazyItemScope.(item: T) -> Unit,
-) = items(
+) = pages(
     count = items.size,
     key = if (key != null) { index: Int -> key(items[index]) } else null,
     contentType = { index: Int -> contentType(items[index]) }
@@ -129,12 +129,12 @@ inline fun <T> LazyPagerScope.animatedItems(
     }
 }
 
-inline fun <T> LazyPagerScope.animatedItemsIndexed(
+inline fun <T> LazyPagerScope.animatedPagesIndexed(
     items: Array<T>,
     noinline key: ((index: Int, item: T) -> Any)? = null,
     crossinline contentType: (index: Int, item: T) -> Any? = { _, _ -> null },
     crossinline itemContent: @Composable LazyItemScope.(index: Int, item: T) -> Unit,
-) = items(
+) = pages(
     count = items.size,
     key = if (key != null) { index: Int -> key(index, items[index]) } else null,
     contentType = { index -> contentType(index, items[index]) }

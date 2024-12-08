@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 import io.github.lanlacope.compose.ui.busy.manu.BusyManu
-import io.github.lanlacope.compose.ui.busy.option.text
+import io.github.lanlacope.compose.ui.busy.option.texts
 import io.github.lanlacope.compose.ui.button.layout.ManuButton
 
 @Composable
@@ -32,7 +32,7 @@ internal fun ExampleBusyManu() {
             expanded = shown,
             onDismissRequest = { shown = false }
         ) {
-            text(
+            texts(
                 options = options.associateWith { "Option: $it" },
                 onClick = {
                     selected = it

@@ -14,8 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 import io.github.lanlacope.collection.collection.toggle
 import io.github.lanlacope.compose.ui.busy.option.BusyOption
-import io.github.lanlacope.compose.ui.busy.option.checkBox
-import io.github.lanlacope.compose.ui.busy.option.radioButton
+import io.github.lanlacope.compose.ui.busy.option.checkBoxes
+import io.github.lanlacope.compose.ui.busy.option.radioButtons
 
 @Composable
 internal fun ExampleBusyOption() {
@@ -27,13 +27,13 @@ internal fun ExampleBusyOption() {
     var selectedOption by remember { mutableStateOf(1) }
 
     BusyOption(modifier = Modifier.fillMaxWidth()) {
-        checkBox(
+        checkBoxes(
             options = checkBoxOptions.associateWith { "Option: $it" },
             checked = { checkedOptions.contains(it) },
             onClick = { checkedOptions.toggle(it) }
         )
 
-        radioButton(
+        radioButtons(
             options = radioButtonOptions.associateWith { "Option: $it" },
             selected = { selectedOption == it },
             onClick = { selectedOption = it }

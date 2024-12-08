@@ -4,13 +4,13 @@ import androidx.compose.ui.Modifier
 import io.github.lanlacope.collection.collection.keyList
 import io.github.lanlacope.compose.ui.action.option.OptionRadioButton
 
-inline fun <K> LazyOptionScope.radioButton(
+inline fun <K> LazyOptionScope.radioButtons(
     options: Map<K, String>,
     noinline selected: (option: K) -> Boolean,
     crossinline onClick: (option: K) -> Unit,
     noinline key: ((item: K) -> Any)? = null,
     crossinline contentType: (item: K) -> Any? = { null },
-) = items(
+) = options(
     count = options.size,
     key = if (key != null) { index: Int -> key(options.keyList()[index]) } else null,
     contentType = { index: Int -> contentType(options.keyList()[index]) }
@@ -24,13 +24,13 @@ inline fun <K> LazyOptionScope.radioButton(
     )
 }
 
-inline fun <K> LazyOptionScope.radioButtonIndexed(
+inline fun <K> LazyOptionScope.radioButtonsIndexed(
     options: Map<K, String>,
     noinline selected: (index: Int, option: K) -> Boolean,
     crossinline onClick: (index: Int, option: K) -> Unit,
     noinline key: ((index: Int, item: K) -> Any)? = null,
     crossinline contentType: (index: Int, item: K) -> Any? = { _, _ -> null },
-) = items(
+) = options(
     count = options.size,
     key = if (key != null) { index: Int -> key(index, options.keyList()[index]) } else null,
     contentType = { index: Int -> contentType(index, options.keyList()[index]) }
@@ -44,13 +44,13 @@ inline fun <K> LazyOptionScope.radioButtonIndexed(
     )
 }
 
-inline fun <K> LazyOptionScope.animatedRadioButton(
+inline fun <K> LazyOptionScope.animatedRadioButtons(
     options: Map<K, String>,
     noinline selected: (option: K) -> Boolean,
     crossinline onClick: (option: K) -> Unit,
     noinline key: ((item: K) -> Any)? = null,
     crossinline contentType: (item: K) -> Any? = { null },
-) = items(
+) = options(
     count = options.size,
     key = if (key != null) { index: Int -> key(options.keyList()[index]) } else null,
     contentType = { index: Int -> contentType(options.keyList()[index]) }
@@ -66,13 +66,13 @@ inline fun <K> LazyOptionScope.animatedRadioButton(
     )
 }
 
-inline fun <K> LazyOptionScope.animatedRadioButtonIndexed(
+inline fun <K> LazyOptionScope.animatedRadioButtonsIndexed(
     options: Map<K, String>,
     noinline selected: (index: Int, option: K) -> Boolean,
     crossinline onClick: (index: Int, option: K) -> Unit,
     noinline key: ((index: Int, item: K) -> Any)? = null,
     crossinline contentType: (index: Int, item: K) -> Any? = { _, _ -> null },
-) = items(
+) = options(
     count = options.size,
     key = if (key != null) { index: Int -> key(index, options.keyList()[index]) } else null,
     contentType = { index: Int -> contentType(index, options.keyList()[index]) }

@@ -9,7 +9,7 @@ import androidx.compose.ui.window.DialogProperties
 import io.github.lanlacope.collection.collection.keyList
 import io.github.lanlacope.compose.ui.dialog.BasicDialog
 import io.github.lanlacope.compose.ui.lazy.option.LazyOption
-import io.github.lanlacope.compose.ui.lazy.option.radioButton
+import io.github.lanlacope.compose.ui.lazy.option.radioButtons
 
 @Composable
 fun <T> RadioButtonDialog(
@@ -35,7 +35,7 @@ fun <T> RadioButtonDialog(
         properties = properties
     ) {
         LazyOption {
-            radioButton(
+            radioButtons(
                 options = options,
                 selected = { dSelectedOption == it },
                 onClick = { dSelectedOption = it }
@@ -67,7 +67,7 @@ fun <T> RadioButtonDialog(
         properties = properties
     ) {
         LazyOption {
-            radioButton(
+            radioButtons(
                 options = options,
                 selected = { selectedOption == it },
                 onClick = { selectedOption = it }
