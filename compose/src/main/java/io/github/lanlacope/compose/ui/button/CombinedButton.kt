@@ -51,7 +51,7 @@ import androidx.compose.ui.unit.dp
 // TODO: ButtonElevationに対応
 
 @Composable
-fun Button(
+fun CombinedButton(
     modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null,
     onLongClick: () -> Unit,
@@ -103,7 +103,7 @@ fun Button(
 }
 
 @Composable
-fun FloatingActionButton(
+fun CombinedFloatingActionButton(
     modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null,
     onLongClick: () -> Unit,

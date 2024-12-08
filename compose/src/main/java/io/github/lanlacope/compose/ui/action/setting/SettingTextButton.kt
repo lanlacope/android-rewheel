@@ -13,13 +13,13 @@ import io.github.lanlacope.compose.ui.button.RowButton
 
 
 @Composable
-fun SettingTextArea(
+fun SettingTextButton(
     modifier: Modifier = Modifier,
     text: String,
     textStyle: TextStyle = SettingTextStyleDefault(),
     summary: String? = null,
     summaryStyle: TextStyle = SettingSummaryTextStyleDefault(),
-    value: String,
+    value: String? = null,
     valueStyle: TextStyle = SettingValueTextStyleDefault(),
     onClick: () -> Unit,
     innerPadding: PaddingValues = SettingPaddingValuesDefault(),
@@ -41,13 +41,15 @@ fun SettingTextArea(
             summaryStyle = summaryStyle
         )
 
-        Text(
-            modifier = Modifier
-                .align(Alignment.CenterVertically),
+        if (!value.isNullOrEmpty()) {
+            Text(
+                modifier = Modifier
+                    .align(Alignment.CenterVertically),
 
-            text = value,
-            style = valueStyle,
-            fontWeight = FontWeight.Bold
-        )
+                text = value,
+                style = valueStyle,
+                fontWeight = FontWeight.Bold
+            )
+        }
     }
 }
