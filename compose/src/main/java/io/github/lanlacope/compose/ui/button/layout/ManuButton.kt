@@ -56,7 +56,6 @@ fun ManuButton(
                     modifier = Modifier.align(Alignment.CenterVertically)
                 )
             }
-
             content()
         }
     }
