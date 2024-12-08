@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.lanlacope.compose.ui.busy.manu.BusyManu
 import io.github.lanlacope.compose.ui.busy.option.text
-import io.github.lanlacope.compose.ui.text.search.SortTextField
+import io.github.lanlacope.compose.ui.text.manu.TextFieldManu
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 
 @Composable
@@ -22,7 +22,7 @@ internal fun ExampleSortTextField() {
     var shown by remember { mutableStateOf(false) }
     val options = listOf(1, 2, 3, 4, 5, 6, 7)
 
-    SortTextField(
+    TextFieldManu(
         text = text,
         onTextChange = { text = it },
         onClick = { shown = true },

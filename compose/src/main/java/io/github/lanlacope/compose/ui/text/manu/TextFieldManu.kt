@@ -1,4 +1,4 @@
-package io.github.lanlacope.compose.ui.text.search
+package io.github.lanlacope.compose.ui.text.manu
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -26,11 +26,81 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
-import io.github.lanlacope.compose.composeable.ui.click.BoxButton
 import io.github.lanlacope.compose.ui.animation.FadeInAnimated
+import io.github.lanlacope.compose.ui.text.search.SearchTextFieldDefaults
 
 @Composable
-fun SortTextField(
+fun TextFieldManu(
+    text: String,
+    onTextChange: (text: String) -> Unit,
+    modifier: Modifier = Modifier,
+    hintText: String? = null,
+    enabled: Boolean = true,
+    readOnly: Boolean = false,
+    textStyle: TextStyle = LocalTextStyle.current,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
+    useLabel: Boolean = false,
+    interactionSource: MutableInteractionSource? = null,
+    shape: Shape = OutlinedTextFieldDefaults.shape,
+    colors: TextFieldColors = SearchTextFieldDefaults.colors(),
+    content: @Composable ColumnScope.() -> Unit
+) {
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.CenterStart
+    ) {
+        Column {
+            TextField(
+                value = text,
+                onValueChange = onTextChange,
+                modifier = Modifier,
+                placeholder = hintText.takeIf { !useLabel && !it.isNullOrEmpty() }?.let {
+                    {
+                        Text(text = it)
+                    }
+                },
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = Icons.Default.Search.toString()
+                    )
+                },
+                trailingIcon = {
+                    Row(horizontalArrangement = Arrangement.End) {
+                        FadeInAnimated(visible = text.isNotEmpty()) {
+                            IconButton(
+                                onClick = { onTextChange("") }
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Clear,
+                                    contentDescription = Icons.Default.Clear.toString()
+                                )
+                            }
+                        }
+                    }
+                },
+                enabled = enabled,
+                readOnly = readOnly,
+                textStyle = textStyle,
+                isError = isError,
+                visualTransformation = visualTransformation,
+                keyboardOptions = keyboardOptions,
+                keyboardActions = keyboardActions,
+                singleLine = true,
+                interactionSource = interactionSource,
+                colors = colors,
+                shape = shape,
+            )
+            content()
+        }
+    }
+}
+
+@Composable
+fun TextFieldManu(
     text: String,
     onTextChange: (text: String) -> Unit,
     onClick: () -> Unit,
@@ -109,7 +179,77 @@ fun SortTextField(
 }
 
 @Composable
-fun SortTextField(
+fun TextFieldManu(
+    value: TextFieldValue,
+    onValueChange: (value: TextFieldValue) -> Unit,
+    modifier: Modifier = Modifier,
+    hintText: String? = null,
+    enabled: Boolean = true,
+    readOnly: Boolean = false,
+    textStyle: TextStyle = LocalTextStyle.current,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
+    useLabel: Boolean = false,
+    interactionSource: MutableInteractionSource? = null,
+    shape: Shape = OutlinedTextFieldDefaults.shape,
+    colors: TextFieldColors = SearchTextFieldDefaults.colors(),
+    content: @Composable ColumnScope.() -> Unit
+) {
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.CenterStart
+    ) {
+        Column {
+            TextField(
+                value = value,
+                onValueChange = onValueChange,
+                modifier = Modifier,
+                placeholder = hintText.takeIf { !useLabel && !it.isNullOrEmpty() }?.let {
+                    {
+                        Text(text = it)
+                    }
+                },
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = Icons.Default.Search.toString()
+                    )
+                },
+                trailingIcon = {
+                    Row(horizontalArrangement = Arrangement.End) {
+                        FadeInAnimated(visible = value.text.isNotEmpty()) {
+                            IconButton(
+                                onClick = { onValueChange(value.copy(text = "")) }
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Clear,
+                                    contentDescription = Icons.Default.Clear.toString()
+                                )
+                            }
+                        }
+                    }
+                },
+                enabled = enabled,
+                readOnly = readOnly,
+                textStyle = textStyle,
+                isError = isError,
+                visualTransformation = visualTransformation,
+                keyboardOptions = keyboardOptions,
+                keyboardActions = keyboardActions,
+                singleLine = true,
+                interactionSource = interactionSource,
+                colors = colors,
+                shape = shape,
+            )
+            content()
+        }
+    }
+}
+
+@Composable
+fun TextFieldManu(
     value: TextFieldValue,
     onValueChange: (value: TextFieldValue) -> Unit,
     onClick: () -> Unit,
