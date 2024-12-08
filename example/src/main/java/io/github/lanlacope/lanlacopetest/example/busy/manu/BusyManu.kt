@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -20,7 +21,7 @@ internal fun ExampleBusyManu() {
 
     var shown by remember { mutableStateOf(false) }
     val options = listOf(1, 2, 3, 4, 5, 6, 7)
-    var selected by remember { mutableStateOf(1) }
+    var selected by remember { mutableIntStateOf(1) }
 
     ManuButton(
         modifier = Modifier.wrapContentSize(),
