@@ -144,6 +144,7 @@ internal class BusyListScopeImpl : BusyListScope {
         contentType: (index: Int) -> Any?,
         itemContent: @Composable BusyItemScope.(index: Int) -> Unit,
     ) {
+        items.clear()
         for (i in 0 until count) {
             items.add { itemContent(i) }
         }
