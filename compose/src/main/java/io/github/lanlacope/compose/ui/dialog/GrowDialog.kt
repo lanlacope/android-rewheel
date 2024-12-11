@@ -27,11 +27,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.SecureFlagPolicy
+import io.github.lanlacope.compose.unit.toDp
+
+@Composable
+private fun screenHeight(): Dp = LocalConfiguration.current.screenHeightDp.dp
+
+@Composable
+private fun imeHeight(): Dp = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
+
+@Composable
+private fun predictiveHeight(): Dp = 16.sp.toDp()
 
 @Composable
 fun GrowDialog(
@@ -60,14 +71,16 @@ fun GrowDialog(
                 verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                val configuration = LocalConfiguration.current
-                val screenHeight = configuration.screenHeightDp.dp
-                var bottomSpaceHeight by remember { mutableStateOf(screenHeight / 3) }
+                val screenHeight = screenHeight()
+                var bottomSpaceHeight by remember(screenHeight) { mutableStateOf(screenHeight / 3) }
 
-                val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
+                val imeHeight = imeHeight()
+                val predictiveHeight = predictiveHeight()
 
                 if (imeHeight > screenHeight / 3) {
-                    bottomSpaceHeight = imeHeight
+                    if (!(imeHeight < bottomSpaceHeight && (bottomSpaceHeight - imeHeight) < predictiveHeight)) {
+                        bottomSpaceHeight = imeHeight
+                    }
                 }
 
                 Surface(
@@ -115,15 +128,16 @@ fun GrowDialog(
                 verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                val screenHeight = screenHeight()
+                var bottomSpaceHeight by remember(screenHeight) { mutableStateOf(screenHeight / 3) }
 
-                val configuration = LocalConfiguration.current
-                val screenHeight = configuration.screenHeightDp.dp
-                var bottomSpaceHeight by remember { mutableStateOf(screenHeight / 3) }
-
-                val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
+                val imeHeight = imeHeight()
+                val predictiveHeight = predictiveHeight()
 
                 if (imeHeight > screenHeight / 3) {
-                    bottomSpaceHeight = imeHeight
+                    if (!(imeHeight < bottomSpaceHeight && (bottomSpaceHeight - imeHeight) < predictiveHeight)) {
+                        bottomSpaceHeight = imeHeight
+                    }
                 }
 
                 Surface(
@@ -200,15 +214,16 @@ fun GrowDialog(
                 verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                val screenHeight = screenHeight()
+                var bottomSpaceHeight by remember(screenHeight) { mutableStateOf(screenHeight / 3) }
 
-                val configuration = LocalConfiguration.current
-                val screenHeight = configuration.screenHeightDp.dp
-                var bottomSpaceHeight by remember { mutableStateOf(screenHeight / 3) }
-
-                val imeHeight = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
+                val imeHeight = imeHeight()
+                val predictiveHeight = predictiveHeight()
 
                 if (imeHeight > screenHeight / 3) {
-                    bottomSpaceHeight = imeHeight
+                    if (!(imeHeight < bottomSpaceHeight && (bottomSpaceHeight - imeHeight) < predictiveHeight)) {
+                        bottomSpaceHeight = imeHeight
+                    }
                 }
 
                 Surface(
