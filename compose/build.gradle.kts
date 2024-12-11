@@ -50,7 +50,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "io.github.lanlacope.android-rewheel"
             artifactId = "compose"
-            version = "1.2.0"
+            version = "1.2.1"
 
             afterEvaluate {
                 from(components["release"])
