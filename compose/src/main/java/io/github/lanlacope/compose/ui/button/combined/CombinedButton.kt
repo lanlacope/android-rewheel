@@ -54,8 +54,8 @@ import androidx.compose.ui.unit.dp
 fun CombinedButton(
     modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null,
-    onLongClick: () -> Unit,
-    enabled: Boolean = true,
+    onLongClick: (() -> Unit)? = null,
+    onDoubleClick: (() -> Unit)? = null,    enabled: Boolean = true,
     shape: Shape = ButtonDefaults.shape,
     colors: ButtonColors = ButtonDefaults.buttonColors(),
     // elevation: ButtonElevation? = ButtonDefaults.buttonElevation(),
@@ -73,6 +73,7 @@ fun CombinedButton(
     CombinedSurface(
         onClick = onClick,
         onLongClick = onLongClick,
+        onDoubleClick = onDoubleClick,
         modifier = modifier.semantics { role = Role.Button },
         enabled = enabled,
         shape = shape,
@@ -109,6 +110,7 @@ internal fun CombinedSurface(
     modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null,
     onLongClick: (() -> Unit)? = null,
+    onDoubleClick: (() -> Unit)? = null,
     enabled: Boolean = true,
     shape: Shape = RectangleShape,
     color: Color = MaterialTheme.colorScheme.surface,
@@ -141,6 +143,7 @@ internal fun CombinedSurface(
                 enabled = enabled,
                 onClick = onClick ?: { },
                 onLongClick = onLongClick,
+                onDoubleClick = onDoubleClick,
                 indication = indication,
                 interactionSource = interactionSource
             ),

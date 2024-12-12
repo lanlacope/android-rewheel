@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.dp
 fun CombinedFloatingActionButton(
     modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null,
-    onLongClick: () -> Unit,
-    shape: Shape = FloatingActionButtonDefaults.shape,
+    onLongClick: (() -> Unit)? = null,
+    onDoubleClick: (() -> Unit)? = null,    shape: Shape = FloatingActionButtonDefaults.shape,
     containerColor: Color = FloatingActionButtonDefaults.containerColor,
     contentColor: Color = contentColorFor(containerColor),
     // elevation: FloatingActionButtonElevation = FloatingActionButtonDefaults.elevation(),
@@ -36,6 +36,7 @@ fun CombinedFloatingActionButton(
     CombinedSurface(
         onClick = onClick,
         onLongClick = onLongClick,
+        onDoubleClick = onDoubleClick,
         modifier = modifier.semantics { role = Role.Button },
         shape = shape,
         color = containerColor,
