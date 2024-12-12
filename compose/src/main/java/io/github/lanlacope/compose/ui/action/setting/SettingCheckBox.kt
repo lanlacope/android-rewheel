@@ -29,8 +29,8 @@ fun SettingCheckBox(
         SettingText(
             modifier = Modifier
                 .wrapContentSize()
+                .weight(1f)
                 .align(Alignment.CenterVertically),
-
             text = text,
             textStyle = textStyle,
             summary = summary,
@@ -38,8 +38,7 @@ fun SettingCheckBox(
         )
 
         Checkbox(
-            modifier = Modifier
-                .align(Alignment.CenterVertically),
+            modifier = Modifier.align(Alignment.CenterVertically),
             checked = checked,
             onCheckedChange = { onClick() }
         )
