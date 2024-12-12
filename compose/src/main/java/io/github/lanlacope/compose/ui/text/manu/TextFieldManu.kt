@@ -48,15 +48,12 @@ fun TextFieldManu(
     colors: TextFieldColors = SearchTextFieldDefaults.colors(),
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.CenterStart
-    ) {
+    Box {
         Column {
             TextField(
                 value = text,
                 onValueChange = onTextChange,
-                modifier = Modifier,
+                modifier = modifier,
                 placeholder = hintText.takeIf { !useLabel && !it.isNullOrEmpty() }?.let {
                     {
                         Text(text = it)
@@ -119,15 +116,12 @@ fun TextFieldManu(
     colors: TextFieldColors = SearchTextFieldDefaults.colors(),
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.CenterStart
-    ) {
+    Box {
         Column {
             TextField(
                 value = text,
                 onValueChange = onTextChange,
-                modifier = Modifier,
+                modifier = modifier,
                 placeholder = hintText.takeIf { !useLabel && !it.isNullOrEmpty() }?.let {
                     {
                         Text(text = it)
@@ -197,15 +191,12 @@ fun TextFieldManu(
     colors: TextFieldColors = SearchTextFieldDefaults.colors(),
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.CenterStart
-    ) {
+    Box {
         Column {
             TextField(
                 value = value,
                 onValueChange = onValueChange,
-                modifier = Modifier,
+                modifier = modifier,
                 placeholder = hintText.takeIf { !useLabel && !it.isNullOrEmpty() }?.let {
                     {
                         Text(text = it)
@@ -268,15 +259,12 @@ fun TextFieldManu(
     colors: TextFieldColors = SearchTextFieldDefaults.colors(),
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.CenterStart
-    ) {
+    Box {
         Column {
             TextField(
                 value = value,
                 onValueChange = onValueChange,
-                modifier = Modifier,
+                modifier = modifier,
                 placeholder = hintText.takeIf { !useLabel && !it.isNullOrEmpty() }?.let {
                     {
                         Text(text = it)
