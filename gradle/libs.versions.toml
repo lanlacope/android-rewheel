@@ -1,6 +1,6 @@
 [versions]
 myCollection = "1.2.0"
-myCompose = "1.2.2"
+myCompose = "1.2.3"
 
 agp = "8.5.2"
 kotlin = "1.9.0"
