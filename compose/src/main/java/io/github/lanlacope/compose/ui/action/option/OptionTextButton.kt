@@ -10,7 +10,7 @@ import androidx.compose.ui.text.TextStyle
 import io.github.lanlacope.compose.ui.button.RowButton
 
 @Composable
-fun OptionText(
+fun OptionTextButton(
     modifier: Modifier = Modifier,
     text: String,
     textStyle: TextStyle = OptionTextStyleDefault(),

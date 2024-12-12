@@ -2,7 +2,7 @@ package io.github.lanlacope.compose.ui.busy.option
 
 import androidx.compose.ui.Modifier
 import io.github.lanlacope.collection.collection.keyList
-import io.github.lanlacope.compose.ui.action.option.OptionText
+import io.github.lanlacope.compose.ui.action.option.OptionTextButton
 
 inline fun <K> BusyOptionScope.texts(
     options: Map<K, String>,
@@ -15,7 +15,7 @@ inline fun <K> BusyOptionScope.texts(
     contentType = { index: Int -> contentType(options.keyList()[index]) }
 ) {
     val keys = options.keyList()
-    OptionText(
+    OptionTextButton(
         modifier = Modifier.fillParentMaxWidth(),
         onClick = { onClick(keys[it]) },
         text = options[keys[it]]!!
@@ -33,7 +33,7 @@ inline fun <K> BusyOptionScope.textsIndexed(
     contentType = { index: Int -> contentType(index, options.keyList()[index]) }
 ) {
     val keys = options.keyList()
-    OptionText(
+    OptionTextButton(
         modifier = Modifier.fillParentMaxWidth(),
         onClick = { onClick(it, keys[it]) },
         text = options[keys[it]]!!
@@ -51,7 +51,7 @@ inline fun <K> BusyOptionScope.animatedTexts(
     contentType = { index: Int -> contentType(options.keyList()[index]) }
 ) {
     val keys = options.keyList()
-    OptionText(
+    OptionTextButton(
         modifier = Modifier
             .animateItem()
             .fillParentMaxWidth(),
@@ -71,7 +71,7 @@ inline fun <K> BusyOptionScope.animatedTextsIndexed(
     contentType = { index: Int -> contentType(index, options.keyList()[index]) }
 ) {
     val keys = options.keyList()
-    OptionText(
+    OptionTextButton(
         modifier = Modifier
             .animateItem()
             .fillParentMaxWidth(),

@@ -45,7 +45,7 @@ fun CompactOptionText(
     text: String,
     onClick: () -> Unit,
 ) {
-    OptionText(
+    OptionTextButton(
         modifier = modifier,
         text = text,
         textStyle = TextStyle(),
