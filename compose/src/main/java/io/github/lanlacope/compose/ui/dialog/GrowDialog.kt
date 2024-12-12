@@ -33,7 +33,6 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.SecureFlagPolicy
-import io.github.lanlacope.compose.unit.toDp
 
 @Composable
 private fun screenHeight(): Dp = LocalConfiguration.current.screenHeightDp.dp
@@ -41,8 +40,7 @@ private fun screenHeight(): Dp = LocalConfiguration.current.screenHeightDp.dp
 @Composable
 private fun imeHeight(): Dp = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
 
-@Composable
-private fun predictiveHeight(): Dp = 16.sp.toDp()
+private val PREDICTIVE_HEIGHT: Dp = 52.dp
 
 @Composable
 fun GrowDialog(
@@ -75,7 +73,7 @@ fun GrowDialog(
                 var bottomSpaceHeight by remember(screenHeight) { mutableStateOf(screenHeight / 3) }
 
                 val imeHeight = imeHeight()
-                val predictiveHeight = predictiveHeight()
+                val predictiveHeight = PREDICTIVE_HEIGHT
 
                 if (imeHeight > screenHeight / 3) {
                     if (!(imeHeight < bottomSpaceHeight && (bottomSpaceHeight - imeHeight) < predictiveHeight)) {
@@ -132,7 +130,7 @@ fun GrowDialog(
                 var bottomSpaceHeight by remember(screenHeight) { mutableStateOf(screenHeight / 3) }
 
                 val imeHeight = imeHeight()
-                val predictiveHeight = predictiveHeight()
+                val predictiveHeight = PREDICTIVE_HEIGHT
 
                 if (imeHeight > screenHeight / 3) {
                     if (!(imeHeight < bottomSpaceHeight && (bottomSpaceHeight - imeHeight) < predictiveHeight)) {
@@ -218,7 +216,7 @@ fun GrowDialog(
                 var bottomSpaceHeight by remember(screenHeight) { mutableStateOf(screenHeight / 3) }
 
                 val imeHeight = imeHeight()
-                val predictiveHeight = predictiveHeight()
+                val predictiveHeight = PREDICTIVE_HEIGHT
 
                 if (imeHeight > screenHeight / 3) {
                     if (!(imeHeight < bottomSpaceHeight && (bottomSpaceHeight - imeHeight) < predictiveHeight)) {
