@@ -35,7 +35,7 @@ fun SettingTextButton(
         SettingText(
             modifier = Modifier
                 .wrapContentSize()
-                .weight(0.7f)
+                .weight(weight = 0.7f, fill = false)
                 .align(Alignment.CenterVertically),
             text = text,
             textStyle = textStyle.copy(color = colors.textColor),
@@ -45,8 +45,8 @@ fun SettingTextButton(
         if (!value.isNullOrEmpty()) {
             Text(
                 modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .weight(0.3f),
+                    .weight(weight = 0.3f, fill = false)
+                    .align(Alignment.CenterVertically),
                 text = value,
                 style = valueStyle,
                 fontWeight = FontWeight.Bold,

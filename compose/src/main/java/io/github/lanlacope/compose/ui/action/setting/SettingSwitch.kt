@@ -35,7 +35,7 @@ fun SettingSwitch(
         SettingText(
             modifier = Modifier
                 .wrapContentSize()
-                .weight(1f)
+                .weight(weight = 1f, fill = false)
                 .align(Alignment.CenterVertically),
             text = text,
             textStyle = textStyle.copy(color = colors.textColor),

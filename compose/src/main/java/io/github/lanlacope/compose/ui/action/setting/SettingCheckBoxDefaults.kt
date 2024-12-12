@@ -18,7 +18,7 @@ data class SettingCheckBoxColors(
 
 object SettingCheckBoxDefaults {
 
-    fun TextStyle(): TextStyle = TextStyle(fontSize = 18.sp)
+    fun TextStyle(): TextStyle = TextStyle(fontSize = 20.sp)
     fun SummaryTextStyle(): TextStyle = TextStyle()
 
     fun PaddingValues(): PaddingValues = PaddingValues(start = 16.dp, top = 8.dp, end = 24.dp, bottom = 8.dp)

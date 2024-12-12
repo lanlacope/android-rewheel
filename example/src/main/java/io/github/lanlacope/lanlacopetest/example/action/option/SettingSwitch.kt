@@ -24,7 +24,8 @@ internal fun ExampleSettingSwitch() {
            text = "Option",
            summary = "summary",
            checked = checked,
-           onClick = { checked = !checked }
+           onClick = { checked = !checked },
+           modifier = Modifier.fillMaxWidth()
        )
    }
 }

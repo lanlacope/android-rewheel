@@ -34,7 +34,7 @@ fun OptionRadioButton(
         Text(
             modifier = Modifier
                 .wrapContentSize()
-                .weight(1f)
+                .weight(weight = 1f, fill = false)
                 .align(Alignment.CenterVertically),
 
             text = text,
