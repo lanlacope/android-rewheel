@@ -1,4 +1,4 @@
-package io.github.lanlacope.compose.ui.button
+package io.github.lanlacope.compose.ui.button.combined
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -12,10 +12,12 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintLayoutScope
 import androidx.constraintlayout.solver.widgets.Optimizer
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-inline fun ConstraintLayoutButton(
-    noinline onClick: () -> Unit,
+inline fun CombinedConstraintLayoutButton(
     modifier: Modifier = Modifier,
+    noinline onClick: (() -> Unit)? = null,
+    noinline onLongClick: () -> Unit,
     innerPadding: PaddingValues = PaddingValues(),
     optimizationLevel: Int = Optimizer.OPTIMIZATION_STANDARD,
     animateChangesSpec: AnimationSpec<Float>? = null,
@@ -24,8 +26,9 @@ inline fun ConstraintLayoutButton(
 ) {
     ConstraintLayout(
         modifier = modifier
-            .clickable(
-                onClick = onClick
+            .combinedClickable(
+                onClick = onClick ?: { },
+                onLongClick = onLongClick
             )
             .padding(paddingValues = innerPadding),
         optimizationLevel = optimizationLevel,

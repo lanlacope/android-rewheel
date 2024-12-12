@@ -1,4 +1,4 @@
-package io.github.lanlacope.compose.ui.button
+package io.github.lanlacope.compose.ui.button.combined
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Row
@@ -12,10 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-inline fun RowButton(
-    noinline onClick: () -> Unit,
+inline fun CombinedRowButton(
     modifier: Modifier = Modifier,
+    noinline onClick: (() -> Unit)? = null,
+    noinline onLongClick: () -> Unit,
     innerPadding: PaddingValues = PaddingValues(),
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
@@ -23,11 +25,11 @@ inline fun RowButton(
 ) {
     Row(
         modifier = modifier
-            .clickable(
-                onClick = onClick
+            .combinedClickable(
+                onClick = onClick ?: { },
+                onLongClick = onLongClick
             )
             .padding(paddingValues = innerPadding),
-
         horizontalArrangement = horizontalArrangement,
         verticalAlignment = verticalAlignment,
         content = content

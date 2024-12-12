@@ -1,4 +1,4 @@
-package io.github.lanlacope.compose.ui.button
+package io.github.lanlacope.compose.ui.button.combined
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
@@ -12,10 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-inline fun ColumnButton(
-    noinline onClick: () -> Unit,
+inline fun CombinedColumnButton(
     modifier: Modifier = Modifier,
+    noinline onClick: (() -> Unit)? = null,
+    noinline onLongClick: () -> Unit,
     innerPadding: PaddingValues = PaddingValues(),
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
@@ -23,8 +25,9 @@ inline fun ColumnButton(
 ) {
     Column(
         modifier = modifier
-            .clickable(
-                onClick = onClick
+            .combinedClickable(
+                onClick = onClick ?: { },
+                onLongClick = onLongClick
             )
             .padding(paddingValues = innerPadding),
 

@@ -1,4 +1,4 @@
-package io.github.lanlacope.compose.composeable.ui.click
+package io.github.lanlacope.compose.ui.button.combined
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
@@ -11,10 +11,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-inline fun BoxButton(
-    noinline onClick: () -> Unit,
+inline fun CombinedBoxButton(
     modifier: Modifier = Modifier,
+    noinline onClick: (() -> Unit)? = null,
+    noinline onLongClick: () -> Unit,
     innerPadding: PaddingValues = PaddingValues(),
     contentAlignment: Alignment = Alignment.TopStart,
     propagateMinConstraints: Boolean = false,
@@ -22,8 +24,9 @@ inline fun BoxButton(
 ) {
     Box(
         modifier = modifier
-            .clickable(
-                onClick = onClick
+            .combinedClickable(
+                onClick = onClick ?: { },
+                onLongClick = onLongClick
             )
             .padding(paddingValues = innerPadding),
         contentAlignment = contentAlignment,
@@ -32,15 +35,18 @@ inline fun BoxButton(
     )
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun BoxButton(
-    onClick: () -> Unit,
+fun CombinedBoxButton(
+    onClick: (() -> Unit)? = null,
+    onLongClick: () -> Unit,
     modifier: Modifier,
 ) {
     Box(
         modifier = modifier
-            .clickable(
-                onClick = onClick
-            )
+            .combinedClickable(
+                onClick = onClick ?: { },
+                onLongClick = onLongClick
+            ),
     )
 }
