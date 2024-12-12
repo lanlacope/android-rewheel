@@ -1,9 +1,12 @@
 package io.github.lanlacope.compose.ui.action.setting
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchColors
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,15 +17,17 @@ import io.github.lanlacope.compose.ui.button.RowButton
 fun SettingSwitch(
     modifier: Modifier = Modifier,
     text: String,
-    textStyle: TextStyle = SettingTextStyleDefault(),
+    textStyle: TextStyle = SettingSwitchDefaults.TextStyle(),
     summary: String? = null,
-    summaryStyle: TextStyle = SettingSummaryTextStyleDefault(),
+    summaryStyle: TextStyle = SettingSwitchDefaults.SummaryTextStyle(),
     checked: Boolean,
     onClick: () -> Unit,
-    innerPadding: PaddingValues = SettingPaddingValuesDefault(),
+    innerPadding: PaddingValues = SettingSwitchDefaults.PaddingValues(),
+    colors: SettingSwitchColors = SettingSwitchDefaults.colors(),
+    checkBoxColors: SwitchColors = SwitchDefaults.colors()
 ) {
     RowButton(
-        modifier = modifier,
+        modifier = modifier.background(colors.containerColor),
         onClick = onClick,
         horizontalArrangement = Arrangement.SpaceBetween,
         innerPadding = innerPadding
@@ -33,9 +38,9 @@ fun SettingSwitch(
                 .weight(1f)
                 .align(Alignment.CenterVertically),
             text = text,
-            textStyle = textStyle,
+            textStyle = textStyle.copy(color = colors.textColor),
             summary = summary,
-            summaryStyle = summaryStyle
+            summaryStyle = summaryStyle.copy(color = colors.summaryColor)
         )
 
         Switch(

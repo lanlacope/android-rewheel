@@ -1,9 +1,12 @@
 package io.github.lanlacope.compose.ui.action.setting
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxColors
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,15 +16,17 @@ import io.github.lanlacope.compose.ui.button.RowButton
 @Composable
 fun SettingCheckBox(
     modifier: Modifier = Modifier, text: String,
-    textStyle: TextStyle = SettingTextStyleDefault(),
+    textStyle: TextStyle = SettingCheckBoxDefaults.TextStyle(),
     summary: String? = null,
-    summaryStyle: TextStyle = SettingSummaryTextStyleDefault(),
+    summaryStyle: TextStyle = SettingCheckBoxDefaults.SummaryTextStyle(),
     checked: Boolean,
     onClick: () -> Unit,
-    innerPadding: PaddingValues = SettingPaddingValuesDefault(),
+    innerPadding: PaddingValues = SettingCheckBoxDefaults.PaddingValues(),
+    colors: SettingCheckBoxColors = SettingCheckBoxDefaults.colors(),
+    checkBoxColors: CheckboxColors = CheckboxDefaults.colors(),
 ) {
     RowButton(
-        modifier = modifier,
+        modifier = modifier.background(colors.containerColor),
         onClick = onClick,
         horizontalArrangement = Arrangement.SpaceBetween,
         innerPadding = innerPadding
@@ -32,15 +37,16 @@ fun SettingCheckBox(
                 .weight(1f)
                 .align(Alignment.CenterVertically),
             text = text,
-            textStyle = textStyle,
+            textStyle = textStyle.copy(color = colors.textColor),
             summary = summary,
-            summaryStyle = summaryStyle
+            summaryStyle = summaryStyle.copy(color = colors.summaryColor)
         )
 
         Checkbox(
             modifier = Modifier.align(Alignment.CenterVertically),
             checked = checked,
-            onCheckedChange = { onClick() }
+            onCheckedChange = { onClick() },
+            colors = checkBoxColors
         )
     }
 }

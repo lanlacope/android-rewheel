@@ -1,5 +1,6 @@
 package io.github.lanlacope.compose.ui.action.setting
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.wrapContentSize
@@ -16,16 +17,17 @@ import io.github.lanlacope.compose.ui.button.RowButton
 fun SettingTextButton(
     modifier: Modifier = Modifier,
     text: String,
-    textStyle: TextStyle = SettingTextStyleDefault(),
+    textStyle: TextStyle = SettingTextButtonDefaults.TextStyle(),
     summary: String? = null,
-    summaryStyle: TextStyle = SettingSummaryTextStyleDefault(),
+    summaryStyle: TextStyle = SettingTextButtonDefaults.SummaryTextStyle(),
     value: String? = null,
-    valueStyle: TextStyle = SettingValueTextStyleDefault(),
+    valueStyle: TextStyle = SettingTextButtonDefaults.ValueTextStyle(),
     onClick: () -> Unit,
-    innerPadding: PaddingValues = SettingPaddingValuesDefault(),
+    innerPadding: PaddingValues = SettingTextButtonDefaults.PaddingValues(),
+    colors: SettingTextButtonColors = SettingTextButtonDefaults.colors()
 ) {
     RowButton(
-        modifier = modifier,
+        modifier = modifier.background(colors.containerColor),
         onClick = onClick,
         horizontalArrangement = Arrangement.SpaceBetween,
         innerPadding = innerPadding
@@ -35,13 +37,11 @@ fun SettingTextButton(
                 .wrapContentSize()
                 .weight(0.7f)
                 .align(Alignment.CenterVertically),
-
             text = text,
-            textStyle = textStyle,
+            textStyle = textStyle.copy(color = colors.textColor),
             summary = summary,
-            summaryStyle = summaryStyle
+            summaryStyle = summaryStyle.copy(color = colors.summaryColor)
         )
-
         if (!value.isNullOrEmpty()) {
             Text(
                 modifier = Modifier
@@ -49,7 +49,8 @@ fun SettingTextButton(
                     .weight(0.3f),
                 text = value,
                 style = valueStyle,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                color = colors.valueColor
             )
         }
     }
