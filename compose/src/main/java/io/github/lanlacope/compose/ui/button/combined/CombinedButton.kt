@@ -1,4 +1,4 @@
-package io.github.lanlacope.compose.ui.button
+package io.github.lanlacope.compose.ui.button.combined
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -70,7 +70,7 @@ fun CombinedButton(
         0.0.dp // elevation?.shadowElevation(enabled, interactionSource)?.value ?: 0.dp
     val tonalElevation = 0.0.dp //elevation?.tonalElevation(enabled) ?: 0.dp
 
-    Surface(
+    CombinedSurface(
         onClick = onClick,
         onLongClick = onLongClick,
         modifier = modifier.semantics { role = Role.Button },
@@ -102,58 +102,13 @@ fun CombinedButton(
     }
 }
 
-@Composable
-fun CombinedFloatingActionButton(
-    modifier: Modifier = Modifier,
-    onClick: (() -> Unit)? = null,
-    onLongClick: () -> Unit,
-    shape: Shape = FloatingActionButtonDefaults.shape,
-    containerColor: Color = FloatingActionButtonDefaults.containerColor,
-    contentColor: Color = contentColorFor(containerColor),
-    // elevation: FloatingActionButtonElevation = FloatingActionButtonDefaults.elevation(),
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable () -> Unit,
-) {
-    val tonalElevation = 0.0.dp  // elevation.tonalElevation() ?: 0.dp
-    val shadowElevation =
-        0.0.dp //elevation.shadowElevation(interactionSource = interactionSource).value 0.dp
-
-    Surface(
-        onClick = onClick,
-        onLongClick = onLongClick,
-        modifier = modifier.semantics { role = Role.Button },
-        shape = shape,
-        color = containerColor,
-        contentColor = contentColor,
-        tonalElevation = tonalElevation,
-        shadowElevation = shadowElevation,
-        interactionSource = interactionSource,
-    ) {
-        ProvideContentColorTextStyle(
-            contentColor = contentColor,
-            textStyle = MaterialTheme.typography.labelLarge
-        ) {
-            Box(
-                modifier = Modifier
-                    .defaultMinSize(
-                        minWidth = 56.0.dp,
-                        minHeight = 56.0.dp
-                    ),
-                contentAlignment = Alignment.Center,
-            ) {
-                content()
-            }
-        }
-    }
-}
-
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 @NonRestartableComposable
-private fun Surface(
+internal fun CombinedSurface(
     modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null,
-    onLongClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     enabled: Boolean = true,
     shape: Shape = RectangleShape,
     color: Color = MaterialTheme.colorScheme.surface,
@@ -197,7 +152,7 @@ private fun Surface(
 }
 
 @Stable
-private fun Modifier.surface(
+object CombinedButton fun Modifier.surface(
     shape: Shape,
     backgroundColor: Color,
     border: BorderStroke?,
@@ -209,12 +164,12 @@ private fun Modifier.surface(
     .clip(shape)
 
 @Composable
-private fun surfaceColorAtElevation(color: Color, elevation: Dp): Color =
+internal fun surfaceColorAtElevation(color: Color, elevation: Dp): Color =
     MaterialTheme.colorScheme.applyTonalElevation(color, elevation)
 
 @Composable
 @ReadOnlyComposable
-private fun ColorScheme.applyTonalElevation(backgroundColor: Color, elevation: Dp): Color {
+internal fun ColorScheme.applyTonalElevation(backgroundColor: Color, elevation: Dp): Color {
     val tonalElevationEnabled = LocalTonalElevationEnabled.current
     return if (backgroundColor == surface && tonalElevationEnabled) {
         surfaceColorAtElevation(elevation)
@@ -224,7 +179,7 @@ private fun ColorScheme.applyTonalElevation(backgroundColor: Color, elevation: D
 }
 
 @Composable
-private fun ProvideContentColorTextStyle(
+internal fun ProvideContentColorTextStyle(
     contentColor: Color,
     textStyle: TextStyle,
     content: @Composable () -> Unit,
