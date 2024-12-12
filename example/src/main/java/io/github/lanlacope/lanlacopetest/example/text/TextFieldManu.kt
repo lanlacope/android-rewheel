@@ -1,7 +1,7 @@
 package io.github.lanlacope.lanlacopetest.example.text
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -16,7 +16,7 @@ import io.github.lanlacope.compose.ui.text.manu.TextFieldManu
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 
 @Composable
-internal fun ExampleSortTextField() {
+internal fun ExampleTextFieldManu() {
 
     var text by remember { mutableStateOf("") }
     var shown by remember { mutableStateOf(false) }
@@ -26,7 +26,7 @@ internal fun ExampleSortTextField() {
         text = text,
         onTextChange = { text = it },
         onClick = { shown = true },
-        modifier = Modifier.wrapContentSize()
+        modifier = Modifier.fillMaxWidth()
     ) {
         BusyManu(
             expanded = shown,
@@ -45,12 +45,12 @@ internal fun ExampleSortTextField() {
 
 @Preview
 @Composable
-private fun SortTextFieldPreview() {
+private fun TextFieldManuPreview() {
     WidgitTheme {
         Surface(
             modifier = Modifier.fillMaxSize()
         ) {
-            ExampleSortTextField()
+            ExampleTextFieldManu()
         }
     }
 }
