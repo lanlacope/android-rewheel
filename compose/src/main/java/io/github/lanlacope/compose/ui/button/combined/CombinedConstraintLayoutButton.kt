@@ -2,7 +2,6 @@ package io.github.lanlacope.compose.ui.button.combined
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
@@ -17,7 +16,8 @@ import androidx.constraintlayout.solver.widgets.Optimizer
 inline fun CombinedConstraintLayoutButton(
     modifier: Modifier = Modifier,
     noinline onClick: (() -> Unit)? = null,
-    noinline onLongClick: () -> Unit,
+    noinline onLongClick: (() -> Unit)? = null,
+    noinline onDoubleClick: (() -> Unit)? = null,
     innerPadding: PaddingValues = PaddingValues(),
     optimizationLevel: Int = Optimizer.OPTIMIZATION_STANDARD,
     animateChangesSpec: AnimationSpec<Float>? = null,
@@ -28,7 +28,8 @@ inline fun CombinedConstraintLayoutButton(
         modifier = modifier
             .combinedClickable(
                 onClick = onClick ?: { },
-                onLongClick = onLongClick
+                onLongClick = onLongClick,
+                onDoubleClick = onDoubleClick
             )
             .padding(paddingValues = innerPadding),
         optimizationLevel = optimizationLevel,

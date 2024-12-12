@@ -2,7 +2,6 @@ package io.github.lanlacope.compose.ui.button.combined
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.BoxScope
@@ -16,7 +15,8 @@ import androidx.compose.ui.Modifier
 inline fun CombinedBoxButton(
     modifier: Modifier = Modifier,
     noinline onClick: (() -> Unit)? = null,
-    noinline onLongClick: () -> Unit,
+    noinline onLongClick: (() -> Unit)? = null,
+    noinline onDoubleClick: (() -> Unit)? = null,
     innerPadding: PaddingValues = PaddingValues(),
     contentAlignment: Alignment = Alignment.TopStart,
     propagateMinConstraints: Boolean = false,
@@ -26,7 +26,8 @@ inline fun CombinedBoxButton(
         modifier = modifier
             .combinedClickable(
                 onClick = onClick ?: { },
-                onLongClick = onLongClick
+                onLongClick = onLongClick,
+                onDoubleClick = onDoubleClick
             )
             .padding(paddingValues = innerPadding),
         contentAlignment = contentAlignment,
@@ -39,14 +40,16 @@ inline fun CombinedBoxButton(
 @Composable
 fun CombinedBoxButton(
     onClick: (() -> Unit)? = null,
-    onLongClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
+    onDoubleClick: (() -> Unit)? = null,
     modifier: Modifier,
 ) {
     Box(
         modifier = modifier
             .combinedClickable(
                 onClick = onClick ?: { },
-                onLongClick = onLongClick
+                onLongClick = onLongClick,
+                onDoubleClick = onDoubleClick
             ),
     )
 }

@@ -2,7 +2,6 @@ package io.github.lanlacope.compose.ui.button.combined
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ColumnScope
@@ -17,7 +16,8 @@ import androidx.compose.ui.Modifier
 inline fun CombinedColumnButton(
     modifier: Modifier = Modifier,
     noinline onClick: (() -> Unit)? = null,
-    noinline onLongClick: () -> Unit,
+    noinline onLongClick: (() -> Unit)? = null,
+    noinline onDoubleClick: (() -> Unit)? = null,
     innerPadding: PaddingValues = PaddingValues(),
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
@@ -27,7 +27,8 @@ inline fun CombinedColumnButton(
         modifier = modifier
             .combinedClickable(
                 onClick = onClick ?: { },
-                onLongClick = onLongClick
+                onLongClick = onLongClick,
+                onDoubleClick = onDoubleClick
             )
             .padding(paddingValues = innerPadding),
 
