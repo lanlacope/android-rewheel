@@ -94,7 +94,7 @@ fun <T> PagerIndexHelper(
                         .background(contentColor.value)
                 ) {
                     Text(
-                        text = index.toString(),
+                        text = "${index + 1}",
                         color = textColor.value)
                 }
             }
