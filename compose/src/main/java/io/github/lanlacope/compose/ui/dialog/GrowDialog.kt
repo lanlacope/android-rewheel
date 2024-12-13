@@ -40,7 +40,7 @@ private fun screenHeight(): Dp = LocalConfiguration.current.screenHeightDp.dp
 @Composable
 private fun imeHeight(): Dp = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
 
-private val PREDICTIVE_HEIGHT: Dp = 52.dp
+private val PREDICTIVE_HEIGHT: Dp = 60.dp
 
 @Composable
 fun GrowDialog(
