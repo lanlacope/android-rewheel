@@ -18,7 +18,7 @@ data class SettingTextButtonColors(
 object SettingTextButtonDefaults {
 
     fun TextStyle(): TextStyle = TextStyle(fontSize = 20.sp)
-    fun SummaryTextStyle(): TextStyle = TextStyle()
+    fun SummaryTextStyle(): TextStyle = TextStyle(fontSize = 14.sp)
     fun ValueTextStyle(): TextStyle = TextStyle(fontSize = 16.sp)
 
     fun PaddingValues(): PaddingValues = PaddingValues(start = 16.dp, top = 8.dp, end = 24.dp, bottom = 8.dp)

@@ -2,8 +2,6 @@ package io.github.lanlacope.compose.ui.action.setting
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -19,7 +17,7 @@ data class SettingCheckBoxColors(
 object SettingCheckBoxDefaults {
 
     fun TextStyle(): TextStyle = TextStyle(fontSize = 20.sp)
-    fun SummaryTextStyle(): TextStyle = TextStyle()
+    fun SummaryTextStyle(): TextStyle = TextStyle(fontSize = 14.sp)
 
     fun PaddingValues(): PaddingValues = PaddingValues(start = 16.dp, top = 8.dp, end = 24.dp, bottom = 8.dp)
 
