@@ -5,6 +5,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyListState
@@ -27,7 +28,7 @@ import kotlinx.coroutines.launch
 private const val ITEMS_FIRST = 0
 
 @Composable
-fun <T> PagerIndexHelper(
+fun <T> RoundedPagerHelperIndexed(
     items: List<T>,
     state: LazyListState,
     modifier: Modifier = Modifier,
@@ -79,18 +80,13 @@ fun <T> PagerIndexHelper(
                     label = "Pager"
                 )
 
-                val centerSize = animateDpAsState(
-                    targetValue = if (index == nowIndex) 50.dp else 30.dp,
-                    label = "Pager"
-                )
-
                 BoxButton(
                     contentAlignment = Alignment.Center,
                     onClick = { scope.launch { state.animateScrollToItem(index) } },
                     modifier = Modifier
                         .padding(4.dp)
                         .clip(CircleShape)
-                        .size(centerSize.value)
+                        .aspectRatio(ratio = 1f, matchHeightConstraintsFirst = true)
                         .background(contentColor.value)
                 ) {
                     Text(
