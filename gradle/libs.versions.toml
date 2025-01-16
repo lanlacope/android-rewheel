@@ -1,9 +1,9 @@
 [versions]
 myCollection = "1.2.0"
-myCompose = "1.2.4"
+myCompose = "1.2.5"
 
 agp = "8.5.2"
-kotlin = "1.9.0"
+kotlin = "1.9.24"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -11,11 +11,11 @@ espressoCore = "3.6.1"
 
 lifecycleRuntimeKtx = "2.8.7"
 appcompat = "1.7.0"
-activityCompose = "1.9.3"
+activityCompose = "1.10.0"
 
 collectionsImmutable = "0.3.5"
 
-composeBom = "2024.12.01"
+composeBom = "2025.01.00"
 composeconstraintlayout = "1.1.0"
 
 
