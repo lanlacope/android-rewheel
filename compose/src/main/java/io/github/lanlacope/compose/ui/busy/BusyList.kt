@@ -44,7 +44,6 @@ internal fun BusyList(
         if (isVertical) {
             Column(
                 modifier = Modifier
-                    .padding(contentPadding)
                     .then(
                         if (userScrollEnabled) Modifier.verticalScroll(rememberScrollState()) // TODO
                         else Modifier
@@ -54,7 +53,9 @@ internal fun BusyList(
             ) {
                 if (!reverseLayout) {
                     for (itemContent in scope.items) {
-                        Box(modifier = Modifier.padding(contentPadding)) {
+                        Box(
+                            modifier = Modifier.padding(contentPadding)
+                        ) {
                             itemContent(BusyItemScopeImpl())
                         }
                     }
@@ -69,7 +70,6 @@ internal fun BusyList(
         } else {
             Row(
                 modifier = Modifier
-                    .padding(contentPadding)
                     .then(
                         if (userScrollEnabled) Modifier.horizontalScroll(rememberScrollState()) // TODO
                         else Modifier

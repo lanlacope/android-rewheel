@@ -28,9 +28,9 @@ fun BusyColumn(
     BusyList(
         modifier = modifier,
         contentPadding = contentPadding,
-        reverseLayout = reverseLayout,
         isVertical = true,
         flingBehavior = flingBehavior,
+        reverseLayout = reverseLayout,
         userScrollEnabled = userScrollEnabled,
         horizontalAlignment = horizontalAlignment,
         verticalArrangement = verticalArrangement,
