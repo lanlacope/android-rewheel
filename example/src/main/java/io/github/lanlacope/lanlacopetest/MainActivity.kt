@@ -8,7 +8,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import io.github.lanlacope.lanlacopetest.test.GrowDialogT
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             WidgitTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    GrowDialogT()
+
                 }
             }
         }
