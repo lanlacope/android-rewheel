@@ -5,9 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material3.Switch
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import io.github.lanlacope.compose.unit.rememberCacheable
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             WidgitTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-
+                    AppTest()
                 }
             }
         }
@@ -25,9 +29,16 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
+fun AppTest() {
+
+    var bool by rememberCacheable("TESTD") {
+        mutableStateOf(false)
+    }
+
+    Switch(
+        checked = bool,
+        onCheckedChange = {
+            bool = !bool
+        }
     )
 }

@@ -91,7 +91,8 @@ dependencies {
     api(libs.androidx.compose.foundation)
     api(libs.androidx.compose.constraintlayout)
 
-    // implementation(project(":collection"))
+    api(libs.androidx.datastore.preferences)
+
     api(libs.my.collection)
     implementation(project(":collection"))
 
