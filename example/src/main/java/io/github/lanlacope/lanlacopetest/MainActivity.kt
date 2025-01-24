@@ -3,6 +3,7 @@ package io.github.lanlacope.lanlacopetest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
@@ -31,14 +32,39 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppTest() {
 
-    var bool by rememberCacheable("TESTD") {
-        mutableStateOf(false)
-    }
+    Column(modifier = Modifier.fillMaxSize()) {
 
-    Switch(
-        checked = bool,
-        onCheckedChange = {
-            bool = !bool
+        var boolA by rememberCacheable("TEST") {
+            mutableStateOf(false)
         }
-    )
+
+        Switch(
+            checked = boolA,
+            onCheckedChange = {
+                boolA = !boolA
+            }
+        )
+
+        var boolB by rememberCacheable("TEST_B") {
+            mutableStateOf(false)
+        }
+
+        Switch(
+            checked = boolB,
+            onCheckedChange = {
+                boolB = !boolB
+            }
+        )
+
+        var boolC by rememberCacheable("TEST_C") {
+            mutableStateOf(false)
+        }
+
+        Switch(
+            checked = boolC,
+            onCheckedChange = {
+                boolC = !boolC
+            }
+        )
+    }
 }

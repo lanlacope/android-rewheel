@@ -1,4 +1,4 @@
-package io.github.lanlacope.compose.effect
+package io.github.lanlacope.compose.launcher
 
 import android.content.Context
 import android.content.pm.PackageManager
