@@ -2,6 +2,7 @@ package io.github.lanlacope.compose.unit
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -39,6 +40,10 @@ fun <T : Any>rememberCacheable(
         runBlocking {
             dataStore.getCache(key, init())
         }
+    }
+
+    LaunchedEffect(*inputs) {
+        dataStore.deleteCache(key)
     }
 
     DisposableEffect(lifecycleOwner) {
