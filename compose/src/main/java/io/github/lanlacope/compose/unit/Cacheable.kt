@@ -28,13 +28,14 @@ import java.io.File
 
 @Composable
 fun <T : Any>rememberCacheable(
+    vararg inputs: Any?,
     key: String,
     init: () -> T
 ): T {
     val lifecycleOwner = LocalLifecycleOwner.current
     val dataStore = rememberCachePreferencesDataStore()
 
-    val savable = rememberSaveable(key = key) {
+    val savable = rememberSaveable(inputs = inputs, key = key) {
         runBlocking {
             dataStore.getCache(key, init())
         }
@@ -44,7 +45,7 @@ fun <T : Any>rememberCacheable(
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_STOP) {
                 runBlocking {
-                    dataStore.setCache(key, savable)
+                    dataStore.setCache(key, savable, init())
                 }
             }
         }
@@ -78,8 +79,17 @@ private suspend fun <T> DataStore<Preferences>.getCache(
 
 private suspend fun <T> DataStore<Preferences>.setCache(
     key: String,
-    value: T
+    value: T,
+    defaultValue: T
 ) {
+    // 初期値は保存しない
+    if (value is MutableState<*>) {
+        if (value.value == (defaultValue as? MutableState<*>)?.value) return
+    }
+    else {
+        if (value == defaultValue) return
+    }
+
     val preferencesKey = createPreferencesKey(value, key)
     if (value is MutableState<*>) {
         this.edit { preferences ->
@@ -89,6 +99,14 @@ private suspend fun <T> DataStore<Preferences>.setCache(
     } else {
         this.edit { preferences ->
             preferences[preferencesKey] = value
+        }
+    }
+}
+
+private suspend fun DataStore<Preferences>.deleteCache(key: String) {
+    this.edit { preferences ->
+        preferences.asMap().keys.filter { it.name == key }.forEach { key ->
+            preferences.remove(key)
         }
     }
 }
