@@ -14,9 +14,6 @@
       <SelectionState runConfigName="TestGrowDialog">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="TextFieldManuPreview">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="SettingSwitchPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
@@ -24,6 +21,9 @@
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="TestPager">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="TestTextToolbar">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

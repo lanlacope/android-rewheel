@@ -34,7 +34,7 @@ fun AppTest() {
 
     Column(modifier = Modifier.fillMaxSize()) {
 
-        var boolA by rememberCacheable("TEST") {
+        var boolA by rememberCacheable(key = "TEST") {
             mutableStateOf(false)
         }
 
@@ -45,7 +45,7 @@ fun AppTest() {
             }
         )
 
-        var boolB by rememberCacheable("TEST_B") {
+        var boolB by rememberCacheable(key = "TEST_B") {
             mutableStateOf(false)
         }
 
@@ -56,7 +56,7 @@ fun AppTest() {
             }
         )
 
-        var boolC by rememberCacheable("TEST_C") {
+        var boolC by rememberCacheable(key = "TEST_C") {
             mutableStateOf(false)
         }
 
