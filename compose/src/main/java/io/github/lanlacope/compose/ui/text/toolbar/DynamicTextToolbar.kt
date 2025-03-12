@@ -52,10 +52,7 @@ class DynamicTextToolbar(
         onSelectAllRequested: (() -> Unit)?
     ) {
         // return if already shown
-        if (actionMode != null) {
-            return
-        }
-
+        if (actionMode != null) return
 
         val callback = object : ActionMode.Callback {
             override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
