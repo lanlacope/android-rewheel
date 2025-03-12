@@ -54,38 +54,69 @@ class DynamicTextToolbar(
         // return if already shown
         if (actionMode != null) return
 
-        val callback = object : ActionMode.Callback {
-            override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val callback = object : ActionMode.Callback2() {
+                override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
 
-                menuActions.forEach { (id, action) ->
-                    menu.add(Menu.NONE, id, action.order, action.title)
+                    menuActions.forEach { (id, action) ->
+                        menu.add(Menu.NONE, id, action.order, action.title)
+                    }
+                    return true
                 }
-                return true
-            }
-
-            override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
-                menu.clear()
-                menuActions.forEach { (id, action) ->
-                    menu.add(Menu.NONE, id, action.order, action.title)
+                override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
+                    menu.clear()
+                    menuActions.forEach { (id, action) ->
+                        menu.add(Menu.NONE, id, action.order, action.title)
+                    }
+                    return true
                 }
-                return true
+                override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
+                    menuActions[item.itemId]?.onAction?.invoke()
+                    mode.finish()
+                    return true
+                }
+                override fun onDestroyActionMode(mode: ActionMode) {
+                    mode.hide(0)
+                    actionMode = null
+                }
+                override fun onGetContentRect(mode: ActionMode, view: View, outRect: android.graphics.Rect) {
+                    outRect.set(
+                        rect.left.toInt(),
+                        rect.top.toInt(),
+                        rect.right.toInt(),
+                        rect.bottom.toInt()
+                    )
+                }
             }
-            override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
-                menuActions[item.itemId]?.onAction?.invoke()
-                mode.finish()
-                return true
-            }
-
-            override fun onDestroyActionMode(mode: ActionMode) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) mode.hide(0)
-                actionMode = null
-            }
-
-        }
-
-        actionMode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            view.startActionMode(callback, ActionMode.TYPE_FLOATING)
+            actionMode = view.startActionMode(callback, ActionMode.TYPE_FLOATING)
         } else {
+            val callback = object : ActionMode.Callback {
+                override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
+
+                    menuActions.forEach { (id, action) ->
+                        menu.add(Menu.NONE, id, action.order, action.title)
+                    }
+                    return true
+                }
+
+                override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
+                    menu.clear()
+                    menuActions.forEach { (id, action) ->
+                        menu.add(Menu.NONE, id, action.order, action.title)
+                    }
+                    return true
+                }
+
+                override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
+                    menuActions[item.itemId]?.onAction?.invoke()
+                    mode.finish()
+                    return true
+                }
+
+                override fun onDestroyActionMode(mode: ActionMode) {
+                    actionMode = null
+                }
+            }
             view.startActionMode(callback)
         }
     }
