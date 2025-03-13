@@ -1,9 +1,7 @@
 package io.github.lanlacope.compose.ui.button
 
 import androidx.compose.animation.core.AnimationSpec
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
