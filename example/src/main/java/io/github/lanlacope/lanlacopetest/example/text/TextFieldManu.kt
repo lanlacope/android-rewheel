@@ -10,9 +10,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import io.github.lanlacope.compose.ui.busy.manu.BusyManu
-import io.github.lanlacope.compose.ui.busy.option.texts
-import io.github.lanlacope.compose.ui.text.manu.TextFieldManu
+import io.github.lanlacope.rewheel.ui.busy.manu.BusyManu
+import io.github.lanlacope.rewheel.ui.busy.option.texts
+import io.github.lanlacope.rewheel.ui.text.manu.TextFieldManu
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 
 @Composable

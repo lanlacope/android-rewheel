@@ -12,7 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import io.github.lanlacope.compose.util.rememberCacheable
+import io.github.lanlacope.rewheel.util.rememberCacheable
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 
 class MainActivity : ComponentActivity() {

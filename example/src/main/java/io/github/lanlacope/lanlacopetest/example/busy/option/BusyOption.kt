@@ -12,10 +12,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
-import io.github.lanlacope.collection.collection.toggle
-import io.github.lanlacope.compose.ui.busy.option.BusyOption
-import io.github.lanlacope.compose.ui.busy.option.checkBoxes
-import io.github.lanlacope.compose.ui.busy.option.radioButtons
+import io.github.lanlacope.rewheel.ui.busy.option.BusyOption
+import io.github.lanlacope.rewheel.ui.busy.option.checkBoxes
+import io.github.lanlacope.rewheel.ui.busy.option.radioButtons
+import io.github.lanlacope.rewheel.util.collection.toggle
 
 @Composable
 internal fun ExampleBusyOption() {

@@ -11,7 +11,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import io.github.lanlacope.compose.ui.action.setting.SettingSwitch
+import io.github.lanlacope.rewheel.ui.action.setting.SettingSwitch
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
 
 @Composable
