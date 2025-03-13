@@ -51,8 +51,7 @@ android {
 
 dependencies {
 
-    implementation(project(":compose"))
-    implementation(project(":collection"))
+    implementation(project(":army-knife"))
     // implementation(libs.my.compose)
     // implementation(libs.my.collection)
 

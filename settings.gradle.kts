@@ -33,5 +33,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "android-rewheel"
 include(":example")
-include(":compose")
-include(":collection")
+include(":army-knife")

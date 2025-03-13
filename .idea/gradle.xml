@@ -10,8 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/collection" />
-            <option value="$PROJECT_DIR$/compose" />
+            <option value="$PROJECT_DIR$/army-knife" />
             <option value="$PROJECT_DIR$/example" />
           </set>
         </option>
