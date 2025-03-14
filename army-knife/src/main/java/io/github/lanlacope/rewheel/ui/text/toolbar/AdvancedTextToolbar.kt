@@ -40,7 +40,7 @@ fun AdvancedTextToolbar(
     LaunchedEffect(value) {
         textToolbar.clearActions()
 
-        if (Patterns.WEB_URL.matcher(value.getSelectedText().text).matches()) {
+        if (Patterns.WEB_URL.toRegex().matches(value.getSelectedText().text)) {
             val intent = Intent().apply {
                 action = Intent.ACTION_VIEW
                 data = Uri.parse(value.getSelectedText().text)
