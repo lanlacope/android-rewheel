@@ -43,7 +43,9 @@ fun <T : Any>rememberCacheable(
     }
 
     LaunchedEffect(*inputs) {
-        dataStore.deleteCache(key)
+        runBlocking {
+            dataStore.deleteCache(key)
+        }
     }
 
     DisposableEffect(lifecycleOwner) {
