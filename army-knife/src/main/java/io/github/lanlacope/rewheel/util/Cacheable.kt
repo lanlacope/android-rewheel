@@ -21,6 +21,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
@@ -37,13 +38,13 @@ fun <T : Any>rememberCacheable(
     val dataStore = rememberCachePreferencesDataStore()
 
     val savable = rememberSaveable(inputs = inputs, key = key) {
-        runBlocking {
+        runBlocking(Dispatchers.IO) {
             dataStore.getCache(key, init())
         }
     }
 
     LaunchedEffect(*inputs) {
-        runBlocking {
+        runBlocking(Dispatchers.IO) {
             dataStore.deleteCache(key)
         }
     }
@@ -51,7 +52,7 @@ fun <T : Any>rememberCacheable(
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_STOP) {
-                runBlocking {
+                runBlocking(Dispatchers.IO) {
                     dataStore.setCache(key, savable, init())
                 }
             }
