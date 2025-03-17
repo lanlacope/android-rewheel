@@ -92,10 +92,16 @@ private suspend fun <T> DataStore<Preferences>.setCache(
 ) {
     // 初期値は保存しない
     if (value is MutableState<*>) {
-        if (value.value == (defaultValue as? MutableState<*>)?.value) return
+        if (value.value == (defaultValue as? MutableState<*>)?.value){
+            deleteCache(key)
+            return
+        }
     }
     else {
-        if (value == defaultValue) return
+        if (value == defaultValue) {
+            deleteCache(key)
+            return
+        }
     }
 
     val preferencesKey = createPreferencesKey(value, key)
