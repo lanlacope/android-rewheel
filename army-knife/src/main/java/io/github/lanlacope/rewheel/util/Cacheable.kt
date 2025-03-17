@@ -38,7 +38,7 @@ fun <T : Any>rememberCacheable(
     val dataStore = rememberCachePreferencesDataStore()
 
     val savable = rememberSaveable(inputs = inputs, key = key) {
-        runBlocking(Dispatchers.IO) {
+        runBlocking {
             dataStore.getCache(key, init())
         }
     }
