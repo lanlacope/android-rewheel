@@ -23,12 +23,25 @@ fun TextFieldValue.isNotSelectedNone(): Boolean {
     return !isSelectedNone()
 }
 
+fun TextFieldValue.isSelectedPrefix(): Boolean {
+    val breakPositions = text.indices.filter { i -> text[i] == '\n' }.map { it + 1 }
+    return selection.start == 0 || selection.start in breakPositions
+}
+
 fun TextFieldValue.getTextBeforeSelectionPrefix(): AnnotatedString {
     return getTextBeforeSelection(selection.min)
 }
 
 fun TextFieldValue.getTextAfterSelectionSuffix(): AnnotatedString {
     return getTextAfterSelection(text.length - selection.max)
+}
+
+fun TextFieldValue.appendText(text: String): TextFieldValue {
+    val newText = buildAnnotatedString {
+        append(this@appendText.text)
+        append(text)
+    }
+    return this.copy(annotatedString = newText)
 }
 
 fun TextFieldValue.insertText(text: AnnotatedString): TextFieldValue {
