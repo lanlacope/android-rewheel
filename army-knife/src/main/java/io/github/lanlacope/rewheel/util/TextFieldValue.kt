@@ -23,19 +23,19 @@ fun TextFieldValue.isNotSelectedNone(): Boolean {
     return !isSelectedNone()
 }
 
-fun TextFieldValue.getTextBeforeSelection(): AnnotatedString {
+fun TextFieldValue.getTextBeforeSelectionPrefix(): AnnotatedString {
     return getTextBeforeSelection(selection.min)
 }
 
-fun TextFieldValue.getTextAfterSelection(): AnnotatedString {
+fun TextFieldValue.getTextAfterSelectionSuffix(): AnnotatedString {
     return getTextAfterSelection(text.length - selection.max)
 }
 
 fun TextFieldValue.insertText(text: AnnotatedString): TextFieldValue {
     val newText = buildAnnotatedString {
-        append(getTextBeforeSelection())
+        append(getTextBeforeSelectionPrefix())
         append(text)
-        append(getTextAfterSelection())
+        append(getTextAfterSelectionSuffix())
     }
     val newCursor = selection.min + text.text.length
     return this.copy(annotatedString = newText, selection = TextRange(newCursor, newCursor))
@@ -46,8 +46,8 @@ fun TextFieldValue.removeSelectedText(): TextFieldValue {
     if (isSelectedNone()) return this
 
     val newText = buildAnnotatedString {
-        append(getTextBeforeSelection())
-        append(getTextAfterSelection())
+        append(getTextBeforeSelectionPrefix())
+        append(getTextAfterSelectionSuffix())
     }
     return this.copy(annotatedString = newText, selection = TextRange(selection.min, selection.min))
 }
