@@ -93,7 +93,7 @@ dependencies {
     api(libs.androidx.navigation.compose)
     api(libs.androidx.compose.constraintlayout)
 
-    api(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore.preferences)
 
     implementation(libs.androidx.core.ktx)
 
