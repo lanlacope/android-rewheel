@@ -89,6 +89,8 @@ dependencies {
     api(libs.androidx.composeui.tooling.preview)
     api(libs.androidx.compose.material3)
     api(libs.androidx.compose.foundation)
+
+    api(libs.androidx.navigation.compose)
     api(libs.androidx.compose.constraintlayout)
 
     api(libs.androidx.datastore.preferences)
