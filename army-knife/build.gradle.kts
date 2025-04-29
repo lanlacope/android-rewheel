@@ -95,6 +95,8 @@ dependencies {
 
     api(libs.androidx.datastore.preferences)
 
+    implementation(libs.androidx.core.ktx)
+
     androidTestApi(platform(libs.androidx.compose.bom))
     androidTestApi(libs.androidx.compose.ui.test.junit4)
     debugApi(libs.androidx.compose.ui.tooling)
