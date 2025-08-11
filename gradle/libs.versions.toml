@@ -55,7 +55,6 @@ androidx-datastore-preferences = { module = "androidx.datastore:datastore-prefer
 
 collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "collectionsImmutable" }
 
-
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitJupiter" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -63,6 +62,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+jetbrains-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 
