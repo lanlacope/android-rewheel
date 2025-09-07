@@ -10,29 +10,26 @@ import androidx.compose.ui.text.TextLinkStyles
 internal const val LINK_RANGE = "LinkRange"
 
 internal interface CombinedLinkInteractionListener : LinkInteractionListener {
-    fun onClick()
-    fun onLongClick()
 
-    override fun onClick(link: LinkAnnotation) {
-        error("The method is not implemented")
-    }
+    override fun onClick(link: LinkAnnotation)
+    fun onLongClick(link: LinkAnnotation)
 }
 
 fun Builder.addCombinedLink(
     styles: TextLinkStyles,
-    onClick: (() -> Unit)? = null,
-    onLongClick: (() -> Unit)? = null,
+    onClick: ((link: LinkAnnotation) -> Unit)? = null,
+    onLongClick: ((link: LinkAnnotation) -> Unit)? = null,
     start: Int,
     end: Int
  ) {
 
     val listener = object : CombinedLinkInteractionListener {
-        override fun onClick() {
-            onClick?.invoke()
+        override fun onClick(link: LinkAnnotation) {
+            onClick?.invoke(link)
         }
 
-        override fun onLongClick() {
-            onLongClick?.invoke()
+        override fun onLongClick(link: LinkAnnotation) {
+            onLongClick?.invoke(link)
         }
     }
 
@@ -49,8 +46,8 @@ fun Builder.addCombinedLink(
 
 fun Builder.withCombinedLink(
     styles: TextLinkStyles,
-    onClick: (() -> Unit)? = null,
-    onLongClick: (() -> Unit)? = null,
+    onClick: ((link: LinkAnnotation) -> Unit)? = null,
+    onLongClick: ((link: LinkAnnotation) -> Unit)? = null,
     block: Builder.() -> Unit
 ) {
     val start = length
@@ -67,25 +64,27 @@ internal fun AnnotatedString.getLinkRange(position: Int): IntRange {
 }
 
 internal fun AnnotatedString.onClick(range: IntRange) {
-    val listener = this.getLinkAnnotations(range.first, range.last)
+
+    val link = this.getLinkAnnotations(range.first, range.last)
         .firstOrNull {
             it.item is LinkAnnotation.Clickable && (it.item as LinkAnnotation.Clickable).tag == LINK_RANGE
         }
         ?.item
-        ?.linkInteractionListener as? CombinedLinkInteractionListener
+    val listener = link?.linkInteractionListener as? CombinedLinkInteractionListener
 
-    listener?.onClick()
+    listener?.onClick(link)
 }
 
 internal fun AnnotatedString.onLongClick(range: IntRange) {
-    val listener = this.getLinkAnnotations(range.first, range.last)
+
+    val link = this.getLinkAnnotations(range.first, range.last)
         .firstOrNull {
             it.item is LinkAnnotation.Clickable && (it.item as LinkAnnotation.Clickable).tag == LINK_RANGE
         }
         ?.item
-        ?.linkInteractionListener as? CombinedLinkInteractionListener
+    val listener = link?.linkInteractionListener as? CombinedLinkInteractionListener
 
-    listener?.onLongClick()
+    listener?.onLongClick(link)
 }
 
 internal fun AnnotatedString.convertCombinedLink(pressedRange: IntRange): AnnotatedString {
@@ -177,4 +176,5 @@ internal fun AnnotatedString.getPressedStyle(): List<AnnotatedString. Range<Span
                 it.end
             )
         }
+
 }
