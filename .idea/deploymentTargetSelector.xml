@@ -11,9 +11,6 @@
       <SelectionState runConfigName="TestSimpleDialog2">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="TestPager2">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="TestPager">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
@@ -24,6 +21,9 @@
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="CombinedTextPreview">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="A">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

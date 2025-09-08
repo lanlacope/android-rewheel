@@ -94,6 +94,7 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.constraintlayout.solver)
 
     androidTestApi(platform(libs.androidx.compose.bom))
     androidTestApi(libs.androidx.compose.ui.test.junit4)

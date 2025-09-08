@@ -4,12 +4,12 @@ this = "1.0.0-SNAPSHOT"
 
 agp = "8.8.2"
 kotlin = "2.0.0"
-coreKtx = "1.16.0"
+coreKtx = "1.17.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
 
-lifecycleRuntimeKtx = "2.9.2"
+lifecycleRuntimeKtx = "2.9.3"
 appcompat = "1.7.1"
 activityCompose = "1.10.1"
 
@@ -19,7 +19,7 @@ collectionsImmutable = "0.3.5"
 composeBom = "2025.08.01"
 navigationCompose = "2.9.3"
 composeconstraintlayout = "1.1.1"
-
+constraintlayoutSolver = "2.0.4"
 
 material = "1.13.0"
 junitJupiter = "5.8.1"
@@ -47,6 +47,7 @@ androidx-compose-foundation = { group = "androidx.compose.foundation", name = "f
 
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-compose-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "composeconstraintlayout" }
+androidx-constraintlayout-solver = { group = "androidx.constraintlayout", name = "constraintlayout-solver", version.ref = "constraintlayoutSolver" }
 
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
