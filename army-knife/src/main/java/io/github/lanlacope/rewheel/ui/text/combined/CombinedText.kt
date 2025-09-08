@@ -63,8 +63,6 @@ fun CombinedText(
                 onPress = { position ->
                     if (layoutResult == null) return@detectTapGestures
 
-                    println(pressedStyle)
-
                     val offset = layoutResult!!.getOffsetForPosition(position).coerceIn(0, displayText.length - 1)
                     val box = layoutResult!!.getBoundingBox(offset)
 
