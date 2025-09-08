@@ -6,6 +6,7 @@ import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.LinkInteractionListener
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLinkStyles
+import io.github.lanlacope.rewheel.util.collection.asNotNull
 
 internal const val LINK_RANGE = "LinkRange/"
 
@@ -61,19 +62,14 @@ fun Builder.withCombinedLink(
 
 internal fun AnnotatedString.getLinkRange(position: Int): IntRange {
     return this.getStringAnnotations(position, position)
-        .filter { it.tag.startsWith(LINK_RANGE) }
-        .firstOrNull()
+        .firstOrNull { it.tag.startsWith(LINK_RANGE) }
         ?.let { it.start..it.end } ?: IntRange.EMPTY
 }
 
-
 internal fun AnnotatedString.onClick(range: IntRange) {
 
-    val annotations = this.getLinkAnnotations(range.first, range.last)
-        .filter { it.item is LinkAnnotation.Clickable }
-        .map { it.item as LinkAnnotation.Clickable }
-
-    val link = annotations
+    val link = this.getLinkAnnotations(range.first, range.last)
+        .asNotNull<LinkAnnotation.Clickable>()
         .firstOrNull { it.tag.startsWith(LINK_RANGE) }
         ?.let {
             LinkAnnotation.Clickable(
@@ -90,11 +86,8 @@ internal fun AnnotatedString.onClick(range: IntRange) {
 
 internal fun AnnotatedString.onLongClick(range: IntRange) {
 
-    val annotations = this.getLinkAnnotations(range.first, range.last)
-        .filter { it.item is LinkAnnotation.Clickable }
-        .map { it.item as LinkAnnotation.Clickable }
-
-    val link = annotations
+    val link = this.getLinkAnnotations(range.first, range.last)
+        .asNotNull<LinkAnnotation.Clickable>()
         .firstOrNull { it.tag.startsWith(LINK_RANGE) }
         ?.let {
             LinkAnnotation.Clickable(
