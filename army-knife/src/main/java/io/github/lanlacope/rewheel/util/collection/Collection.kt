@@ -13,3 +13,11 @@ fun <T> MutableCollection<T>.toggle(element: T) {
     if (contains(element)) this.remove(element)
     else this.add(element)
 }
+
+inline fun <reified T> List<*>.asOrNull(): List<T?> {
+    return this.map { it as? T }
+}
+
+inline fun <reified T> List<*>.asNotNull(): List<T> {
+    return this.mapNotNull { it as T }
+}
