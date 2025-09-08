@@ -18,7 +18,6 @@ import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -38,7 +37,7 @@ fun <T : Any>rememberCacheable(
     val lifecycleOwner = LocalLifecycleOwner.current
     val dataStore = rememberCachePreferencesDataStore()
 
-    val savable = rememberSaveable(inputs = inputs, key = key) {
+    val savable = rememberSaveable(inputs = inputs) {
         runBlocking {
             dataStore.getCache(key, init())
         }
