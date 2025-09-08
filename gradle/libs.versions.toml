@@ -2,7 +2,7 @@
 androidxDatastorePreferences = "1.1.0"
 this = "1.0.0-SNAPSHOT"
 
-agp = "8.8.2"
+agp = "8.13.0"
 kotlin = "2.0.0"
 coreKtx = "1.17.0"
 junit = "4.13.2"

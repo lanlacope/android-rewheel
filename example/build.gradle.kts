@@ -4,9 +4,15 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.compose)
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
+    }
+}
+
 android {
     namespace = "io.github.lanlacope.rewheel"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "io.github.lanlacope.rewheel"
@@ -33,9 +39,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
