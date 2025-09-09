@@ -3,7 +3,7 @@ androidxDatastorePreferences = "1.1.0"
 this = "1.0.0-SNAPSHOT"
 
 agp = "8.13.0"
-kotlin = "2.0.0"
+kotlin = "2.2.10"
 coreKtx = "1.17.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
@@ -14,7 +14,7 @@ appcompat = "1.7.1"
 activityCompose = "1.10.1"
 
 datastorePreferences = "1.1.7"
-collectionsImmutable = "0.3.5"
+collectionsImmutable = "0.4.0"
 
 composeBom = "2025.08.01"
 navigationCompose = "2.9.3"
@@ -22,7 +22,7 @@ composeconstraintlayout = "1.1.1"
 constraintlayoutSolver = "2.0.4"
 
 material = "1.13.0"
-junitJupiter = "5.8.1"
+junitJupiter = "5.13.4"
 runtimeAndroid = "1.7.6"
 uiText = "1.9.0"
 
