@@ -24,6 +24,7 @@ constraintlayoutSolver = "2.0.4"
 material = "1.13.0"
 junitJupiter = "5.8.1"
 runtimeAndroid = "1.7.6"
+uiText = "1.9.0"
 
 [libraries]
 this-library = { module = "io.github.lanlacope.android-rewheel:army-knife", version.ref = "this" }
@@ -60,6 +61,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitJupiter" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-compose-ui-text = { group = "androidx.compose.ui", name = "ui-text", version.ref = "uiText" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
