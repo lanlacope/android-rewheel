@@ -15,6 +15,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
+import io.github.lanlacope.rewheel.ui.text.combined.CombinedLinkAnnotation
+import io.github.lanlacope.rewheel.ui.text.combined.CombinedLinkInteractionListener
 import io.github.lanlacope.rewheel.ui.text.combined.CombinedText
 import io.github.lanlacope.rewheel.ui.text.combined.withCombinedLink
 
@@ -29,16 +31,27 @@ internal fun ExampleCombinedText() {
 
         append("1つ目の")
         withCombinedLink(
-            tag = "First",
-            styles = TextLinkStyles(
-                style = SpanStyle(color = Color.Blue),
-                pressedStyle = SpanStyle(
-                    color = Color.Red,
-                    textDecoration = TextDecoration.Underline
-                )
-            ),
-            onClick = { Toast.makeText(context, "1", Toast.LENGTH_SHORT).show() },
-            onLongClick = { Toast.makeText(context, (it as LinkAnnotation.Clickable).tag, Toast.LENGTH_SHORT).show() }
+            link = CombinedLinkAnnotation.Clickable(
+                tag = "First",
+                styles = TextLinkStyles(
+                    style = SpanStyle(color = Color.Red),
+                    pressedStyle = SpanStyle(
+                        color = Color.Green,
+                        textDecoration = TextDecoration.Underline
+                    )
+                ),
+                linkInteractionListener = object : CombinedLinkInteractionListener {
+                    override fun onClick(link: LinkAnnotation) {
+                        Toast.makeText(context, "1つ目", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onLongClick(link: LinkAnnotation) {
+                        val tag = (link as LinkAnnotation.Clickable).tag
+                        Toast.makeText(context, tag, Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            )
         ) {
             append("リンク")
         }
@@ -46,16 +59,27 @@ internal fun ExampleCombinedText() {
         appendLine()
         append("2つ目の")
         withCombinedLink(
-            tag = "Second",
-            styles = TextLinkStyles(
-                style = SpanStyle(color = Color.Gray),
-                pressedStyle = SpanStyle(
-                    color = Color.DarkGray,
-                    textDecoration = TextDecoration.Underline
-                )
-            ),
-            onClick = { Toast.makeText(context, "2", Toast.LENGTH_SHORT).show() },
-            onLongClick = { Toast.makeText(context, (it as LinkAnnotation.Clickable).tag, Toast.LENGTH_SHORT).show() }
+            link = CombinedLinkAnnotation.Clickable(
+                tag = "Second",
+                styles = TextLinkStyles(
+                    style = SpanStyle(color = Color.Blue),
+                    pressedStyle = SpanStyle(
+                        color = Color.DarkGray,
+                        textDecoration = TextDecoration.Underline
+                    )
+                ),
+                linkInteractionListener = object : CombinedLinkInteractionListener {
+                    override fun onClick(link: LinkAnnotation) {
+                        Toast.makeText(context, "2つ目", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onLongClick(link: LinkAnnotation) {
+                        val tag = (link as LinkAnnotation.Clickable).tag
+                        Toast.makeText(context, tag, Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            )
         ) {
             append("リンクだよ")
         }

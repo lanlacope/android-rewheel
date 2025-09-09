@@ -3,103 +3,28 @@ package io.github.lanlacope.rewheel.ui.text.combined
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.AnnotatedString.Builder
 import androidx.compose.ui.text.LinkAnnotation
-import androidx.compose.ui.text.LinkInteractionListener
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextLinkStyles
-import io.github.lanlacope.rewheel.util.collection.asNotNull
-
-internal const val LINK_RANGE = "LinkRange/"
-
-internal interface CombinedLinkInteractionListener : LinkInteractionListener {
-
-    override fun onClick(link: LinkAnnotation)
-    fun onLongClick(link: LinkAnnotation)
-}
 
 fun Builder.addCombinedLink(
-    tag: String,
-    styles: TextLinkStyles,
-    onClick: ((link: LinkAnnotation) -> Unit)? = null,
-    onLongClick: ((link: LinkAnnotation) -> Unit)? = null,
+    link: CombinedLinkAnnotation,
     start: Int,
     end: Int
  ) {
-
-    val listener = object : CombinedLinkInteractionListener {
-        override fun onClick(link: LinkAnnotation) {
-            onClick?.invoke(link)
-        }
-
-        override fun onLongClick(link: LinkAnnotation) {
-            onLongClick?.invoke(link)
-        }
+    when(link) {
+        is CombinedLinkAnnotation.Url -> addLink(link.linkAnnotation, start, end)
+        is CombinedLinkAnnotation.Clickable -> addLink(link.linkAnnotation, start, end)
     }
-
-    addLink(
-        clickable = LinkAnnotation.Clickable(
-            tag = LINK_RANGE + tag,
-            styles = styles,
-            linkInteractionListener = listener
-        ),
-        start = start,
-        end = end
-    )
 }
 
 fun Builder.withCombinedLink(
-    tag: String,
-    styles: TextLinkStyles,
-    onClick: ((link: LinkAnnotation) -> Unit)? = null,
-    onLongClick: ((link: LinkAnnotation) -> Unit)? = null,
+    link: CombinedLinkAnnotation.Clickable,
     block: Builder.() -> Unit
 ) {
     val start = length
     block()
     val end = length
 
-    addCombinedLink(tag, styles, onClick, onLongClick, start, end)
-}
-
-internal fun AnnotatedString.getLinkRange(position: Int): IntRange {
-    return this.getStringAnnotations(position, position)
-        .firstOrNull { it.tag.startsWith(LINK_RANGE) }
-        ?.let { it.start..it.end } ?: IntRange.EMPTY
-}
-
-internal fun AnnotatedString.onClick(range: IntRange) {
-
-    val link = this.getLinkAnnotations(range.first, range.last)
-        .asNotNull<LinkAnnotation.Clickable>()
-        .firstOrNull { it.tag.startsWith(LINK_RANGE) }
-        ?.let {
-            LinkAnnotation.Clickable(
-                tag = it.tag.removePrefix(LINK_RANGE),
-                styles = it.styles,
-                linkInteractionListener = it.linkInteractionListener
-            )
-        }
-
-    val listener = link?.linkInteractionListener as? CombinedLinkInteractionListener
-
-    listener?.onClick(link)
-}
-
-internal fun AnnotatedString.onLongClick(range: IntRange) {
-
-    val link = this.getLinkAnnotations(range.first, range.last)
-        .asNotNull<LinkAnnotation.Clickable>()
-        .firstOrNull { it.tag.startsWith(LINK_RANGE) }
-        ?.let {
-            LinkAnnotation.Clickable(
-                tag = it.tag.removePrefix(LINK_RANGE),
-                styles = it.styles,
-                linkInteractionListener = it.linkInteractionListener
-            )
-        }
-
-    val listener = link?.linkInteractionListener as? CombinedLinkInteractionListener
-
-    listener?.onLongClick(link)
+    addCombinedLink(link, start, end)
 }
 
 internal fun AnnotatedString.convertCombinedLink(): AnnotatedString {
@@ -115,9 +40,16 @@ internal fun AnnotatedString.convertCombinedLink(): AnnotatedString {
 
     this.getLinkAnnotations(0, length).forEach {
         when (val link = it.item) {
-            is LinkAnnotation.Url -> builder.addLink(link, it.start, it.end)
+            is LinkAnnotation.Url -> {
+                if (!link.url.startsWith(URL_RANGE)) {
+                    builder.addLink(link, it.start, it.end)
+                } else {
+                    builder.addStyle(link.styles?.style ?: SpanStyle(), it.start, it.end)
+                    builder.addStringAnnotation(link.url, "", it.start, it.end)
+                }
+            }
             is LinkAnnotation.Clickable -> {
-                if (!link.tag.startsWith(LINK_RANGE)) {
+                if (!link.tag.startsWith(CLICKABLE_RANGE)) {
                     builder.addLink(link, it.start, it.end)
                 } else {
                     builder.addStyle(link.styles?.style ?: SpanStyle(), it.start, it.end)
@@ -147,8 +79,11 @@ internal fun AnnotatedString.getPressedStyle(): List<AnnotatedString.Range<SpanS
 
     return this.getLinkAnnotations(0, length)
         .filter {
-            val link = it.item
-            link is LinkAnnotation.Clickable && link.tag.startsWith(LINK_RANGE)
+            when (val link = it.item) {
+                is LinkAnnotation.Url ->  link.url.startsWith(URL_RANGE)
+                is LinkAnnotation.Clickable ->  link.tag.startsWith(CLICKABLE_RANGE)
+                else -> false
+            }
         }
         .map {
             AnnotatedString.Range(
@@ -156,6 +91,53 @@ internal fun AnnotatedString.getPressedStyle(): List<AnnotatedString.Range<SpanS
                 it.start,
                 it.end
             )
+        }
+
+}
+
+internal fun AnnotatedString.getLinkRange(position: Int): IntRange {
+    return this.getStringAnnotations(position, position)
+        .firstOrNull { it.tag.startsWith(URL_RANGE) || it.tag.startsWith(CLICKABLE_RANGE) }
+        ?.let { it.start..it.end } ?: IntRange.EMPTY
+}
+
+internal fun AnnotatedString.onClick(range: IntRange) {
+
+    val link = this.getLink(range)
+
+    println(link)
+    val listener = link?.linkInteractionListener as? CombinedLinkInteractionListener
+
+    listener?.onClick(link)
+}
+
+internal fun AnnotatedString.onLongClick(range: IntRange) {
+
+    val link = this.getLink(range)
+
+    val listener = link?.linkInteractionListener as? CombinedLinkInteractionListener
+
+    listener?.onLongClick(link)
+}
+
+private fun AnnotatedString.getLink(range: IntRange): LinkAnnotation? {
+    return getLinkAnnotations(range.first, range.last)
+        .firstOrNull {
+            when (val link = it.item) {
+                is LinkAnnotation.Url -> link.url.startsWith(URL_RANGE)
+                is LinkAnnotation.Clickable -> link.tag.startsWith(CLICKABLE_RANGE)
+                else -> false
+            }
+        }?.let {
+            when (val link = it.item) {
+                is LinkAnnotation.Url -> link.copy(
+                    url = link.url.removePrefix(URL_RANGE)
+                )
+                is LinkAnnotation.Clickable -> link.copy(
+                    tag = link.tag.removePrefix(CLICKABLE_RANGE)
+                )
+                else -> null
+            }
         }
 
 }
