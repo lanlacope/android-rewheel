@@ -12,13 +12,12 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withLink
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import io.github.lanlacope.lanlacopetest.ui.theme.WidgitTheme
-import io.github.lanlacope.rewheel.ui.text.combined.CombinedLinkAnnotation
 import io.github.lanlacope.rewheel.ui.text.combined.CombinedLinkInteractionListener
 import io.github.lanlacope.rewheel.ui.text.combined.CombinedText
-import io.github.lanlacope.rewheel.ui.text.combined.withCombinedLink
 
 @Composable
 internal fun ExampleCombinedText() {
@@ -30,8 +29,8 @@ internal fun ExampleCombinedText() {
         append("クリック可能なテキスト\n\n")
 
         append("1つ目の")
-        withCombinedLink(
-            link = CombinedLinkAnnotation.Clickable(
+        withLink(
+            link = LinkAnnotation.Clickable(
                 tag = "First",
                 styles = TextLinkStyles(
                     style = SpanStyle(color = Color.Red),
@@ -56,10 +55,12 @@ internal fun ExampleCombinedText() {
             append("リンク")
         }
 
+        withBulletList {  }
+
         appendLine()
         append("2つ目の")
-        withCombinedLink(
-            link = CombinedLinkAnnotation.Clickable(
+        withLink(
+            link = LinkAnnotation.Clickable(
                 tag = "Second",
                 styles = TextLinkStyles(
                     style = SpanStyle(color = Color.Blue),
