@@ -1,6 +1,6 @@
 package io.github.lanlacope.rewheel.ui.text.combined
 
-import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
@@ -59,32 +59,38 @@ fun CombinedText(
     Text(
         text = displayText,
         modifier = modifier.pointerInput(Unit) {
-            detectTapGestures(
-                onPress = { position ->
-                    if (layoutResult == null) return@detectTapGestures
+            awaitPointerEventScope {
+                while (true) {
+                    if (layoutResult == null) return@awaitPointerEventScope
+                    val down = awaitPointerEvent().changes.firstOrNull { it.pressed } ?: continue
 
+                    val position = down.position
                     val offset = layoutResult!!.getOffsetForPosition(position).coerceIn(0, displayText.length - 1)
                     val box = layoutResult!!.getBoundingBox(offset)
+
 
                     pressedRange = if (box.contains(position)) {
                         displayText.getLinkRange(offset)
                     } else {
                         IntRange.EMPTY
+                    }.apply { if (isEmpty()) continue }
+
+                    down.consume()
+
+                    val longPress =
+                        withTimeoutOrNull(viewConfiguration.longPressTimeoutMillis) {
+                            waitForUpOrCancellation()
+                        }
+
+                    if (longPress == null) {
+                        text.onLongClick(pressedRange)
+                    } else if (longPress.pressed.not()) {
+                        text.onClick(pressedRange)
                     }
 
-                    try {
-                        awaitRelease()
-                    } finally {
-                        pressedRange = IntRange.EMPTY
-                    }
-                },
-                onTap = {
-                    text.onClick(pressedRange)
-                },
-                onLongPress = {
-                    text.onLongClick(pressedRange)
+                    pressedRange = IntRange.EMPTY
                 }
-            )
+            }
         },
         color = color,
         fontSize = fontSize,
