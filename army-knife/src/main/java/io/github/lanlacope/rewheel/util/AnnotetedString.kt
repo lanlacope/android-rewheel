@@ -5,8 +5,90 @@ import android.text.style.URLSpan
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.LinkInteractionListener
+import androidx.compose.ui.text.ParagraphStyle
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.text.TtsAnnotation
+import kotlin.sequences.forEach
 
+fun AnnotatedString.Builder.applyStyle(
+    style: SpanStyle, regex: Regex
+) {
+    regex.findAll(this.toString()).forEach {
+        @Suppress("DEPRECATION")
+        addStyle(
+            style = style,
+            start = it.range.start,
+            end = it.range.endExclusive
+        )
+    }
+}
+
+fun AnnotatedString.Builder.applyStyle(
+    style: ParagraphStyle, regex: Regex
+) {
+    regex.findAll(this.toString()).forEach {
+        @Suppress("DEPRECATION")
+        addStyle(
+            style = style,
+            start = it.range.start,
+            end = it.range.endExclusive
+        )
+    }
+}
+
+fun AnnotatedString.Builder.applyStringAnnotation(
+    tag: String, annotation: String, regex: Regex
+) {
+    regex.findAll(this.toString()).forEach {
+        @Suppress("DEPRECATION")
+        addStringAnnotation(
+            tag = tag,
+            annotation = annotation,
+            start = it.range.start,
+            end = it.range.endExclusive
+        )
+    }
+}
+
+fun AnnotatedString.Builder.applyStringAnnotation(
+    ttsAnnotation: TtsAnnotation, regex: Regex
+) {
+    regex.findAll(this.toString()).forEach {
+        @Suppress("DEPRECATION")
+        addTtsAnnotation(
+            ttsAnnotation = ttsAnnotation,
+            start = it.range.start,
+            end = it.range.endExclusive
+        )
+    }
+}
+
+fun AnnotatedString.Builder.applyLink(
+    clickable: LinkAnnotation.Clickable, regex: Regex
+) {
+    regex.findAll(this.toString()).forEach {
+        @Suppress("DEPRECATION")
+        addLink(
+            clickable = clickable,
+            start = it.range.start,
+            end = it.range.endExclusive
+        )
+    }
+}
+
+fun AnnotatedString.Builder.applyLink(
+    url: LinkAnnotation.Url, regex: Regex
+) {
+    regex.findAll(this.toString()).forEach {
+        @Suppress("DEPRECATION")
+        addLink(
+            url = url,
+            start = it.range.start,
+            end = it.range.endExclusive
+        )
+    }
+}
 
 fun AnnotatedString.Companion.fromSpannable(
     spannable: SpannableString,
