@@ -112,3 +112,28 @@ fun AnnotatedString.Companion.fromSpannable(
 
     return builder.toAnnotatedString()
 }
+
+val AnnotatedString.plainStyles: List<IntRange>
+    get() = this.plainStyles()
+
+private fun AnnotatedString.plainStyles(): List<IntRange> {
+    if (this.isEmpty()) return emptyList()
+
+    val result = mutableListOf<IntRange>()
+    var currentIndex = 0
+
+    this.spanStyles
+        .map { it.start until it.end }
+        .forEach { range ->
+            if (currentIndex < range.first) {
+                result.add(currentIndex until range.first)
+            }
+            currentIndex = maxOf(currentIndex, range.last + 1)
+        }
+
+    if (currentIndex < this.length) {
+        result.add(currentIndex until this.length)
+    }
+
+    return result
+}
