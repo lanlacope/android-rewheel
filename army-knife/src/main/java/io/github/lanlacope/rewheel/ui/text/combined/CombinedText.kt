@@ -73,7 +73,9 @@ fun CombinedText(
                         displayText.getLinkRange(offset)
                     } else {
                         IntRange.EMPTY
-                    }.apply { if (isEmpty()) continue }
+                    }
+
+                    if (pressedRange.isEmpty()) continue
 
                     down.consume()
 
