@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.compose)
-    id("maven-publish")
+    //id("maven-publish")
 }
 
 kotlin {
@@ -46,6 +46,7 @@ android {
         }
     }
 }
+/*
 publishing {
     publications {
         create<MavenPublication>("release") {
@@ -78,6 +79,8 @@ publishing {
         }
     }
 }
+
+ */
 
 dependencies {
     implementation(libs.androidx.appcompat)

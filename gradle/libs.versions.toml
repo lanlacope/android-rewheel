@@ -1,6 +1,5 @@
 [versions]
 androidxDatastorePreferences = "1.1.0"
-this = "1.0.0-SNAPSHOT"
 
 agp = "8.13.1"
 kotlin = "2.0.21"
