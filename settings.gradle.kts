@@ -14,11 +14,14 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        /*
         maven {
             url = uri("https://maven.pkg.github.com/lanlacope/android-rewheel")
             credentials {
@@ -28,6 +31,8 @@ dependencyResolutionManagement {
                 password = localProperties.getProperty("gpr.token")
             }
         }
+
+         */
     }
 }
 
