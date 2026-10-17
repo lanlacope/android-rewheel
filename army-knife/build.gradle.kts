@@ -7,6 +7,8 @@ plugins {
     //id("maven-publish")
 }
 
+group = "io.github.lanlacope.android-rewheel"
+
 kotlin {
     compilerOptions {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
