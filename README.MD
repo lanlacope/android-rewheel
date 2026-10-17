@@ -1,29 +1,26 @@
 for my project
 
-```
-# local.properties
-gpr.user=lanlacope
-gpr.token=ghp_...
+# add submodule
+```powershell
+git submodule add https://github.com/lanlacope/android-rewheel.git libs/android-rewheel
+git submodule update --init --recursive
 ```
 
+# updare latest
+```powershell
+git submodule update --remote
+```
+
+# in project
+`settings.gradle.kts`
 ```kotlin
-// settings.gradle.kts
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        /* other repositories, example
-         * google()
-         * mavenCentral()
-         */
-        maven {
-            url = uri("https://maven.pkg.github.com/lanlacope/android-rewheel")
-            credentials {
-                val localProperties = Properties()
-                localProperties.load(file("${rootProject.projectDir}/local.properties").inputStream())
-                username = localProperties.getProperty("gpr.user")
-                password = localProperties.getProperty("gpr.token")
-            }
-        }
-    }
-}
+implementation(libs.lanlacope.rewheel)
+```
+`libs.versions.toml`
+```toml
+lanlacope-rewheel = { group = "io.github.lanlacope.android-rewheel", name = "army-knife" }
+```
+`build.gradle.kts`
+```kotlin
+includeBuild("libs/android-rewheel")
 ```

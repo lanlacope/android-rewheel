@@ -1,10 +1,8 @@
-import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.compose)
-    //id("maven-publish")
 }
 
 group = "io.github.lanlacope.android-rewheel"
@@ -48,41 +46,6 @@ android {
         }
     }
 }
-/*
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            groupId = "io.github.lanlacope.android-rewheel"
-            artifactId = "army-knife"
-            version = "1.0.0-SNAPSHOT"
-
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/lanlacope/android-rewheel")
-            credentials {
-                val localProperties = Properties()
-                localProperties.load(rootProject.file("local.properties").inputStream())
-                username = localProperties.getProperty("gpr.user")
-                password = localProperties.getProperty("gpr.token")
-
-                if (username.isNullOrEmpty()) {
-                    logger.warn("Warning: GitHub username (gpr.user) not found in local.properties. Please add it to proceed.")
-                }
-                if (password.isNullOrEmpty()) {
-                    logger.warn("Warning: GitHub token (gpr.token) not found in local.properties. Please add it to proceed.")
-                }
-            }
-        }
-    }
-}
-
- */
 
 dependencies {
     implementation(libs.androidx.appcompat)
