@@ -26,7 +26,7 @@ runtimeAndroid = "1.7.6"
 uiText = "1.9.5"
 
 [libraries]
-this-library = { module = "io.github.lanlacope.android-rewheel:army-knife", version.ref = "this" }
+//this-library = { module = "io.github.lanlacope.android-rewheel:army-knife", version.ref = "this" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
