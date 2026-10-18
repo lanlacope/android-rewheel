@@ -25,5 +25,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "android-rewheel"
-include(":example")
+
+val isOtherPoroject = settingsDir.parentFile.name == "libs"
+
+if (!isOtherPoroject) include(":example")
 include(":army-knife")
