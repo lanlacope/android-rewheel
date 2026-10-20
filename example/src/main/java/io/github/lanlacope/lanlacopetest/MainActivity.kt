@@ -5,11 +5,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.contextmenu.modifier.appendTextContextMenuComponents
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import io.github.lanlacope.rewheel.util.rememberCacheable
@@ -33,37 +38,25 @@ fun AppTest() {
 
     Column(modifier = Modifier.fillMaxSize()) {
 
-        var boolA by rememberCacheable(key = "TEST") {
-            mutableStateOf(false)
-        }
-
-        Switch(
-            checked = boolA,
-            onCheckedChange = {
-                boolA = !boolA
-            }
+        Text(
+            text = "Hello World!",
+            modifier = Modifier
+                .fillMaxWidth()
         )
 
-        var boolB by rememberCacheable(key = "TEST_B") {
-            mutableStateOf(false)
-        }
+        var text by remember { mutableStateOf("Hello World!") }
 
-        Switch(
-            checked = boolB,
-            onCheckedChange = {
-                boolB = !boolB
-            }
-        )
-
-        var boolC by rememberCacheable(key = "TEST_C") {
-            mutableStateOf(false)
-        }
-
-        Switch(
-            checked = boolC,
-            onCheckedChange = {
-                boolC = !boolC
-            }
+        TextField(
+            value = text,
+            onValueChange = { text = it } ,
+            modifier = Modifier
+                .fillMaxWidth()
+                .appendTextContextMenuComponents(
+                    onCopy = { text },
+                    onCut = { text },
+                    onPaste = { text },
+                    onSelectAll = { text }
+                )
         )
     }
 }
