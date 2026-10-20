@@ -15,7 +15,7 @@ kotlin {
 
 android {
     namespace = "io.github.lanlacope.rewheel"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 23
