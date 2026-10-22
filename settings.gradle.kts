@@ -1,5 +1,3 @@
-import java.util.Properties
-
 
 pluginManagement {
     repositories {
@@ -15,7 +13,7 @@ pluginManagement {
     }
 }
 
-
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
