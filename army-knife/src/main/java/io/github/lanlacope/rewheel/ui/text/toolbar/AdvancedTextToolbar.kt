@@ -24,7 +24,9 @@ import io.github.lanlacope.rewheel.util.removeSelectedText
 import io.github.lanlacope.rewheel.util.selectAll
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.core.net.toUri
 
+@Deprecated("use `Modifier.appendTextContextMenuComponents`", level = DeprecationLevel.WARNING)
 @Composable
 fun AdvancedTextToolbar(
     value: TextFieldValue,
@@ -50,7 +52,7 @@ fun AdvancedTextToolbar(
         if (Patterns.WEB_URL.toRegex().matches(value.getSelectedText().text)) {
             val intent = Intent().apply {
                 action = Intent.ACTION_VIEW
-                data = Uri.parse(value.getSelectedText().text)
+                data = value.getSelectedText().text.toUri()
             }
             textToolbar.addAction(
                 title = browserTitle,

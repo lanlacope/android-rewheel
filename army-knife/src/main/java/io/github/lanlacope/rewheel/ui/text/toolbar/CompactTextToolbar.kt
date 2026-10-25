@@ -18,6 +18,7 @@ import io.github.lanlacope.rewheel.util.removeSelectedText
 import io.github.lanlacope.rewheel.util.selectAll
 import kotlinx.coroutines.launch
 
+@Deprecated("use `Modifier.appendTextContextMenuComponents`", level = DeprecationLevel.WARNING)
 @Composable
 fun CompactTextToolbar(
     value: TextFieldValue,

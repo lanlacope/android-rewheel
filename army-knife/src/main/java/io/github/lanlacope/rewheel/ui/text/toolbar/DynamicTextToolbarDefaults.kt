@@ -2,6 +2,7 @@ package io.github.lanlacope.rewheel.ui.text.toolbar
 
 import androidx.compose.runtime.Immutable
 
+@Deprecated("use `Modifier.appendTextContextMenuComponents`", level = DeprecationLevel.WARNING)
 @Immutable
 object DynamicTextToolbarDefaults {
     object Title {

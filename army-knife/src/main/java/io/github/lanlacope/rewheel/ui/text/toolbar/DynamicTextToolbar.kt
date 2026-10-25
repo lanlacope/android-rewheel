@@ -13,12 +13,14 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.TextToolbar
 import androidx.compose.ui.platform.TextToolbarStatus
 
+@Deprecated("use `Modifier.appendTextContextMenuComponents`", level = DeprecationLevel.WARNING)
 @Composable
 fun rememberDynamicTextToolbar(): DynamicTextToolbar {
     val view = LocalView.current
     return remember { DynamicTextToolbar(view = view) }
 }
 
+@Deprecated("use `Modifier.appendTextContextMenuComponents`", level = DeprecationLevel.WARNING)
 @Stable
 class DynamicTextToolbar(
     private val view: View,
