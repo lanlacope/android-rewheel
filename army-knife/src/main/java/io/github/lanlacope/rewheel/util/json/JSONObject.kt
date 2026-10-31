@@ -5,13 +5,19 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-fun JSONObject.toKeyList(): List<String> {
+fun JSONObject.keyList(): List<String> {
     return this.keys().asIterable().toList()
 }
 
-fun JSONObject.toEntryList(): List<JSONEntry> {
-    return this.toKeyList().map { key ->
+fun JSONObject.toList(): List<JSONEntry> {
+    return this.keyList().map { key ->
         JSONEntry(key, this.getOrNull(key))
+    }
+}
+
+fun JSONObject.toMap(): Map<String, Any?> {
+    return this.keyList().associateWith { key ->
+        this.getOrNull(key)
     }
 }
 
@@ -83,6 +89,7 @@ fun JSONObject.getJSONObjectOrNull(key: String): JSONObject? {
     }
 }
 
+/*
 inline fun JSONObject.forEach(action: (key: String, element: Any?) -> Unit) {
     this.toKeyList().forEach { key ->
         action(key, getOrNull(key))
@@ -106,3 +113,5 @@ inline fun <R> JSONObject.mapIndexed(transform: (index: Int, key: String, elemen
         transform(index, key, getOrNull(key))
     }
 }
+
+ */

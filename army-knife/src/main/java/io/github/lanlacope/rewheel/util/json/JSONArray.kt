@@ -4,6 +4,12 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
+fun JSONArray.toList(): List<Any?> {
+    return (0 until length()).map { index ->
+        getOrNull(index)
+    }
+}
+
 fun JSONArray.getOrNull(index: Int): Any? {
     return try {
         this.get(index)
@@ -68,6 +74,7 @@ fun JSONArray.getJSONObjectOrNull(index: Int): JSONObject? {
     }
 }
 
+/*
 inline fun JSONArray.forEach(action: (element: Any?) -> Unit) {
     for (index in 0 until length()) {
         action(getOrNull(index))
@@ -91,3 +98,5 @@ inline fun <R> JSONArray.mapIndexed(transform: (index: Int, element: Any?) -> R)
         transform(index, getOrNull(index))
     }
 }
+
+ */
